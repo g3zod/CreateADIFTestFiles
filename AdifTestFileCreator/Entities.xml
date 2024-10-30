@@ -1,0 +1,1975 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<adif created="2018-01-24T22:36:20Z">
+  <dxccEntities>
+    <dxccEntity code="1" callTemplate="VE#aaa" name="Canada" continent="NA" ituz="2" cqz="5">
+      <pas code="NS" callTemplate="VE1aaa" />
+      <pas code="QC" callTemplate="VE2aaa" />
+      <pas code="ON" callTemplate="VE3aaa" />
+      <pas code="MB" callTemplate="VE4aaa" />
+      <pas code="SK" callTemplate="VE5aaa" />
+      <pas code="AB" callTemplate="VE6aaa" />
+      <pas code="BC" callTemplate="VE7aaa" />
+      <pas code="NT" callTemplate="VE8aaa" />
+      <pas code="NB" callTemplate="VE9aaa" />
+      <pas code="NL" callTemplate="VO1aaa" />
+      <pas code="YT" callTemplate="VY1aaa" />
+      <pas code="PE" callTemplate="VY2aaa" />
+      <pas code="NU" callTemplate="VY0aaa" />
+    </dxccEntity>
+    <dxccEntity code="2" callTemplate="A1aaa" name="Abu Ail Is." continent="AF" ituz="39" cqz="21" endDate="1991-03-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="3" callTemplate="T6aaa" name="Afghanistan" continent="AS" ituz="40" cqz="21" />
+    <dxccEntity code="4" callTemplate="3B6aaa" name="Agalega &amp; St. Brandon Is." continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="5" callTemplate="OH0aaa" name="Aland Island" continent="EU" ituz="18" cqz="15">
+      <pas code="001" callTemplate="OH0aaa" />
+      <pas code="002" callTemplate="OH0aaa" />
+      <pas code="003" callTemplate="OH0aaa" />
+      <pas code="004" callTemplate="OH0aaa" />
+      <pas code="005" callTemplate="OH0aaa" />
+      <pas code="006" callTemplate="OH0aaa" />
+      <pas code="007" callTemplate="OH0aaa" />
+      <pas code="008" callTemplate="OH0aaa" />
+      <pas code="009" callTemplate="OH0aaa" />
+      <pas code="010" callTemplate="OH0aaa" />
+      <pas code="011" callTemplate="OH0aaa" />
+      <pas code="012" callTemplate="OH0aaa" />
+      <pas code="013" callTemplate="OH0aaa" />
+      <pas code="014" callTemplate="OH0aaa" />
+      <pas code="015" callTemplate="OH0aaa" />
+      <pas code="016" callTemplate="OH0aaa" />
+    </dxccEntity>
+    <dxccEntity code="6" callTemplate="KL#aaa" name="Alaska" continent="NA" ituz="1" cqz="1">
+      <pas code="AK" callTemplate="KL7aaa">
+        <sas code="AK,Aleutians East" />
+        <sas code="AK,Aleutians West" />
+        <sas code="AK,Anchorage" />
+        <sas code="AK,Bethel" />
+        <sas code="AK,Bristol Bay" />
+        <sas code="AK,Denali" />
+        <sas code="AK,Dillingham" />
+        <sas code="AK,Fairbanks" />
+        <sas code="AK,Fairbanks North Star" />
+        <sas code="AK,Haines" />
+        <sas code="AK,Juneau" />
+        <sas code="AK,Hoonah-Angoon" />
+        <sas code="AK,Kenai Peninsula" />
+        <sas code="AK,Ketchikan Gateway" />
+        <sas code="AK,Kodiak Island" />
+        <sas code="AK,Kusilvak" />
+        <sas code="AK,Lake and Peninsula" />
+        <sas code="AK,Matanuska-Susitna" />
+        <sas code="AK,Nome" />
+        <sas code="AK,North Slope" />
+        <sas code="AK,Northwest Arctic" />
+        <sas code="AK,Petersburg" />
+        <sas code="AK,Pribilof Islands" />
+        <sas code="AK,Prince of Wales-Hyder" />
+        <sas code="AK,Saint Matthew Island" />
+        <sas code="AK,Sitka" />
+        <sas code="AK,Skagway" />
+        <sas code="AK,Southeast Fairbanks" />
+        <sas code="AK,Valdez-Cordova" />
+        <sas code="AK,Wales-Hyder" />
+        <sas code="AK,Wrangell" />
+        <sas code="AK,Yakutat" />
+        <sas code="AK,Yukon-Koyukuk" />
+      </pas>
+    </dxccEntity>
+    <dxccEntity code="7" callTemplate="ZA#aaa" name="Albania" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="8" callTemplate="VQ9aaa" name="Aldabra" continent="AF" ituz="53" cqz="39" endDate="1976-06-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="9" callTemplate="KH8aaa" name="American Samoa" continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="10" callTemplate="FT09Z" name="Amsterdam &amp; St. Paul Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="11" callTemplate="VU4aaa" name="Andaman &amp; Nicobar Is." continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="12" callTemplate="VP2E" name="Anguilla" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="13" callTemplate="ZL5aaa" name="Antarctica" continent="AN" ituz="67" cqz="13" />
+    <dxccEntity code="14" callTemplate="EK#aaa" name="Armenia" continent="AS" ituz="29" cqz="21" />
+    <dxccEntity code="15" callTemplate="UA9aaa" name="Asiatic Russia" continent="AS" ituz="20" cqz="17">
+      <pas code="CB" callTemplate="UA9Aaa" />
+      <pas code="SV" callTemplate="UA9Caa" />
+      <pas code="PM" callTemplate="UA9Faa" />
+      <pas code="TO" callTemplate="UA9Haa" />
+      <pas code="HM" callTemplate="UA9Jaa" />
+      <pas code="YN" callTemplate="UA9Kaa" />
+      <pas code="TN" callTemplate="UA9Laa" />
+      <pas code="OM" callTemplate="UA9Maa" />
+      <pas code="NS" callTemplate="UA9Oaa" />
+      <pas code="KN" callTemplate="UA9Qaa" />
+      <pas code="OB" callTemplate="UA9Saa" />
+      <pas code="KE" callTemplate="UA9Uaa" />
+      <pas code="BA" callTemplate="UA9Waa" />
+      <pas code="KO" callTemplate="UA9Xaa" />
+      <pas code="AL" callTemplate="UA9Yaa" />
+      <pas code="GA" callTemplate="UA9Zaa" />
+      <pas code="KK" callTemplate="UA0Baa" />
+      <pas code="HK" callTemplate="UA0Caa" />
+      <pas code="EA" callTemplate="UA0Daa" />
+      <pas code="SL" callTemplate="UA0Eaa" />
+      <pas code="MG" callTemplate="UA0Iaa" />
+      <pas code="AM" callTemplate="UA0Jaa" />
+      <pas code="CK" callTemplate="UA0Kaa" />
+      <pas code="PK" callTemplate="UA0Laa" />
+      <pas code="BU" callTemplate="UA0Oaa" />
+      <pas code="YA" callTemplate="UA0Qaa" />
+      <pas code="IR" callTemplate="UA0Saa" />
+      <pas code="CT" callTemplate="UA0Uaa" />
+      <pas code="HA" callTemplate="UA0Waa" />
+      <pas code="KT" callTemplate="UA0Xaa" />
+      <pas code="TU" callTemplate="UA0Yaa" />
+    </dxccEntity>
+    <dxccEntity code="16" callTemplate="ZL9aaa" name="Auckland &amp; Campbell Is." continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="17" callTemplate="YV0aaa" name="Aves Is." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="18" callTemplate="4J#aaa" name="Azerbaijan" continent="AS" ituz="29" cqz="21" />
+    <dxccEntity code="19" callTemplate="HK0aaa" name="Bajo Nuevo" continent="NA" ituz="11" cqz="8" endDate="1981-09-16T23:59:59Z" deleted="true" />
+    <dxccEntity code="20" callTemplate="KH1aaa" name="Baker &amp; Howland Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="21" callTemplate="EA6aaa" name="Balearic Is." continent="EU" ituz="37" cqz="14">
+      <pas code="IB" callTemplate="EA6aaa" />
+    </dxccEntity>
+    <dxccEntity code="22" callTemplate="T8aaa" name="Palau" continent="OC" ituz="64" cqz="27" />
+    <dxccEntity code="23" callTemplate="1B#aa" name="Blenheim Reef" continent="AF" ituz="41" cqz="39" startDate="1967-05-04T00:00:00Z" endDate="1975-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="24" callTemplate="3Y0a" name="Bouvet" continent="AN" ituz="67" cqz="38" />
+    <dxccEntity code="25" callTemplate="ZC5aaa" name="British North Borneo" continent="OC" ituz="54" cqz="28" endDate="1963-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="26" callTemplate="VQ6aaa" name="British Somaliland" continent="AF" ituz="48" cqz="37" endDate="1960-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="27" callTemplate="EU#aaa" name="Belarus" continent="EU" ituz="29" cqz="16">
+      <pas code="MI" callTemplate="EU1aaa" />
+      <pas code="BR" callTemplate="EU3aaa" />
+      <pas code="HR" callTemplate="EU4aaa" />
+      <pas code="VI" callTemplate="EU6aaa" />
+      <pas code="MA" callTemplate="EU7aaa" />
+      <pas code="HO" callTemplate="EU8aaa" />
+    </dxccEntity>
+    <dxccEntity code="28" callTemplate="KZ5aaa" name="Canal Zone" continent="NA" ituz="11" cqz="7" endDate="1979-09-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="29" callTemplate="EA8aaa" name="Canary Is." continent="AF" ituz="36" cqz="33">
+      <pas code="GC" callTemplate="EA8aaa" />
+      <pas code="TF" callTemplate="EA8aaa" />
+    </dxccEntity>
+    <dxccEntity code="30" callTemplate="PK6aaa" name="Celebe &amp; Molucca Is." continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="31" callTemplate="T31aaa" name="Central Kiribati" continent="OC" ituz="62" cqz="31" />
+    <dxccEntity code="32" callTemplate="EA9aaa" name="Ceuta &amp; Melilla" continent="AF" ituz="37" cqz="33">
+      <pas code="CE" callTemplate="EA9aaa" />
+      <pas code="ML" callTemplate="EA9aaa" />
+    </dxccEntity>
+    <dxccEntity code="33" callTemplate="VQ9aaa" name="Chagos Is." continent="AF" ituz="41" cqz="39" />
+    <dxccEntity code="34" callTemplate="ZL7aaa" name="Chatham Is." continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="35" callTemplate="VK9X" name="Christmas Is." continent="OC" ituz="54" cqz="29" />
+    <dxccEntity code="36" callTemplate="FO#aa" name="Clipperton Is." continent="NA" ituz="10" cqz="7" />
+    <dxccEntity code="37" callTemplate="TI9aaa" name="Cocos Is." continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="38" callTemplate="VK9C" name="Cocos-Keeling Is." continent="OC" ituz="54" cqz="29" />
+    <dxccEntity code="39" callTemplate="FH#aaa" name="Comoros" continent="AF" ituz="53" cqz="39" endDate="1975-07-05T23:59:59Z" deleted="true" />
+    <dxccEntity code="40" callTemplate="SV9aaa" name="Crete" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="41" callTemplate="FT09W" name="Crozet Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="42" callTemplate="CR8aaa" name="Damao,Diu" continent="AS" ituz="41" cqz="22" endDate="1961-12-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="43" callTemplate="KP5aaa" name="Desecheo Is." continent="NA" ituz="11" cqz="8" startDate="1979-03-01T00:00:00Z" />
+    <dxccEntity code="44" callTemplate="VQ9aaa" name="Desroches" continent="AF" ituz="53" cqz="39" endDate="1976-06-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="45" callTemplate="SV5aaa" name="Dodecanese" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="46" callTemplate="9M6aaa" name="East Malaysia" continent="OC" ituz="54" cqz="28" startDate="1963-09-16T00:00:00Z" />
+    <dxccEntity code="47" callTemplate="CE0A" name="Easter Is." continent="SA" ituz="63" cqz="12" />
+    <dxccEntity code="48" callTemplate="T32aaa" name="Eastern Kiribati" continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="49" callTemplate="3C#aaa" name="Equatorial Guinea" continent="AF" ituz="47" cqz="36" />
+    <dxccEntity code="50" callTemplate="XE#aaa" name="Mexico" continent="NA" ituz="10" cqz="6">
+      <pas code="COL" callTemplate="XE1aaa" />
+      <pas code="DF" callTemplate="XE1aaa" />
+      <pas code="EMX" callTemplate="XE1aaa" />
+      <pas code="GTO" callTemplate="XE1aaa" />
+      <pas code="HGO" callTemplate="XE1aaa" />
+      <pas code="JAL" callTemplate="XE1aaa" />
+      <pas code="MIC" callTemplate="XE1aaa" />
+      <pas code="MOR" callTemplate="XE1aaa" />
+      <pas code="NAY" callTemplate="XE1aaa" />
+      <pas code="PUE" callTemplate="XE1aaa" />
+      <pas code="QRO" callTemplate="XE1aaa" />
+      <pas code="TLX" callTemplate="XE1aaa" />
+      <pas code="VER" callTemplate="XE1aaa" />
+      <pas code="AGS" callTemplate="XE2aaa" />
+      <pas code="BC" callTemplate="XE2aaa" />
+      <pas code="BCS" callTemplate="XE2aaa" />
+      <pas code="CHH" callTemplate="XE2aaa" />
+      <pas code="COA" callTemplate="XE2aaa" />
+      <pas code="DGO" callTemplate="XE2aaa" />
+      <pas code="NL" callTemplate="XE2aaa" />
+      <pas code="SLP" callTemplate="XE2aaa" />
+      <pas code="SIN" callTemplate="XE2aaa" />
+      <pas code="SON" callTemplate="XE2aaa" />
+      <pas code="TMS" callTemplate="XE2aaa" />
+      <pas code="ZAC" callTemplate="XE2aaa" />
+      <pas code="CAM" callTemplate="XE3aaa" />
+      <pas code="CHS" callTemplate="XE3aaa" />
+      <pas code="GRO" callTemplate="XE3aaa" />
+      <pas code="OAX" callTemplate="XE3aaa" />
+      <pas code="QTR" callTemplate="XE3aaa" />
+      <pas code="TAB" callTemplate="XE3aaa" />
+      <pas code="YUC" callTemplate="XE3aaa" />
+    </dxccEntity>
+    <dxccEntity code="51" callTemplate="E3aaa" name="Eritrea" continent="AF" ituz="48" cqz="37" startDate="1991-05-24T00:00:00Z" />
+    <dxccEntity code="52" callTemplate="ES#aaa" name="Estonia" continent="EU" ituz="29" cqz="15" />
+    <dxccEntity code="53" callTemplate="ET#aaa" name="Ethiopia" continent="AF" ituz="48" cqz="37" />
+    <dxccEntity code="54" callTemplate="UA3aaa" name="European Russia" continent="EU" ituz="19" cqz="16">
+      <pas code="SP" callTemplate="UA1Aaa" />
+      <pas code="LO" callTemplate="UA1Caa" />
+      <pas code="KL" callTemplate="UA1Naa" />
+      <pas code="AR" callTemplate="UA1Oaa" />
+      <pas code="NO" callTemplate="UA1Paa" />
+      <pas code="VO" callTemplate="UA1Qaa" />
+      <pas code="NV" callTemplate="UA1Taa" />
+      <pas code="PS" callTemplate="UA1Waa" />
+      <pas code="MU" callTemplate="UA1Yaa" />
+      <pas code="MA" callTemplate="UA3Aaa" />
+      <pas code="MO" callTemplate="UA3Daa" />
+      <pas code="OR" callTemplate="UA3Eaa" />
+      <pas code="LP" callTemplate="UA3Gaa" />
+      <pas code="TV" callTemplate="UA3Iaa" />
+      <pas code="SM" callTemplate="UA3Laa" />
+      <pas code="YR" callTemplate="UA3Maa" />
+      <pas code="KS" callTemplate="UA3Naa" />
+      <pas code="TL" callTemplate="UA3Paa" />
+      <pas code="VR" callTemplate="UA3Oaa" />
+      <pas code="TB" callTemplate="UA3Raa" />
+      <pas code="RA" callTemplate="UA3Saa" />
+      <pas code="NN" callTemplate="UA3Taa" />
+      <pas code="IV" callTemplate="UA3Uaa" />
+      <pas code="VL" callTemplate="UA3Vaa" />
+      <pas code="KU" callTemplate="UA3Waa" />
+      <pas code="KG" callTemplate="UA3Xaa" />
+      <pas code="BR" callTemplate="UA3Yaa" />
+      <pas code="BO" callTemplate="UA3Zaa" />
+      <pas code="VG" callTemplate="UA4Aaa" />
+      <pas code="SA" callTemplate="UA4Caa" />
+      <pas code="PE" callTemplate="UA4Faa" />
+      <pas code="SR" callTemplate="UA4Haa" />
+      <pas code="UL" callTemplate="UA4Laa" />
+      <pas code="KI" callTemplate="UA4Naa" />
+      <pas code="TA" callTemplate="UA4Paa" />
+      <pas code="MR" callTemplate="UA4Saa" />
+      <pas code="MD" callTemplate="UA4Uaa" />
+      <pas code="UD" callTemplate="UA4Waa" />
+      <pas code="CU" callTemplate="UA4Yaa" />
+      <pas code="KR" callTemplate="UA6Aaa" />
+      <pas code="KC" callTemplate="UA6Eaa" />
+      <pas code="ST" callTemplate="UA6Faa" />
+      <pas code="KM" callTemplate="UA6Iaa" />
+      <pas code="SO" callTemplate="UA6Jaa" />
+      <pas code="RO" callTemplate="UA6Laa" />
+      <pas code="CN" callTemplate="UA6Paa" />
+      <pas code="IN" callTemplate="UA6Qaa" />
+      <pas code="AO" callTemplate="UA6Uaa" />
+      <pas code="DA" callTemplate="UA6Waa" />
+      <pas code="KB" callTemplate="UA6Xaa" />
+      <pas code="AD" callTemplate="UA6Yaa" />
+    </dxccEntity>
+    <dxccEntity code="55" callTemplate="VQ9aaa" name="Farquhar" continent="AF" ituz="53" cqz="39" endDate="1976-06-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="56" callTemplate="PY0F" name="Fernando de Noronha" continent="SA" ituz="13" cqz="11" />
+    <dxccEntity code="57" callTemplate="FQ8aaa" name="Fr. Equatorial Africa" continent="AF" ituz="57" cqz="36" endDate="1960-08-16T23:59:59Z" deleted="true" />
+    <dxccEntity code="58" callTemplate="FI8aaa" name="French Indo-China" continent="AS" ituz="49" cqz="26" endDate="1950-12-20T23:59:59Z" deleted="true" />
+    <dxccEntity code="59" callTemplate="FF#aaa" name="French West Africa" continent="AF" ituz="46" cqz="35" endDate="1960-08-06T23:59:59Z" deleted="true" />
+    <dxccEntity code="60" callTemplate="C6aaa" name="Bahamas" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="61" callTemplate="R1FJ" name="Franz Josef Land" continent="EU" ituz="75" cqz="40">
+      <pas code="AR" callTemplate="R1FJa" />
+    </dxccEntity>
+    <dxccEntity code="62" callTemplate="8P#aaa" name="Barbados" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="63" callTemplate="FY#aaa" name="French Guiana" continent="SA" ituz="12" cqz="9" />
+    <dxccEntity code="64" callTemplate="VP9aaa" name="Bermuda" continent="NA" ituz="11" cqz="5" />
+    <dxccEntity code="65" callTemplate="VP2V" name="British Virgin Is." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="66" callTemplate="V3aaa" name="Belize" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="67" callTemplate="FN8aaa" name="French India" continent="AS" ituz="41" cqz="22" endDate="1954-10-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="68" callTemplate="8Z5aaa" name="Kuwait/Saudi Arabia Neut. Zone" continent="AS" ituz="39" cqz="21" endDate="1969-12-14T23:59:59Z" deleted="true" />
+    <dxccEntity code="69" callTemplate="ZF#aaa" name="Cayman Islands" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="70" callTemplate="CO#aaa" name="Cuba" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="71" callTemplate="HC8aaa" name="Galapagos Is." continent="SA" ituz="12" cqz="10" />
+    <dxccEntity code="72" callTemplate="HI#aaa" name="Dominican Rep." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="74" callTemplate="YS#aaa" name="El Salvador" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="75" callTemplate="4L#aaa" name="Georgia" continent="AS" ituz="29" cqz="21" />
+    <dxccEntity code="76" callTemplate="TG#aaa" name="Guatemala" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="77" callTemplate="J3aaa" name="Grenada" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="78" callTemplate="HH#aaa" name="Haiti" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="79" callTemplate="FG#aaa" name="Guadeloupe" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="80" callTemplate="HR#aaa" name="Honduras" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="81" callTemplate="DL#aaa" name="Germany " continent="EU" ituz="28" cqz="14" endDate="1973-09-16T23:59:59Z" deleted="true" />
+    <dxccEntity code="82" callTemplate="6Y#aaa" name="Jamaica" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="84" callTemplate="FM#aaa" name="Martinique" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="85" callTemplate="PJ2aaa" name="Bonaire, Curacao" continent="SA" ituz="11" cqz="9" endDate="2010-10-10T04:00:00Z" deleted="true" />
+    <dxccEntity code="86" callTemplate="YN#aaa" name="Nicaragua" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="88" callTemplate="HP#aaa" name="Panama" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="89" callTemplate="VP5aaa" name="Turks &amp; Caicos Is." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="90" callTemplate="9Y#aaa" name="Trinidad &amp; Tobago" continent="SA" ituz="11" cqz="9" />
+    <dxccEntity code="91" callTemplate="P4aaa" name="Aruba" continent="SA" ituz="11" cqz="9" startDate="1986-01-01T00:00:00Z" />
+    <dxccEntity code="93" callTemplate="1G#aa" name="Geyser Reef" continent="AF" ituz="53" cqz="39" startDate="1967-05-04T00:00:00Z" endDate="1978-02-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="94" callTemplate="V2aaa" name="Antigua &amp; Barbuda" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="95" callTemplate="J7aaa" name="Dominica" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="96" callTemplate="VP2M" name="Montserrat" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="97" callTemplate="J6aaa" name="Saint Lucia" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="98" callTemplate="J8aaa" name="Saint Vincent" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="99" callTemplate="FR#Ga" name="Glorioso Is." continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
+    <dxccEntity code="100" callTemplate="LU#aaa" name="Argentina" continent="SA" ituz="14" cqz="13">
+      <pas code="C" callTemplate="LU#Aaa" />
+      <pas code="B" callTemplate="LU#Daa" />
+      <pas code="S" callTemplate="LU#Faa" />
+      <pas code="H" callTemplate="LU#GAa" />
+      <pas code="P" callTemplate="LU#GPa" />
+      <pas code="X" callTemplate="LU#Haa" />
+      <pas code="N" callTemplate="LU#Iaa" />
+      <pas code="E" callTemplate="LU#Jaa" />
+      <pas code="T" callTemplate="LU#Kaa" />
+      <pas code="W" callTemplate="LU#Laa" />
+      <pas code="M" callTemplate="LU#Maa" />
+      <pas code="G" callTemplate="LU#Naa" />
+      <pas code="A" callTemplate="LU#Oaa" />
+      <pas code="J" callTemplate="LU#Paa" />
+      <pas code="D" callTemplate="LU#Qaa" />
+      <pas code="K" callTemplate="LU#Raa" />
+      <pas code="F" callTemplate="LU#Saa" />
+      <pas code="Y" callTemplate="LU#Taa" />
+      <pas code="L" callTemplate="LU#Uaa" />
+      <pas code="R" callTemplate="LU#Vaa" />
+      <pas code="U" callTemplate="LU#Waa" />
+      <pas code="Z" callTemplate="LU#XAa" />
+      <pas code="V" callTemplate="LU#XPa" />
+      <pas code="Q" callTemplate="LU#Yaa" />
+    </dxccEntity>
+    <dxccEntity code="101" callTemplate="CR8aaa" name="Goa" continent="AS" ituz="41" cqz="22" endDate="1961-12-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="102" callTemplate="ZD4aaa" name="Gold Coast, Togoland" continent="AF" ituz="46" cqz="35" endDate="1957-03-05T23:59:59Z" deleted="true" />
+    <dxccEntity code="103" callTemplate="KH2aaa" name="Guam" continent="OC" ituz="64" cqz="27" />
+    <dxccEntity code="104" callTemplate="CP#aaa" name="Bolivia" continent="SA" ituz="12" cqz="10" />
+    <dxccEntity code="105" callTemplate="KG4aaa" name="Guantanamo Bay" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="106" callTemplate="GU#aaa" name="Guernsey" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="107" callTemplate="3X#aaa" name="Guinea" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="108" callTemplate="PY#aaa" name="Brazil" continent="SA" ituz="12" cqz="11">
+      <pas code="ES" callTemplate="PP1aaa" />
+      <pas code="GO" callTemplate="PP2aaa" />
+      <pas code="SC" callTemplate="PP5aaa" />
+      <pas code="SE" callTemplate="PP6aaa" />
+      <pas code="AL" callTemplate="PP7aaa" />
+      <pas code="AM" callTemplate="PP8aaa" />
+      <pas code="TO" callTemplate="PQ2aaa" />
+      <pas code="AP" callTemplate="PQ8aaa" />
+      <pas code="PB" callTemplate="PR7aaa" />
+      <pas code="MA" callTemplate="PR8aaa" />
+      <pas code="RN" callTemplate="PS7aaa" />
+      <pas code="PI" callTemplate="PS8aaa" />
+      <pas code="DF" callTemplate="PT2aaa" />
+      <pas code="CE" callTemplate="PT7aaa" />
+      <pas code="AC" callTemplate="PT8aaa" />
+      <pas code="MS" callTemplate="PT9aaa" />
+      <pas code="RR" callTemplate="PV8aaa" />
+      <pas code="RO" callTemplate="PW8aaa" />
+      <pas code="RJ" callTemplate="PY1aaa" />
+      <pas code="SP" callTemplate="PY2aaa" />
+      <pas code="RS" callTemplate="PY3aaa" />
+      <pas code="MG" callTemplate="PY4aaa" />
+      <pas code="PR" callTemplate="PY5aaa" />
+      <pas code="BA" callTemplate="PY6aaa" />
+      <pas code="PE" callTemplate="PY7aaa" />
+      <pas code="PA" callTemplate="PY8aaa" />
+      <pas code="MT" callTemplate="PY9aaa" />
+    </dxccEntity>
+    <dxccEntity code="109" callTemplate="J5aaa" name="Guinea-Bissau" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="110" callTemplate="KH6aaa" name="Hawaii" continent="OC" ituz="61" cqz="31">
+      <pas code="HI" callTemplate="KH6aaa" />
+    </dxccEntity>
+    <dxccEntity code="111" callTemplate="VK0H" name="Heard Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="112" callTemplate="CE#aaa" name="Chile" continent="SA" ituz="14" cqz="12">
+      <pas code="II" callTemplate="CE1aaa" />
+      <pas code="III" callTemplate="CE1aaa" />
+      <pas code="I" callTemplate="CE1aaa" />
+      <pas code="IV" callTemplate="CE2aaa" />
+      <pas code="V" callTemplate="CE2aaa" />
+      <pas code="RM" callTemplate="CE3aaa" />
+      <pas code="VI" callTemplate="CE4aaa" />
+      <pas code="VII" callTemplate="CE4aaa" />
+      <pas code="VIII" callTemplate="CE5aaa" />
+      <pas code="IX" callTemplate="CE6aaa" />
+      <pas code="X" callTemplate="CE6aaa" />
+      <pas code="XI" callTemplate="CE7aaa" />
+      <pas code="XII" callTemplate="CE8aaa" />
+    </dxccEntity>
+    <dxccEntity code="113" callTemplate="EA9aaa" name="IFNI" continent="AF" ituz="37" cqz="33" endDate="1969-05-13T23:59:59Z" deleted="true" />
+    <dxccEntity code="114" callTemplate="GD#aaa" name="Isle of Man" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="115" callTemplate="I5aaa" name="Italian Somaliland" continent="AF" ituz="47" cqz="38" endDate="1960-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="116" callTemplate="HK#aaa" name="Colombia" continent="SA" ituz="12" cqz="9" />
+    <dxccEntity code="117" callTemplate="4U#ITU" name="ITU HQ" continent="EU" ituz="28" cqz="14" />
+    <dxccEntity code="118" callTemplate="JX#aaa" name="Jan Mayen" continent="EU" ituz="18" cqz="40" />
+    <dxccEntity code="119" callTemplate="PK1aaa" name="Java" continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="120" callTemplate="HC#aaa" name="Ecuador" continent="SA" ituz="12" cqz="10" />
+    <dxccEntity code="122" callTemplate="GJ#aaa" name="Jersey" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="123" callTemplate="KH3aaa" name="Johnston Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="124" callTemplate="FR#Ja" name="Juan de Nova, Europa" continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
+    <dxccEntity code="125" callTemplate="CE0Z" name="Juan Fernandez Is." continent="SA" ituz="14" cqz="12" />
+    <dxccEntity code="126" callTemplate="UA2aaa" name="Kaliningrad" continent="EU" ituz="29" cqz="15">
+      <pas code="KA" callTemplate="UA2Faa" />
+    </dxccEntity>
+    <dxccEntity code="127" callTemplate="VS9K" name="Kamaran Is." continent="AS" ituz="39" cqz="21" endDate="1982-03-10T23:59:59Z" deleted="true" />
+    <dxccEntity code="128" callTemplate="UN1aaa" name="Karelo-Finnish Rep." continent="EU" ituz="18" cqz="15" endDate="1960-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="129" callTemplate="8R#aaa" name="Guyana" continent="SA" ituz="12" cqz="9" />
+    <dxccEntity code="130" callTemplate="UN#aaa" name="Kazakhstan" continent="AS" ituz="29" cqz="17" />
+    <dxccEntity code="131" callTemplate="FT09X" name="Kerguelen Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="132" callTemplate="ZP#aaa" name="Paraguay" continent="SA" ituz="14" cqz="11">
+      <pas code="16" callTemplate="ZP1aaa" />
+      <pas code="19" callTemplate="ZP1aaa" />
+      <pas code="15" callTemplate="ZP2aaa" />
+      <pas code="13" callTemplate="ZP3aaa" />
+      <pas code="01" callTemplate="ZP3aaa" />
+      <pas code="14" callTemplate="ZP4aaa" />
+      <pas code="02" callTemplate="ZP4aaa" />
+      <pas code="ASU" callTemplate="ZP5aaa" />
+      <pas code="11" callTemplate="ZP6aaa" />
+      <pas code="03" callTemplate="ZP6aaa" />
+      <pas code="09" callTemplate="ZP6aaa" />
+      <pas code="06" callTemplate="ZP7aaa" />
+      <pas code="05" callTemplate="ZP7aaa" />
+      <pas code="04" callTemplate="ZP7aaa" />
+      <pas code="08" callTemplate="ZP8aaa" />
+      <pas code="12" callTemplate="ZP8aaa" />
+      <pas code="10" callTemplate="ZP9aaa" />
+      <pas code="07" callTemplate="ZP9aaa" />
+    </dxccEntity>
+    <dxccEntity code="133" callTemplate="ZL8aaa" name="Kermadec Is." continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="134" callTemplate="KH5K" name="Kingman Reef" continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="135" callTemplate="EX#aaa" name="Kyrgyzstan" continent="AS" ituz="29" cqz="17" />
+    <dxccEntity code="136" callTemplate="OA#aaa" name="Peru" continent="SA" ituz="12" cqz="10" />
+    <dxccEntity code="137" callTemplate="HL#aaa" name="Republic of Korea (S. Korea)" continent="AS" ituz="44" cqz="25">
+      <pas code="A" callTemplate="HL1aaa" />
+      <pas code="N" callTemplate="HL2aaa" />
+      <pas code="D" callTemplate="HL2aaa" />
+      <pas code="C" callTemplate="HL2aaa" />
+      <pas code="E" callTemplate="HL3aaa" />
+      <pas code="F" callTemplate="HL3aaa" />
+      <pas code="R" callTemplate="HL3aaa" />
+      <pas code="M" callTemplate="HL4aaa" />
+      <pas code="G" callTemplate="HL4aaa" />
+      <pas code="H" callTemplate="HL4aaa" />
+      <pas code="Q" callTemplate="HL4aaa" />
+      <pas code="K" callTemplate="HL5aaa" />
+      <pas code="L" callTemplate="HL5aaa" />
+      <pas code="B" callTemplate="HL5aaa" />
+      <pas code="P" callTemplate="HL5aaa" />
+      <pas code="S" callTemplate="HL5aaa" />
+    </dxccEntity>
+    <dxccEntity code="138" callTemplate="KH7K" name="Kure Is." continent="OC" ituz="61" cqz="31">
+      <pas code="KI" callTemplate="KH7Kaa" />
+    </dxccEntity>
+    <dxccEntity code="139" callTemplate="VS9H" name="Kura Muria I." continent="AS" ituz="39" cqz="21" endDate="1967-11-29T23:59:59Z" deleted="true" />
+    <dxccEntity code="140" callTemplate="PZ#aaa" name="Suriname" continent="SA" ituz="12" cqz="9" />
+    <dxccEntity code="141" callTemplate="VP8F" name="Falkland Is." continent="SA" ituz="16" cqz="13" />
+    <dxccEntity code="142" callTemplate="VU7aaa" name="Lakshadweep Is." continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="143" callTemplate="XW#aaa" name="Laos" continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="144" callTemplate="CX#aaa" name="Uruguay" continent="SA" ituz="14" cqz="13">
+      <pas code="MO" callTemplate="CX#Aaa" />
+      <pas code="CA" callTemplate="CX#Daa" />
+      <pas code="SJ" callTemplate="CX#Eaa" />
+      <pas code="CO" callTemplate="CX#Faa" />
+      <pas code="SO" callTemplate="CX#Gaa" />
+      <pas code="RN" callTemplate="CX#Haa" />
+      <pas code="PA" callTemplate="CX#Iaa" />
+      <pas code="SA" callTemplate="CX#Jaa" />
+      <pas code="AR" callTemplate="CX#Kaa" />
+      <pas code="FD" callTemplate="CX#Laa" />
+      <pas code="FS" callTemplate="CX#Maa" />
+      <pas code="DU" callTemplate="CX#Naa" />
+      <pas code="TA" callTemplate="CX#Oaa" />
+      <pas code="RV" callTemplate="CX#Paa" />
+      <pas code="MA" callTemplate="CX#Raa" />
+      <pas code="LA" callTemplate="CX#Saa" />
+      <pas code="RO" callTemplate="CX#Taa" />
+      <pas code="TT" callTemplate="CX#Uaa" />
+      <pas code="CL" callTemplate="CX#Vaa" />
+    </dxccEntity>
+    <dxccEntity code="145" callTemplate="YL#aaa" name="Latvia" continent="EU" ituz="29" cqz="15" />
+    <dxccEntity code="146" callTemplate="LY#aaa" name="Lithuania" continent="EU" ituz="29" cqz="15" />
+    <dxccEntity code="147" callTemplate="VK9L" name="Lord Howe Is." continent="OC" ituz="60" cqz="30">
+      <pas code="LH" callTemplate="VK9Laa" />
+    </dxccEntity>
+    <dxccEntity code="148" callTemplate="YV#aaa" name="Venezuela" continent="SA" ituz="12" cqz="9">
+      <pas code="AM" callTemplate="YV9aaa" />
+      <pas code="AN" callTemplate="YV6aaa" />
+      <pas code="AP" callTemplate="YV9aaa" />
+      <pas code="AR" callTemplate="YV4aaa" />
+      <pas code="BA" callTemplate="YV2aaa" />
+      <pas code="BO" callTemplate="YV6aaa" />
+      <pas code="CA" callTemplate="YV4aaa" />
+      <pas code="CO" callTemplate="YV4aaa" />
+      <pas code="DA" callTemplate="YV8aaa" />
+      <pas code="DC" callTemplate="YV5aaa" />
+      <pas code="FA" callTemplate="YV1aaa" />
+      <pas code="GU" callTemplate="YV5aaa" />
+      <pas code="LA" callTemplate="YV3aaa" />
+      <pas code="ME" callTemplate="YV2aaa" />
+      <pas code="MI" callTemplate="YV5aaa" />
+      <pas code="MO" callTemplate="YV8aaa" />
+      <pas code="NE" callTemplate="YV7aaa" />
+      <pas code="PO" callTemplate="YV3aaa" />
+      <pas code="SU" callTemplate="YV7aaa" />
+      <pas code="TA" callTemplate="YV2aaa" />
+      <pas code="TR" callTemplate="YV1aaa" />
+      <pas code="VA" callTemplate="YV5aaa" />
+      <pas code="YA" callTemplate="YV3aaa" />
+      <pas code="ZU" callTemplate="YV1aaa" />
+    </dxccEntity>
+    <dxccEntity code="149" callTemplate="CU#aaa" name="Azores" continent="EU" ituz="36" cqz="14" />
+    <dxccEntity code="150" callTemplate="VK#aaa" name="Australia" continent="OC" ituz="55" cqz="30">
+      <pas code="ACT" callTemplate="VK1aaa" />
+      <pas code="NSW" callTemplate="VK2aaa" />
+      <pas code="VIC" callTemplate="VK3aaa" />
+      <pas code="QLD" callTemplate="VK4aaa" />
+      <pas code="SA" callTemplate="VK5aaa" />
+      <pas code="WA" callTemplate="VK6aaa" />
+      <pas code="TAS" callTemplate="VK7aaa" />
+      <pas code="NT" callTemplate="VK8aaa" />
+    </dxccEntity>
+    <dxccEntity code="151" callTemplate="R1MV" name="Malyj Vysotskij Is." continent="EU" ituz="29" cqz="16" endDate="2012-02-17T12:00:01Z" deleted="true">
+      <pas code="LO" callTemplate="R1MVa" />
+    </dxccEntity>
+    <dxccEntity code="152" callTemplate="XX9aaa" name="Macao" continent="AS" ituz="44" cqz="24" />
+    <dxccEntity code="153" callTemplate="VK0M" name="Macquarie Is." continent="OC" ituz="60" cqz="30">
+      <pas code="MA" callTemplate="VK0aaa" />
+    </dxccEntity>
+    <dxccEntity code="154" callTemplate="4W#aaa" name="Yemen Arab Rep." continent="AS" ituz="39" cqz="21" endDate="1990-05-21T23:59:59Z" deleted="true" />
+    <dxccEntity code="155" callTemplate="VS2aaa" name="Malaya" continent="AS" ituz="54" cqz="28" endDate="1963-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="157" callTemplate="C2aaa" name="Nauru" continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="158" callTemplate="YJ#aaa" name="Vanuatu" continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="159" callTemplate="8Q#aaa" name="Maldives" continent="AF" ituz="41" cqz="22" />
+    <dxccEntity code="160" callTemplate="A3aaa" name="Tonga" continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="161" callTemplate="HK0M" name="Malpelo Is." continent="SA" ituz="12" cqz="7" />
+    <dxccEntity code="162" callTemplate="FK#aaa" name="New Caledonia" continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="163" callTemplate="P2aaa" name="Papua New Guinea" continent="OC" ituz="51" cqz="28" startDate="1975-09-16T00:00:00Z" />
+    <dxccEntity code="164" callTemplate="C9aaa" name="Manchuria" continent="AS" ituz="33" cqz="24" endDate="1963-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="165" callTemplate="3B8aaa" name="Mauritius" continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="166" callTemplate="KH0aaa" name="Mariana Is." continent="OC" ituz="64" cqz="27" />
+    <dxccEntity code="167" callTemplate="OJ0aaa" name="Market Reef" continent="EU" ituz="18" cqz="15" />
+    <dxccEntity code="168" callTemplate="V7aaa" name="Marshall Is." continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="169" callTemplate="FH#aaa" name="Mayotte" continent="AF" ituz="53" cqz="39" startDate="1975-07-06T00:00:00Z" />
+    <dxccEntity code="170" callTemplate="ZL#aaa" name="New Zealand" continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="171" callTemplate="VK9M" name="Mellish Reef" continent="OC" ituz="56" cqz="30" />
+    <dxccEntity code="172" callTemplate="VP6P" name="Pitcairn Is." continent="OC" ituz="63" cqz="32" />
+    <dxccEntity code="173" callTemplate="V6aaa" name="Micronesia" continent="OC" ituz="65" cqz="27" />
+    <dxccEntity code="174" callTemplate="KH4aaa" name="Midway Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="175" callTemplate="FO#aaa" name="French Polynesia" continent="OC" ituz="63" cqz="32" />
+    <dxccEntity code="176" callTemplate="3D2aaa" name="Fiji" continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="177" callTemplate="JD1M" name="Minami Torishima" continent="OC" ituz="90" cqz="27">
+      <pas code="MT" callTemplate="JD1Maa" />
+    </dxccEntity>
+    <dxccEntity code="178" callTemplate="1M#aaa" name="Minerva Reef" continent="OC" ituz="62" cqz="32" endDate="1972-07-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="179" callTemplate="ER#aaa" name="Moldova" continent="EU" ituz="29" cqz="16" />
+    <dxccEntity code="180" callTemplate="SV#aaa/A" name="Mount Athos" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="181" callTemplate="C9aaa" name="Mozambique" continent="AF" ituz="53" cqz="37" />
+    <dxccEntity code="182" callTemplate="KP1aaa" name="Navassa Is." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="183" callTemplate="PK5aaa" name="Netherlands Borneo" continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="184" callTemplate="JZ0aaa" name="Netherlands N. Guinea" continent="OC" ituz="51" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="185" callTemplate="H44aaa" name="Solomon Is." continent="OC" ituz="51" cqz="28" />
+    <dxccEntity code="186" callTemplate="VO#aaa" name="NewFoundland, Labrador" continent="NA" ituz="9" cqz="5" endDate="1949-03-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="187" callTemplate="5U#aaa" name="Niger" continent="AF" ituz="46" cqz="35" startDate="1960-08-03T00:00:00Z" />
+    <dxccEntity code="188" callTemplate="ZK2aaa" name="Niue" continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="189" callTemplate="VK9N" name="Norfolk Is." continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="190" callTemplate="5W#aaa" name="Samoa" continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="191" callTemplate="E51N" name="North Cook Is." continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="192" callTemplate="JD1O" name="Ogasawara" continent="AS" ituz="45" cqz="27">
+      <pas code="O" callTemplate="JD1Oaa" />
+    </dxccEntity>
+    <dxccEntity code="193" callTemplate="KA6aaa" name="Okinawa (Ryukyu Is." continent="AS" ituz="45" cqz="25" endDate="1972-05-14T23:59:59Z" deleted="true" />
+    <dxccEntity code="194" callTemplate="7J1aaa" name="Okino Tori-shima" continent="AS" ituz="45" cqz="27" startDate="1976-05-30T00:00:00Z" endDate="1980-11-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="195" callTemplate="3C0aaa" name="Annobon Is." continent="AF" ituz="52" cqz="36" />
+    <dxccEntity code="196" callTemplate="ZC6aaa" name="Palestine" continent="AS" ituz="39" cqz="20" endDate="1968-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="197" callTemplate="KH5aaa" name="Palmyra &amp; Jarvis Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="198" callTemplate="P2aaa" name="Papua Territory" continent="OC" ituz="51" cqz="28" endDate="1975-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="199" callTemplate="3YP#aaa" name="Peter I Is." continent="AN" ituz="72" cqz="12" />
+    <dxccEntity code="200" callTemplate="CR8aaa" name="Portuguese Timor" continent="OC" ituz="54" cqz="28" endDate="1976-09-14T23:59:59Z" deleted="true" />
+    <dxccEntity code="201" callTemplate="ZS8aaa" name="Prince Edward &amp; Marion Is." continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="202" callTemplate="KP4aaa" name="Puerto Rico" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="203" callTemplate="C3aaa" name="Andorra" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="204" callTemplate="XF4aaa" name="Revillagigedo" continent="NA" ituz="10" cqz="6" />
+    <dxccEntity code="205" callTemplate="ZD8aaa" name="Ascension Is." continent="AF" ituz="66" cqz="36" />
+    <dxccEntity code="206" callTemplate="OE#aaa" name="Austria" continent="EU" ituz="28" cqz="15">
+      <pas code="WC" callTemplate="OE1aaa" />
+      <pas code="HA" callTemplate="OE2aaa" />
+      <pas code="JO" callTemplate="OE2aaa" />
+      <pas code="SC" callTemplate="OE2aaa" />
+      <pas code="SL" callTemplate="OE2aaa" />
+      <pas code="TA" callTemplate="OE2aaa" />
+      <pas code="ZE" callTemplate="OE2aaa" />
+      <pas code="AM" callTemplate="OE3aaa" />
+      <pas code="BL" callTemplate="OE3aaa" />
+      <pas code="BN" callTemplate="OE3aaa" />
+      <pas code="GD" callTemplate="OE3aaa" />
+      <pas code="GF" callTemplate="OE3aaa" />
+      <pas code="HL" callTemplate="OE3aaa" />
+      <pas code="HO" callTemplate="OE3aaa" />
+      <pas code="KO" callTemplate="OE3aaa" />
+      <pas code="KR" callTemplate="OE3aaa" />
+      <pas code="KS" callTemplate="OE3aaa" />
+      <pas code="LF" callTemplate="OE3aaa" />
+      <pas code="MD" callTemplate="OE3aaa" />
+      <pas code="ME" callTemplate="OE3aaa" />
+      <pas code="MI" callTemplate="OE3aaa" />
+      <pas code="NK" callTemplate="OE3aaa" />
+      <pas code="PC" callTemplate="OE3aaa" />
+      <pas code="PL" callTemplate="OE3aaa" />
+      <pas code="SB" callTemplate="OE3aaa" />
+      <pas code="SW" callTemplate="OE3aaa" />
+      <pas code="TU" callTemplate="OE3aaa" />
+      <pas code="WB" callTemplate="OE3aaa" />
+      <pas code="WN" callTemplate="OE3aaa" />
+      <pas code="WT" callTemplate="OE3aaa" />
+      <pas code="WU" callTemplate="OE3aaa" />
+      <pas code="WY" callTemplate="OE3aaa" />
+      <pas code="ZT" callTemplate="OE3aaa" />
+      <pas code="EC" callTemplate="OE4aaa" />
+      <pas code="EU" callTemplate="OE4aaa" />
+      <pas code="GS" callTemplate="OE4aaa" />
+      <pas code="JE" callTemplate="OE4aaa" />
+      <pas code="MA" callTemplate="OE4aaa" />
+      <pas code="ND" callTemplate="OE4aaa" />
+      <pas code="OP" callTemplate="OE4aaa" />
+      <pas code="OW" callTemplate="OE4aaa" />
+      <pas code="BR" callTemplate="OE5aaa" />
+      <pas code="EF" callTemplate="OE5aaa" />
+      <pas code="FR" callTemplate="OE5aaa" />
+      <pas code="GM" callTemplate="OE5aaa" />
+      <pas code="GR" callTemplate="OE5aaa" />
+      <pas code="KI" callTemplate="OE5aaa" />
+      <pas code="LC" callTemplate="OE5aaa" />
+      <pas code="LL" callTemplate="OE5aaa" />
+      <pas code="PE" callTemplate="OE5aaa" />
+      <pas code="RI" callTemplate="OE5aaa" />
+      <pas code="RO" callTemplate="OE5aaa" />
+      <pas code="SD" callTemplate="OE5aaa" />
+      <pas code="SE" callTemplate="OE5aaa" />
+      <pas code="SR" callTemplate="OE5aaa" />
+      <pas code="UU" callTemplate="OE5aaa" />
+      <pas code="VB" callTemplate="OE5aaa" />
+      <pas code="WE" callTemplate="OE5aaa" />
+      <pas code="WL" callTemplate="OE5aaa" />
+      <pas code="BM" callTemplate="OE6aaa" />
+      <pas code="DL" callTemplate="OE6aaa" />
+      <pas code="GB" callTemplate="OE6aaa" />
+      <pas code="GC" callTemplate="OE6aaa" />
+      <pas code="GU" callTemplate="OE6aaa" />
+      <pas code="HF" callTemplate="OE6aaa" />
+      <pas code="LB" callTemplate="OE6aaa" />
+      <pas code="LE" callTemplate="OE6aaa" />
+      <pas code="LI" callTemplate="OE6aaa" />
+      <pas code="LN" callTemplate="OE6aaa" />
+      <pas code="MT" callTemplate="OE6aaa" />
+      <pas code="MU" callTemplate="OE6aaa" />
+      <pas code="SO" callTemplate="OE7aaa" />
+      <pas code="VO" callTemplate="OE6aaa" />
+      <pas code="WZ" callTemplate="OE6aaa" />
+      <pas code="IC" callTemplate="OE7aaa" />
+      <pas code="IL" callTemplate="OE7aaa" />
+      <pas code="IM" callTemplate="OE7aaa" />
+      <pas code="KB" callTemplate="OE7aaa" />
+      <pas code="KU" callTemplate="OE7aaa" />
+      <pas code="LA" callTemplate="OE7aaa" />
+      <pas code="LZ" callTemplate="OE7aaa" />
+      <pas code="RE" callTemplate="OE7aaa" />
+      <pas code="SZ" callTemplate="OE7aaa" />
+      <pas code="FE" callTemplate="OE8aaa" />
+      <pas code="HE" callTemplate="OE8aaa" />
+      <pas code="KC" callTemplate="OE8aaa" />
+      <pas code="KL" callTemplate="OE8aaa" />
+      <pas code="SP" callTemplate="OE8aaa" />
+      <pas code="SV" callTemplate="OE8aaa" />
+      <pas code="VI" callTemplate="OE8aaa" />
+      <pas code="VK" callTemplate="OE8aaa" />
+      <pas code="VL" callTemplate="OE8aaa" />
+      <pas code="WO" callTemplate="OE8aaa" />
+      <pas code="BC" callTemplate="OE9aaa" />
+      <pas code="BZ" callTemplate="OE9aaa" />
+      <pas code="DO" callTemplate="OE9aaa" />
+      <pas code="FK" callTemplate="OE9aaa" />
+    </dxccEntity>
+    <dxccEntity code="207" callTemplate="3B9aaa" name="Rodrigues Is." continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="208" callTemplate="9U5aaa" name="Ruanda-Urundi" continent="AF" ituz="52" cqz="36" startDate="1960-07-01T00:00:00Z" endDate="1962-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="209" callTemplate="ON#aaa" name="Belgium" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="210" callTemplate="9S4aaa" name="Saar" continent="EU" ituz="28" cqz="14" endDate="1957-03-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="211" callTemplate="CY0aaa" name="Sable Is." continent="NA" ituz="9" cqz="5" />
+    <dxccEntity code="212" callTemplate="LZ#aaa" name="Bulgaria" continent="EU" ituz="28" cqz="20">
+      <pas code="BU" callTemplate="LZ1aaa" />
+      <pas code="SL" callTemplate="LZ1aaa" />
+      <pas code="YA" callTemplate="LZ1aaa" />
+      <pas code="SO" callTemplate="LZ1aaa" />
+      <pas code="HA" callTemplate="LZ1aaa" />
+      <pas code="KA" callTemplate="LZ1aaa" />
+      <pas code="SZ" callTemplate="LZ1aaa" />
+      <pas code="PA" callTemplate="LZ1aaa" />
+      <pas code="PD" callTemplate="LZ1aaa" />
+      <pas code="SM" callTemplate="LZ1aaa" />
+      <pas code="BL" callTemplate="LZ1aaa" />
+      <pas code="KD" callTemplate="LZ1aaa" />
+      <pas code="PK" callTemplate="LZ1aaa" />
+      <pas code="SF" callTemplate="LZ1aaa" />
+      <pas code="GA" callTemplate="LZ2aaa" />
+      <pas code="LV" callTemplate="LZ2aaa" />
+      <pas code="PL" callTemplate="LZ2aaa" />
+      <pas code="VT" callTemplate="LZ2aaa" />
+      <pas code="MN" callTemplate="LZ2aaa" />
+      <pas code="VD" callTemplate="LZ2aaa" />
+      <pas code="VR" callTemplate="LZ2aaa" />
+      <pas code="RZ" callTemplate="LZ2aaa" />
+      <pas code="RS" callTemplate="LZ2aaa" />
+      <pas code="SS" callTemplate="LZ2aaa" />
+      <pas code="TA" callTemplate="LZ2aaa" />
+      <pas code="DO" callTemplate="LZ2aaa" />
+      <pas code="SN" callTemplate="LZ2aaa" />
+      <pas code="VN" callTemplate="LZ2aaa" />
+    </dxccEntity>
+    <dxccEntity code="213" callTemplate="FS#aaa" name="Saint Martin" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="214" callTemplate="TK#aaa" name="Corsica" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="215" callTemplate="5B#aaa" name="Cyprus" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="216" callTemplate="HK0A" name="San Andres &amp; Providencia" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="217" callTemplate="CE0X" name="San Felix &amp; San Ambrosio" continent="SA" ituz="14" cqz="12" />
+    <dxccEntity code="218" callTemplate="OK#aaa" name="Czechoslovakia" continent="EU" ituz="28" cqz="15" endDate="1992-12-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="219" callTemplate="S9aaa" name="Sao Tome &amp; Principe" continent="AF" ituz="47" cqz="36" />
+    <dxccEntity code="220" callTemplate="VS4aaa" name="Sarawak" continent="OC" ituz="54" cqz="28" endDate="1963-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="221" callTemplate="OZ#aaa" name="Denmark" continent="EU" ituz="18" cqz="14" />
+    <dxccEntity code="222" callTemplate="OY#aaa" name="Faroe Is." continent="EU" ituz="18" cqz="14" />
+    <dxccEntity code="223" callTemplate="G#aaa" name="England" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="224" callTemplate="OH#aaa" name="Finland" continent="EU" ituz="18" cqz="15">
+      <pas code="100" callTemplate="OH1aaa" />
+      <pas code="102" callTemplate="OH1aaa" />
+      <pas code="103" callTemplate="OH1aaa" />
+      <pas code="104" callTemplate="OH1aaa" />
+      <pas code="105" callTemplate="OH1aaa" />
+      <pas code="106" callTemplate="OH1aaa" />
+      <pas code="107" callTemplate="OH1aaa" />
+      <pas code="108" callTemplate="OH1aaa" />
+      <pas code="109" callTemplate="OH1aaa" />
+      <pas code="110" callTemplate="OH1aaa" />
+      <pas code="111" callTemplate="OH1aaa" />
+      <pas code="112" callTemplate="OH1aaa" />
+      <pas code="115" callTemplate="OH1aaa" />
+      <pas code="116" callTemplate="OH1aaa" />
+      <pas code="117" callTemplate="OH1aaa" />
+      <pas code="119" callTemplate="OH1aaa" />
+      <pas code="120" callTemplate="OH1aaa" />
+      <pas code="122" callTemplate="OH1aaa" />
+      <pas code="123" callTemplate="OH1aaa" />
+      <pas code="124" callTemplate="OH1aaa" />
+      <pas code="126" callTemplate="OH1aaa" />
+      <pas code="128" callTemplate="OH1aaa" />
+      <pas code="129" callTemplate="OH1aaa" />
+      <pas code="130" callTemplate="OH1aaa" />
+      <pas code="131" callTemplate="OH1aaa" />
+      <pas code="132" callTemplate="OH1aaa" />
+      <pas code="133" callTemplate="OH1aaa" />
+      <pas code="134" callTemplate="OH1aaa" />
+      <pas code="135" callTemplate="OH1aaa" />
+      <pas code="136" callTemplate="OH1aaa" />
+      <pas code="137" callTemplate="OH1aaa" />
+      <pas code="138" callTemplate="OH1aaa" />
+      <pas code="139" callTemplate="OH1aaa" />
+      <pas code="140" callTemplate="OH1aaa" />
+      <pas code="141" callTemplate="OH1aaa" />
+      <pas code="142" callTemplate="OH1aaa" />
+      <pas code="143" callTemplate="OH1aaa" />
+      <pas code="144" callTemplate="OH1aaa" />
+      <pas code="145" callTemplate="OH1aaa" />
+      <pas code="147" callTemplate="OH1aaa" />
+      <pas code="148" callTemplate="OH1aaa" />
+      <pas code="149" callTemplate="OH1aaa" />
+      <pas code="150" callTemplate="OH1aaa" />
+      <pas code="151" callTemplate="OH1aaa" />
+      <pas code="152" callTemplate="OH1aaa" />
+      <pas code="154" callTemplate="OH1aaa" />
+      <pas code="156" callTemplate="OH1aaa" />
+      <pas code="157" callTemplate="OH1aaa" />
+      <pas code="158" callTemplate="OH1aaa" />
+      <pas code="159" callTemplate="OH1aaa" />
+      <pas code="160" callTemplate="OH1aaa" />
+      <pas code="161" callTemplate="OH1aaa" />
+      <pas code="162" callTemplate="OH1aaa" />
+      <pas code="163" callTemplate="OH1aaa" />
+      <pas code="164" callTemplate="OH1aaa" />
+      <pas code="165" callTemplate="OH1aaa" />
+      <pas code="167" callTemplate="OH1aaa" />
+      <pas code="168" callTemplate="OH1aaa" />
+      <pas code="169" callTemplate="OH1aaa" />
+      <pas code="170" callTemplate="OH1aaa" />
+      <pas code="171" callTemplate="OH1aaa" />
+      <pas code="172" callTemplate="OH1aaa" />
+      <pas code="173" callTemplate="OH1aaa" />
+      <pas code="174" callTemplate="OH1aaa" />
+      <pas code="175" callTemplate="OH1aaa" />
+      <pas code="176" callTemplate="OH1aaa" />
+      <pas code="178" callTemplate="OH1aaa" />
+      <pas code="179" callTemplate="OH1aaa" />
+      <pas code="180" callTemplate="OH1aaa" />
+      <pas code="181" callTemplate="OH1aaa" />
+      <pas code="182" callTemplate="OH1aaa" />
+      <pas code="183" callTemplate="OH1aaa" />
+      <pas code="184" callTemplate="OH1aaa" />
+      <pas code="185" callTemplate="OH1aaa" />
+      <pas code="186" callTemplate="OH1aaa" />
+      <pas code="187" callTemplate="OH1aaa" />
+      <pas code="188" callTemplate="OH1aaa" />
+      <pas code="189" callTemplate="OH1aaa" />
+      <pas code="190" callTemplate="OH1aaa" />
+      <pas code="191" callTemplate="OH1aaa" />
+      <pas code="192" callTemplate="OH1aaa" />
+      <pas code="193" callTemplate="OH1aaa" />
+      <pas code="194" callTemplate="OH1aaa" />
+      <pas code="195" callTemplate="OH1aaa" />
+      <pas code="196" callTemplate="OH1aaa" />
+      <pas code="198" callTemplate="OH1aaa" />
+      <pas code="199" callTemplate="OH1aaa" />
+      <pas code="201" callTemplate="OH2aaa" />
+      <pas code="202" callTemplate="OH2aaa" />
+      <pas code="204" callTemplate="OH2aaa" />
+      <pas code="205" callTemplate="OH2aaa" />
+      <pas code="206" callTemplate="OH2aaa" />
+      <pas code="207" callTemplate="OH2aaa" />
+      <pas code="208" callTemplate="OH2aaa" />
+      <pas code="209" callTemplate="OH2aaa" />
+      <pas code="210" callTemplate="OH2aaa" />
+      <pas code="211" callTemplate="OH2aaa" />
+      <pas code="212" callTemplate="OH2aaa" />
+      <pas code="213" callTemplate="OH2aaa" />
+      <pas code="214" callTemplate="OH2aaa" />
+      <pas code="215" callTemplate="OH2aaa" />
+      <pas code="216" callTemplate="OH2aaa" />
+      <pas code="217" callTemplate="OH2aaa" />
+      <pas code="218" callTemplate="OH2aaa" />
+      <pas code="220" callTemplate="OH2aaa" />
+      <pas code="221" callTemplate="OH2aaa" />
+      <pas code="222" callTemplate="OH2aaa" />
+      <pas code="223" callTemplate="OH2aaa" />
+      <pas code="224" callTemplate="OH2aaa" />
+      <pas code="225" callTemplate="OH2aaa" />
+      <pas code="226" callTemplate="OH2aaa" />
+      <pas code="227" callTemplate="OH2aaa" />
+      <pas code="228" callTemplate="OH2aaa" />
+      <pas code="229" callTemplate="OH2aaa" />
+      <pas code="231" callTemplate="OH2aaa" />
+      <pas code="233" callTemplate="OH2aaa" />
+      <pas code="234" callTemplate="OH2aaa" />
+      <pas code="235" callTemplate="OH2aaa" />
+      <pas code="236" callTemplate="OH2aaa" />
+      <pas code="238" callTemplate="OH2aaa" />
+      <pas code="241" callTemplate="OH2aaa" />
+      <pas code="242" callTemplate="OH2aaa" />
+      <pas code="243" callTemplate="OH2aaa" />
+      <pas code="301" callTemplate="OH3aaa" />
+      <pas code="303" callTemplate="OH3aaa" />
+      <pas code="304" callTemplate="OH3aaa" />
+      <pas code="305" callTemplate="OH3aaa" />
+      <pas code="306" callTemplate="OH3aaa" />
+      <pas code="307" callTemplate="OH3aaa" />
+      <pas code="308" callTemplate="OH3aaa" />
+      <pas code="309" callTemplate="OH3aaa" />
+      <pas code="310" callTemplate="OH3aaa" />
+      <pas code="311" callTemplate="OH3aaa" />
+      <pas code="312" callTemplate="OH3aaa" />
+      <pas code="313" callTemplate="OH3aaa" />
+      <pas code="314" callTemplate="OH3aaa" />
+      <pas code="315" callTemplate="OH3aaa" />
+      <pas code="316" callTemplate="OH3aaa" />
+      <pas code="318" callTemplate="OH3aaa" />
+      <pas code="319" callTemplate="OH3aaa" />
+      <pas code="320" callTemplate="OH3aaa" />
+      <pas code="321" callTemplate="OH3aaa" />
+      <pas code="322" callTemplate="OH3aaa" />
+      <pas code="323" callTemplate="OH3aaa" />
+      <pas code="324" callTemplate="OH3aaa" />
+      <pas code="325" callTemplate="OH3aaa" />
+      <pas code="326" callTemplate="OH3aaa" />
+      <pas code="327" callTemplate="OH3aaa" />
+      <pas code="328" callTemplate="OH3aaa" />
+      <pas code="329" callTemplate="OH3aaa" />
+      <pas code="330" callTemplate="OH3aaa" />
+      <pas code="331" callTemplate="OH3aaa" />
+      <pas code="332" callTemplate="OH3aaa" />
+      <pas code="333" callTemplate="OH3aaa" />
+      <pas code="334" callTemplate="OH3aaa" />
+      <pas code="335" callTemplate="OH3aaa" />
+      <pas code="336" callTemplate="OH3aaa" />
+      <pas code="337" callTemplate="OH3aaa" />
+      <pas code="340" callTemplate="OH3aaa" />
+      <pas code="341" callTemplate="OH3aaa" />
+      <pas code="342" callTemplate="OH3aaa" />
+      <pas code="344" callTemplate="OH3aaa" />
+      <pas code="345" callTemplate="OH3aaa" />
+      <pas code="346" callTemplate="OH3aaa" />
+      <pas code="347" callTemplate="OH3aaa" />
+      <pas code="348" callTemplate="OH3aaa" />
+      <pas code="349" callTemplate="OH3aaa" />
+      <pas code="350" callTemplate="OH3aaa" />
+      <pas code="351" callTemplate="OH3aaa" />
+      <pas code="352" callTemplate="OH3aaa" />
+      <pas code="353" callTemplate="OH3aaa" />
+      <pas code="354" callTemplate="OH3aaa" />
+      <pas code="355" callTemplate="OH3aaa" />
+      <pas code="356" callTemplate="OH3aaa" />
+      <pas code="357" callTemplate="OH3aaa" />
+      <pas code="358" callTemplate="OH3aaa" />
+      <pas code="402" callTemplate="OH4aaa" />
+      <pas code="403" callTemplate="OH4aaa" />
+      <pas code="404" callTemplate="OH4aaa" />
+      <pas code="405" callTemplate="OH4aaa" />
+      <pas code="407" callTemplate="OH4aaa" />
+      <pas code="408" callTemplate="OH4aaa" />
+      <pas code="409" callTemplate="OH4aaa" />
+      <pas code="410" callTemplate="OH4aaa" />
+      <pas code="411" callTemplate="OH4aaa" />
+      <pas code="412" callTemplate="OH4aaa" />
+      <pas code="413" callTemplate="OH4aaa" />
+      <pas code="414" callTemplate="OH4aaa" />
+      <pas code="415" callTemplate="OH4aaa" />
+      <pas code="417" callTemplate="OH4aaa" />
+      <pas code="418" callTemplate="OH4aaa" />
+      <pas code="419" callTemplate="OH4aaa" />
+      <pas code="420" callTemplate="OH4aaa" />
+      <pas code="421" callTemplate="OH4aaa" />
+      <pas code="422" callTemplate="OH4aaa" />
+      <pas code="423" callTemplate="OH4aaa" />
+      <pas code="424" callTemplate="OH4aaa" />
+      <pas code="425" callTemplate="OH4aaa" />
+      <pas code="426" callTemplate="OH4aaa" />
+      <pas code="427" callTemplate="OH4aaa" />
+      <pas code="428" callTemplate="OH4aaa" />
+      <pas code="502" callTemplate="OH5aaa" />
+      <pas code="503" callTemplate="OH5aaa" />
+      <pas code="504" callTemplate="OH5aaa" />
+      <pas code="505" callTemplate="OH5aaa" />
+      <pas code="506" callTemplate="OH5aaa" />
+      <pas code="507" callTemplate="OH5aaa" />
+      <pas code="509" callTemplate="OH5aaa" />
+      <pas code="510" callTemplate="OH5aaa" />
+      <pas code="511" callTemplate="OH5aaa" />
+      <pas code="513" callTemplate="OH5aaa" />
+      <pas code="514" callTemplate="OH5aaa" />
+      <pas code="515" callTemplate="OH5aaa" />
+      <pas code="516" callTemplate="OH5aaa" />
+      <pas code="518" callTemplate="OH5aaa" />
+      <pas code="519" callTemplate="OH5aaa" />
+      <pas code="520" callTemplate="OH5aaa" />
+      <pas code="521" callTemplate="OH5aaa" />
+      <pas code="522" callTemplate="OH5aaa" />
+      <pas code="523" callTemplate="OH5aaa" />
+      <pas code="525" callTemplate="OH5aaa" />
+      <pas code="526" callTemplate="OH5aaa" />
+      <pas code="527" callTemplate="OH5aaa" />
+      <pas code="528" callTemplate="OH5aaa" />
+      <pas code="530" callTemplate="OH5aaa" />
+      <pas code="531" callTemplate="OH5aaa" />
+      <pas code="532" callTemplate="OH5aaa" />
+      <pas code="601" callTemplate="OH6aaa" />
+      <pas code="602" callTemplate="OH6aaa" />
+      <pas code="603" callTemplate="OH6aaa" />
+      <pas code="604" callTemplate="OH6aaa" />
+      <pas code="605" callTemplate="OH6aaa" />
+      <pas code="606" callTemplate="OH6aaa" />
+      <pas code="607" callTemplate="OH6aaa" />
+      <pas code="608" callTemplate="OH6aaa" />
+      <pas code="609" callTemplate="OH6aaa" />
+      <pas code="610" callTemplate="OH6aaa" />
+      <pas code="611" callTemplate="OH6aaa" />
+      <pas code="612" callTemplate="OH6aaa" />
+      <pas code="613" callTemplate="OH6aaa" />
+      <pas code="614" callTemplate="OH6aaa" />
+      <pas code="615" callTemplate="OH6aaa" />
+      <pas code="616" callTemplate="OH6aaa" />
+      <pas code="617" callTemplate="OH6aaa" />
+      <pas code="619" callTemplate="OH6aaa" />
+      <pas code="620" callTemplate="OH6aaa" />
+      <pas code="621" callTemplate="OH6aaa" />
+      <pas code="622" callTemplate="OH6aaa" />
+      <pas code="623" callTemplate="OH6aaa" />
+      <pas code="624" callTemplate="OH6aaa" />
+      <pas code="625" callTemplate="OH6aaa" />
+      <pas code="626" callTemplate="OH6aaa" />
+      <pas code="627" callTemplate="OH6aaa" />
+      <pas code="628" callTemplate="OH6aaa" />
+      <pas code="629" callTemplate="OH6aaa" />
+      <pas code="630" callTemplate="OH6aaa" />
+      <pas code="632" callTemplate="OH6aaa" />
+      <pas code="633" callTemplate="OH6aaa" />
+      <pas code="634" callTemplate="OH6aaa" />
+      <pas code="635" callTemplate="OH6aaa" />
+      <pas code="636" callTemplate="OH6aaa" />
+      <pas code="637" callTemplate="OH6aaa" />
+      <pas code="638" callTemplate="OH6aaa" />
+      <pas code="639" callTemplate="OH6aaa" />
+      <pas code="640" callTemplate="OH6aaa" />
+      <pas code="641" callTemplate="OH6aaa" />
+      <pas code="642" callTemplate="OH6aaa" />
+      <pas code="643" callTemplate="OH6aaa" />
+      <pas code="644" callTemplate="OH6aaa" />
+      <pas code="645" callTemplate="OH6aaa" />
+      <pas code="646" callTemplate="OH6aaa" />
+      <pas code="647" callTemplate="OH6aaa" />
+      <pas code="648" callTemplate="OH6aaa" />
+      <pas code="649" callTemplate="OH6aaa" />
+      <pas code="650" callTemplate="OH6aaa" />
+      <pas code="651" callTemplate="OH6aaa" />
+      <pas code="652" callTemplate="OH6aaa" />
+      <pas code="653" callTemplate="OH6aaa" />
+      <pas code="654" callTemplate="OH6aaa" />
+      <pas code="655" callTemplate="OH6aaa" />
+      <pas code="656" callTemplate="OH6aaa" />
+      <pas code="657" callTemplate="OH6aaa" />
+      <pas code="658" callTemplate="OH6aaa" />
+      <pas code="659" callTemplate="OH6aaa" />
+      <pas code="660" callTemplate="OH6aaa" />
+      <pas code="661" callTemplate="OH6aaa" />
+      <pas code="662" callTemplate="OH6aaa" />
+      <pas code="663" callTemplate="OH6aaa" />
+      <pas code="664" callTemplate="OH6aaa" />
+      <pas code="665" callTemplate="OH6aaa" />
+      <pas code="666" callTemplate="OH6aaa" />
+      <pas code="668" callTemplate="OH6aaa" />
+      <pas code="669" callTemplate="OH6aaa" />
+      <pas code="670" callTemplate="OH6aaa" />
+      <pas code="671" callTemplate="OH6aaa" />
+      <pas code="672" callTemplate="OH6aaa" />
+      <pas code="673" callTemplate="OH6aaa" />
+      <pas code="675" callTemplate="OH6aaa" />
+      <pas code="676" callTemplate="OH6aaa" />
+      <pas code="677" callTemplate="OH6aaa" />
+      <pas code="678" callTemplate="OH6aaa" />
+      <pas code="679" callTemplate="OH6aaa" />
+      <pas code="680" callTemplate="OH6aaa" />
+      <pas code="681" callTemplate="OH6aaa" />
+      <pas code="682" callTemplate="OH6aaa" />
+      <pas code="683" callTemplate="OH6aaa" />
+      <pas code="684" callTemplate="OH6aaa" />
+      <pas code="685" callTemplate="OH6aaa" />
+      <pas code="686" callTemplate="OH6aaa" />
+      <pas code="687" callTemplate="OH6aaa" />
+      <pas code="688" callTemplate="OH6aaa" />
+      <pas code="689" callTemplate="OH6aaa" />
+      <pas code="690" callTemplate="OH6aaa" />
+      <pas code="692" callTemplate="OH6aaa" />
+      <pas code="701" callTemplate="OH7aaa" />
+      <pas code="702" callTemplate="OH7aaa" />
+      <pas code="703" callTemplate="OH7aaa" />
+      <pas code="704" callTemplate="OH7aaa" />
+      <pas code="705" callTemplate="OH7aaa" />
+      <pas code="706" callTemplate="OH7aaa" />
+      <pas code="707" callTemplate="OH7aaa" />
+      <pas code="708" callTemplate="OH7aaa" />
+      <pas code="709" callTemplate="OH7aaa" />
+      <pas code="710" callTemplate="OH7aaa" />
+      <pas code="711" callTemplate="OH7aaa" />
+      <pas code="712" callTemplate="OH7aaa" />
+      <pas code="713" callTemplate="OH7aaa" />
+      <pas code="714" callTemplate="OH7aaa" />
+      <pas code="715" callTemplate="OH7aaa" />
+      <pas code="716" callTemplate="OH7aaa" />
+      <pas code="717" callTemplate="OH7aaa" />
+      <pas code="718" callTemplate="OH7aaa" />
+      <pas code="719" callTemplate="OH7aaa" />
+      <pas code="720" callTemplate="OH7aaa" />
+      <pas code="721" callTemplate="OH7aaa" />
+      <pas code="722" callTemplate="OH7aaa" />
+      <pas code="723" callTemplate="OH7aaa" />
+      <pas code="724" callTemplate="OH7aaa" />
+      <pas code="725" callTemplate="OH7aaa" />
+      <pas code="726" callTemplate="OH7aaa" />
+      <pas code="727" callTemplate="OH7aaa" />
+      <pas code="728" callTemplate="OH7aaa" />
+      <pas code="729" callTemplate="OH7aaa" />
+      <pas code="730" callTemplate="OH7aaa" />
+      <pas code="731" callTemplate="OH7aaa" />
+      <pas code="732" callTemplate="OH7aaa" />
+      <pas code="733" callTemplate="OH7aaa" />
+      <pas code="734" callTemplate="OH7aaa" />
+      <pas code="735" callTemplate="OH7aaa" />
+      <pas code="736" callTemplate="OH7aaa" />
+      <pas code="737" callTemplate="OH7aaa" />
+      <pas code="738" callTemplate="OH7aaa" />
+      <pas code="739" callTemplate="OH7aaa" />
+      <pas code="740" callTemplate="OH7aaa" />
+      <pas code="741" callTemplate="OH7aaa" />
+      <pas code="742" callTemplate="OH7aaa" />
+      <pas code="743" callTemplate="OH7aaa" />
+      <pas code="801" callTemplate="OH8aaa" />
+      <pas code="802" callTemplate="OH8aaa" />
+      <pas code="803" callTemplate="OH8aaa" />
+      <pas code="804" callTemplate="OH8aaa" />
+      <pas code="805" callTemplate="OH8aaa" />
+      <pas code="806" callTemplate="OH8aaa" />
+      <pas code="807" callTemplate="OH8aaa" />
+      <pas code="808" callTemplate="OH8aaa" />
+      <pas code="810" callTemplate="OH8aaa" />
+      <pas code="811" callTemplate="OH8aaa" />
+      <pas code="812" callTemplate="OH8aaa" />
+      <pas code="813" callTemplate="OH8aaa" />
+      <pas code="814" callTemplate="OH8aaa" />
+      <pas code="815" callTemplate="OH8aaa" />
+      <pas code="816" callTemplate="OH8aaa" />
+      <pas code="817" callTemplate="OH8aaa" />
+      <pas code="818" callTemplate="OH8aaa" />
+      <pas code="819" callTemplate="OH8aaa" />
+      <pas code="820" callTemplate="OH8aaa" />
+      <pas code="821" callTemplate="OH8aaa" />
+      <pas code="822" callTemplate="OH8aaa" />
+      <pas code="823" callTemplate="OH8aaa" />
+      <pas code="824" callTemplate="OH8aaa" />
+      <pas code="825" callTemplate="OH8aaa" />
+      <pas code="826" callTemplate="OH8aaa" />
+      <pas code="827" callTemplate="OH8aaa" />
+      <pas code="828" callTemplate="OH8aaa" />
+      <pas code="829" callTemplate="OH8aaa" />
+      <pas code="830" callTemplate="OH8aaa" />
+      <pas code="831" callTemplate="OH8aaa" />
+      <pas code="832" callTemplate="OH8aaa" />
+      <pas code="833" callTemplate="OH8aaa" />
+      <pas code="834" callTemplate="OH8aaa" />
+      <pas code="835" callTemplate="OH8aaa" />
+      <pas code="836" callTemplate="OH8aaa" />
+      <pas code="837" callTemplate="OH8aaa" />
+      <pas code="838" callTemplate="OH8aaa" />
+      <pas code="839" callTemplate="OH8aaa" />
+      <pas code="840" callTemplate="OH8aaa" />
+      <pas code="841" callTemplate="OH8aaa" />
+      <pas code="842" callTemplate="OH8aaa" />
+      <pas code="843" callTemplate="OH8aaa" />
+      <pas code="844" callTemplate="OH8aaa" />
+      <pas code="846" callTemplate="OH8aaa" />
+      <pas code="847" callTemplate="OH8aaa" />
+      <pas code="848" callTemplate="OH8aaa" />
+      <pas code="849" callTemplate="OH8aaa" />
+      <pas code="850" callTemplate="OH8aaa" />
+      <pas code="851" callTemplate="OH8aaa" />
+      <pas code="852" callTemplate="OH8aaa" />
+      <pas code="853" callTemplate="OH8aaa" />
+      <pas code="901" callTemplate="OH9aaa" />
+      <pas code="902" callTemplate="OH9aaa" />
+      <pas code="903" callTemplate="OH9aaa" />
+      <pas code="904" callTemplate="OH9aaa" />
+      <pas code="905" callTemplate="OH9aaa" />
+      <pas code="907" callTemplate="OH9aaa" />
+      <pas code="908" callTemplate="OH9aaa" />
+      <pas code="909" callTemplate="OH9aaa" />
+      <pas code="910" callTemplate="OH9aaa" />
+      <pas code="911" callTemplate="OH9aaa" />
+      <pas code="912" callTemplate="OH9aaa" />
+      <pas code="913" callTemplate="OH9aaa" />
+      <pas code="914" callTemplate="OH9aaa" />
+      <pas code="915" callTemplate="OH9aaa" />
+      <pas code="916" callTemplate="OH9aaa" />
+      <pas code="917" callTemplate="OH9aaa" />
+      <pas code="918" callTemplate="OH9aaa" />
+      <pas code="919" callTemplate="OH9aaa" />
+      <pas code="920" callTemplate="OH9aaa" />
+      <pas code="921" callTemplate="OH9aaa" />
+      <pas code="922" callTemplate="OH9aaa" />
+      <pas code="923" callTemplate="OH9aaa" />
+    </dxccEntity>
+    <dxccEntity code="225" callTemplate="IS#aaa" name="Sardinia" continent="EU" ituz="28" cqz="15">
+      <pas code="CA" callTemplate="IS0aaa" />
+      <pas code="CI" callTemplate="IS0aaa" />
+      <pas code="NU" callTemplate="IS0aaa" />
+      <pas code="OG" callTemplate="IS0aaa" />
+      <pas code="OR" callTemplate="IS0aaa" />
+      <pas code="OT" callTemplate="IS0aaa" />
+      <pas code="SS" callTemplate="IS0aaa" />
+      <pas code="VS" callTemplate="IS0aaa" />
+    </dxccEntity>
+    <dxccEntity code="226" callTemplate="8Z4aaa" name="Saudi Arabia/Iraq Neut. Zone " continent="AS" ituz="39" cqz="21" endDate="1981-12-25T23:59:59Z" deleted="true" />
+    <dxccEntity code="227" callTemplate="F#aaa" name="France" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="228" callTemplate="HK0aaa" name="Serrana Bank &amp; Roncador Cay" continent="NA" ituz="11" cqz="8" endDate="1981-09-16T23:59:59Z" deleted="true" />
+    <dxccEntity code="229" callTemplate="DM#aaa" name="German Dem. Rep." continent="EU" ituz="28" cqz="14" startDate="1973-09-17T00:00:00Z" endDate="1990-10-02T23:59:59Z" deleted="true" />
+    <dxccEntity code="230" callTemplate="DL#aaa" name="Fed. Republic of Germany" continent="EU" ituz="28" cqz="14" startDate="1990-10-03T00:00:00Z" />
+    <dxccEntity code="231" callTemplate="AC3aaa" name="Sikkim" continent="AS" ituz="41" cqz="22" endDate="1975-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="232" callTemplate="T5aaa" name="Somalia" continent="AF" ituz="48" cqz="37" />
+    <dxccEntity code="233" callTemplate="ZB2aaa" name="Gibraltar" continent="EU" ituz="37" cqz="14" />
+    <dxccEntity code="234" callTemplate="E51S" name="South Cook Is." continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="235" callTemplate="VP8G" name="South Georgia Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="236" callTemplate="SV#aaa" name="Greece" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="237" callTemplate="OX#aaa" name="Greenland" continent="NA" ituz="5" cqz="40" />
+    <dxccEntity code="238" callTemplate="VP8O" name="South Orkney Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="239" callTemplate="HA#aaa" name="Hungary" continent="EU" ituz="28" cqz="15">
+      <pas code="GY" callTemplate="HA1aaa" />
+      <pas code="VA" callTemplate="HA1aaa" />
+      <pas code="ZA" callTemplate="HA1aaa" />
+      <pas code="KO" callTemplate="HA2aaa" />
+      <pas code="VE" callTemplate="HA2aaa" />
+      <pas code="BA" callTemplate="HA3aaa" />
+      <pas code="SO" callTemplate="HA3aaa" />
+      <pas code="TO" callTemplate="HA3aaa" />
+      <pas code="FE" callTemplate="HA4aaa" />
+      <pas code="BP" callTemplate="HA5aaa" />
+      <pas code="HE" callTemplate="HA6aaa" />
+      <pas code="NG" callTemplate="HA6aaa" />
+      <pas code="PE" callTemplate="HA7aaa" />
+      <pas code="SZ" callTemplate="HA7aaa" />
+      <pas code="BE" callTemplate="HA8aaa" />
+      <pas code="BN" callTemplate="HA8aaa" />
+      <pas code="CS" callTemplate="HA8aaa" />
+      <pas code="BO" callTemplate="HA9aaa" />
+      <pas code="HB" callTemplate="HA0aaa" />
+      <pas code="SA" callTemplate="HA0aaa" />
+    </dxccEntity>
+    <dxccEntity code="240" callTemplate="VP8S" name="South Sandwich Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="241" callTemplate="VP8H" name="South Shetland Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="242" callTemplate="TF#aaa" name="Iceland" continent="EU" ituz="17" cqz="40" />
+    <dxccEntity code="243" callTemplate="VS9A" name="People's Dem. Rep. of Yemen" continent="AS" ituz="39" cqz="21" endDate="1990-05-22T23:59:59Z" deleted="true" />
+    <dxccEntity code="244" callTemplate="ST0aaa" name="Southern Sudan" continent="AF" ituz="48" cqz="34" startDate="1972-05-07T00:00:00Z" endDate="1994-12-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="245" callTemplate="EI#aaa" name="Ireland" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="246" callTemplate="1A#aaa" name="Sov. Mil. Order of Malta" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="247" callTemplate="9M0aaa" name="Spratly Is." continent="OC" ituz="50" cqz="26" />
+    <dxccEntity code="248" callTemplate="I#aaa" name="Italy" continent="EU" ituz="28" cqz="15">
+      <pas code="GE" callTemplate="I1aaa" />
+      <pas code="IM" callTemplate="I1aaa" />
+      <pas code="SP" callTemplate="I1aaa" />
+      <pas code="SV" callTemplate="I1aaa" />
+      <pas code="AL" callTemplate="I1aaa" />
+      <pas code="AT" callTemplate="I1aaa" />
+      <pas code="BI" callTemplate="I1aaa" />
+      <pas code="CN" callTemplate="I1aaa" />
+      <pas code="NO" callTemplate="I1aaa" />
+      <pas code="TO" callTemplate="I1aaa" />
+      <pas code="VB" callTemplate="I1aaa" />
+      <pas code="VC" callTemplate="I1aaa" />
+      <pas code="AO" callTemplate="IX1aaa" />
+      <pas code="BG" callTemplate="I2aaa" />
+      <pas code="BS" callTemplate="I2aaa" />
+      <pas code="CO" callTemplate="I2aaa" />
+      <pas code="CR" callTemplate="I2aaa" />
+      <pas code="LC" callTemplate="I2aaa" />
+      <pas code="LO" callTemplate="I2aaa" />
+      <pas code="MB" callTemplate="I2aaa" />
+      <pas code="MN" callTemplate="I2aaa" />
+      <pas code="MI" callTemplate="I2aaa" />
+      <pas code="PV" callTemplate="I2aaa" />
+      <pas code="SO" callTemplate="I2aaa" />
+      <pas code="VA" callTemplate="I2aaa" />
+      <pas code="BL" callTemplate="I3aaa" />
+      <pas code="PD" callTemplate="I3aaa" />
+      <pas code="RO" callTemplate="I3aaa" />
+      <pas code="TV" callTemplate="I3aaa" />
+      <pas code="VE" callTemplate="I3aaa" />
+      <pas code="VR" callTemplate="I3aaa" />
+      <pas code="VI" callTemplate="I3aaa" />
+      <pas code="BZ" callTemplate="IN3aaa" />
+      <pas code="TN" callTemplate="IN3aaa" />
+      <pas code="GO" callTemplate="IV3aaa" />
+      <pas code="PN" callTemplate="IV3aaa" />
+      <pas code="TS" callTemplate="IV3aaa" />
+      <pas code="UD" callTemplate="IV3aaa" />
+      <pas code="BO" callTemplate="I4aaa" />
+      <pas code="FE" callTemplate="I4aaa" />
+      <pas code="FC" callTemplate="I4aaa" />
+      <pas code="MO" callTemplate="I4aaa" />
+      <pas code="PR" callTemplate="I4aaa" />
+      <pas code="PC" callTemplate="I4aaa" />
+      <pas code="RA" callTemplate="I4aaa" />
+      <pas code="RE" callTemplate="I4aaa" />
+      <pas code="RN" callTemplate="I4aaa" />
+      <pas code="AR" callTemplate="I5aaa" />
+      <pas code="FI" callTemplate="I5aaa" />
+      <pas code="GR" callTemplate="I5aaa" />
+      <pas code="LI" callTemplate="I5aaa" />
+      <pas code="LU" callTemplate="I5aaa" />
+      <pas code="MS" callTemplate="I5aaa" />
+      <pas code="PT" callTemplate="I5aaa" />
+      <pas code="PI" callTemplate="I5aaa" />
+      <pas code="PO" callTemplate="I5aaa" />
+      <pas code="SI" callTemplate="I5aaa" />
+      <pas code="CH" callTemplate="I6aaa" />
+      <pas code="AQ" callTemplate="I6aaa" />
+      <pas code="PE" callTemplate="I6aaa" />
+      <pas code="TE" callTemplate="I6aaa" />
+      <pas code="AN" callTemplate="I6aaa" />
+      <pas code="AP" callTemplate="I6aaa" />
+      <pas code="FM" callTemplate="I6aaa" />
+      <pas code="MC" callTemplate="I6aaa" />
+      <pas code="PU" callTemplate="I6aaa" />
+      <pas code="MT" callTemplate="I7aaa" />
+      <pas code="PZ" callTemplate="I8aaa" />
+      <pas code="BA" callTemplate="I7aaa" />
+      <pas code="BT" callTemplate="I7aaa" />
+      <pas code="BR" callTemplate="I7aaa" />
+      <pas code="FG" callTemplate="I7aaa" />
+      <pas code="LE" callTemplate="I7aaa" />
+      <pas code="TA" callTemplate="I7aaa" />
+      <pas code="CZ" callTemplate="I8aaa" />
+      <pas code="CS" callTemplate="I8aaa" />
+      <pas code="KR" callTemplate="I8aaa" />
+      <pas code="RC" callTemplate="I8aaa" />
+      <pas code="VV" callTemplate="I8aaa" />
+      <pas code="AV" callTemplate="I8aaa" />
+      <pas code="BN" callTemplate="I8aaa" />
+      <pas code="CE" callTemplate="I8aaa" />
+      <pas code="NA" callTemplate="I8aaa" />
+      <pas code="SA" callTemplate="I8aaa" />
+      <pas code="IS" callTemplate="I8aaa" />
+      <pas code="CB" callTemplate="I8aaa" />
+      <pas code="FR" callTemplate="I0aaa" />
+      <pas code="LT" callTemplate="I0aaa" />
+      <pas code="RI" callTemplate="I0aaa" />
+      <pas code="RM" callTemplate="I0aaa" />
+      <pas code="VT" callTemplate="I0aaa" />
+      <pas code="PG" callTemplate="I0aaa" />
+      <pas code="TR" callTemplate="I0aaa" />
+      <pas code="AG" callTemplate="IT9aaa" />
+      <pas code="CL" callTemplate="IT9aaa" />
+      <pas code="CT" callTemplate="IT9aaa" />
+      <pas code="EN" callTemplate="IT9aaa" />
+      <pas code="ME" callTemplate="IT9aaa" />
+      <pas code="PA" callTemplate="IT9aaa" />
+      <pas code="RG" callTemplate="IT9aaa" />
+      <pas code="SR" callTemplate="IT9aaa" />
+      <pas code="TP" callTemplate="IT9aaa" />
+    </dxccEntity>
+    <dxccEntity code="249" callTemplate="V4aaa" name="Saint Kitts &amp; Nevis" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="250" callTemplate="ZD7aaa" name="Saint Helena" continent="AF" ituz="66" cqz="36" />
+    <dxccEntity code="251" callTemplate="HB0aaa" name="Liechtenstein" continent="EU" ituz="28" cqz="14" />
+    <dxccEntity code="252" callTemplate="CY9aaa" name="Saint Paul Is." continent="NA" ituz="9" cqz="5" />
+    <dxccEntity code="253" callTemplate="PY0S" name="Saint Peter &amp; St. Paul Rocks" continent="SA" ituz="13" cqz="11" />
+    <dxccEntity code="254" callTemplate="LX#aaa" name="Luxembourg" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="255" callTemplate="PJ7aaa" name="Sint Maarten" continent="NA" ituz="11" cqz="8" endDate="2010-10-10T04:00:00Z" deleted="true" />
+    <dxccEntity code="256" callTemplate="CT3aaa" name="Madeira Is." continent="AF" ituz="36" cqz="33" />
+    <dxccEntity code="257" callTemplate="9H#aaa" name="Malta" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="258" callTemplate="PK4aaa" name="Sumatra" continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="259" callTemplate="JW#aaa" name="Svalbard" continent="EU" ituz="18" cqz="40" />
+    <dxccEntity code="260" callTemplate="3A#aaa" name="Monaco" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="261" callTemplate="KS4aaa" name="Swan Is." continent="NA" ituz="11" cqz="7" endDate="1972-08-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="262" callTemplate="EY#aaa" name="Tajikistan" continent="AS" ituz="30" cqz="17" />
+    <dxccEntity code="263" callTemplate="PA#aaa" name="Netherlands" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="264" callTemplate="CN2aaa" name="Tangier" continent="AF" ituz="37" cqz="33" endDate="1960-06-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="265" callTemplate="GI#aaa" name="Northern Ireland" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="266" callTemplate="LA#aaa" name="Norway" continent="EU" ituz="18" cqz="14" />
+    <dxccEntity code="267" callTemplate="P2aaa" name="Terr. New Guinea" continent="OC" ituz="51" cqz="28" endDate="1975-09-15T23:59:59Z" deleted="true" />
+    <dxccEntity code="268" callTemplate="AC4aaa" name="Tibet" continent="AS" ituz="41" cqz="23" endDate="1974-05-30T23:59:59Z" deleted="true" />
+    <dxccEntity code="269" callTemplate="SP#aaa" name="Poland" continent="EU" ituz="28" cqz="15">
+      <pas code="Z" callTemplate="SP1aaa" />
+      <pas code="F" callTemplate="SP2aaa" />
+      <pas code="P" callTemplate="SP2aaa" />
+      <pas code="B" callTemplate="SP3aaa" />
+      <pas code="W" callTemplate="SP3aaa" />
+      <pas code="J" callTemplate="SP4aaa" />
+      <pas code="O" callTemplate="SP4aaa" />
+      <pas code="R" callTemplate="SP5aaa" />
+      <pas code="D" callTemplate="SP6aaa" />
+      <pas code="U" callTemplate="SP6aaa" />
+      <pas code="C" callTemplate="SP7aaa" />
+      <pas code="S" callTemplate="SP7aaa" />
+      <pas code="K" callTemplate="SP8aaa" />
+      <pas code="L" callTemplate="SP8aaa" />
+      <pas code="G" callTemplate="SP9aaa" />
+      <pas code="M" callTemplate="SP9aaa" />
+    </dxccEntity>
+    <dxccEntity code="270" callTemplate="ZK3aaa" name="Tokelau Is." continent="OC" ituz="62" cqz="31" />
+    <dxccEntity code="271" callTemplate="I1aaa" name="Trieste" continent="EU" ituz="28" cqz="15" endDate="1957-03-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="272" callTemplate="CT#aaa" name="Portugal" continent="EU" ituz="37" cqz="14" />
+    <dxccEntity code="273" callTemplate="PY0T" name="Trindade &amp; Martin Vaz Is." continent="SA" ituz="15" cqz="11" />
+    <dxccEntity code="274" callTemplate="ZD9aaa" name="Tristan da Cunha &amp; Gough Is." continent="AF" ituz="66" cqz="38" />
+    <dxccEntity code="275" callTemplate="YO#aaa" name="Romania" continent="EU" ituz="28" cqz="20">
+      <pas code="AR" callTemplate="YO2aaa" />
+      <pas code="CS" callTemplate="YO2aaa" />
+      <pas code="HD" callTemplate="YO2aaa" />
+      <pas code="TM" callTemplate="YO2aaa" />
+      <pas code="BU" callTemplate="YO3aaa" />
+      <pas code="IF" callTemplate="YO3aaa" />
+      <pas code="BR" callTemplate="YO4aaa" />
+      <pas code="CT" callTemplate="YO4aaa" />
+      <pas code="GL" callTemplate="YO4aaa" />
+      <pas code="TL" callTemplate="YO4aaa" />
+      <pas code="VN" callTemplate="YO4aaa" />
+      <pas code="AB" callTemplate="YO5aaa" />
+      <pas code="BH" callTemplate="YO5aaa" />
+      <pas code="BN" callTemplate="YO5aaa" />
+      <pas code="CJ" callTemplate="YO5aaa" />
+      <pas code="MM" callTemplate="YO5aaa" />
+      <pas code="SJ" callTemplate="YO5aaa" />
+      <pas code="SM" callTemplate="YO5aaa" />
+      <pas code="BV" callTemplate="YO6aaa" />
+      <pas code="CV" callTemplate="YO6aaa" />
+      <pas code="HR" callTemplate="YO6aaa" />
+      <pas code="MS" callTemplate="YO6aaa" />
+      <pas code="SB" callTemplate="YO6aaa" />
+      <pas code="AG" callTemplate="YO7aaa" />
+      <pas code="DJ" callTemplate="YO7aaa" />
+      <pas code="GJ" callTemplate="YO7aaa" />
+      <pas code="MH" callTemplate="YO7aaa" />
+      <pas code="OT" callTemplate="YO7aaa" />
+      <pas code="VL" callTemplate="YO7aaa" />
+      <pas code="BC" callTemplate="YO8aaa" />
+      <pas code="BT" callTemplate="YO8aaa" />
+      <pas code="IS" callTemplate="YO8aaa" />
+      <pas code="NT" callTemplate="YO8aaa" />
+      <pas code="SV" callTemplate="YO8aaa" />
+      <pas code="VS" callTemplate="YO8aaa" />
+      <pas code="BZ" callTemplate="YO9aaa" />
+      <pas code="CL" callTemplate="YO9aaa" />
+      <pas code="DB" callTemplate="YO9aaa" />
+      <pas code="GR" callTemplate="YO9aaa" />
+      <pas code="IL" callTemplate="YO9aaa" />
+      <pas code="PH" callTemplate="YO9aaa" />
+      <pas code="TR" callTemplate="YO9aaa" />
+    </dxccEntity>
+    <dxccEntity code="276" callTemplate="FR#aaa/T" name="Tromelin Is." continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="277" callTemplate="FP#aaa" name="Saint Pierre &amp; Miquelon" continent="NA" ituz="9" cqz="5" />
+    <dxccEntity code="278" callTemplate="T7aaa" name="San Marino" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="279" callTemplate="GM#aaa" name="Scotland" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="280" callTemplate="EZ#aaa" name="Turkmenistan" continent="AS" ituz="30" cqz="17" />
+    <dxccEntity code="281" callTemplate="EA#aaa" name="Spain" continent="EU" ituz="37" cqz="14">
+      <pas code="AV" callTemplate="EA1aaa" />
+      <pas code="BU" callTemplate="EA1aaa" />
+      <pas code="C" callTemplate="EA1aaa" />
+      <pas code="LE" callTemplate="EA1aaa" />
+      <pas code="LO" callTemplate="EA1aaa" />
+      <pas code="LU" callTemplate="EA1aaa" />
+      <pas code="O" callTemplate="EA1aaa" />
+      <pas code="OU" callTemplate="EA1aaa" />
+      <pas code="P" callTemplate="EA1aaa" />
+      <pas code="PO" callTemplate="EA1aaa" />
+      <pas code="S" callTemplate="EA1aaa" />
+      <pas code="SA" callTemplate="EA1aaa" />
+      <pas code="SG" callTemplate="EA1aaa" />
+      <pas code="SO" callTemplate="EA1aaa" />
+      <pas code="VA" callTemplate="EA1aaa" />
+      <pas code="ZA" callTemplate="EA1aaa" />
+      <pas code="BI" callTemplate="EA2aaa" />
+      <pas code="HU" callTemplate="EA2aaa" />
+      <pas code="NA" callTemplate="EA2aaa" />
+      <pas code="SS" callTemplate="EA2aaa" />
+      <pas code="TE" callTemplate="EA2aaa" />
+      <pas code="VI" callTemplate="EA2aaa" />
+      <pas code="Z" callTemplate="EA2aaa" />
+      <pas code="B" callTemplate="EA3aaa" />
+      <pas code="GI" callTemplate="EA3aaa" />
+      <pas code="L" callTemplate="EA3aaa" />
+      <pas code="T" callTemplate="EA3aaa" />
+      <pas code="BA" callTemplate="EA4aaa" />
+      <pas code="CC" callTemplate="EA4aaa" />
+      <pas code="CR" callTemplate="EA4aaa" />
+      <pas code="CU" callTemplate="EA4aaa" />
+      <pas code="GU" callTemplate="EA4aaa" />
+      <pas code="M" callTemplate="EA4aaa" />
+      <pas code="TO" callTemplate="EA4aaa" />
+      <pas code="A" callTemplate="EA5aaa" />
+      <pas code="AB" callTemplate="EA5aaa" />
+      <pas code="CS" callTemplate="EA5aaa" />
+      <pas code="MU" callTemplate="EA5aaa" />
+      <pas code="V" callTemplate="EA5aaa" />
+      <pas code="AL" callTemplate="EA7aaa" />
+      <pas code="CA" callTemplate="EA7aaa" />
+      <pas code="CO" callTemplate="EA7aaa" />
+      <pas code="GR" callTemplate="EA7aaa" />
+      <pas code="H" callTemplate="EA7aaa" />
+      <pas code="J" callTemplate="EA7aaa" />
+      <pas code="MA" callTemplate="EA7aaa" />
+      <pas code="SE" callTemplate="EA7aaa" />
+    </dxccEntity>
+    <dxccEntity code="282" callTemplate="T2aaa" name="Tuvalu" continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="283" callTemplate="ZC4aaa" name="UK Sov. Base Areas on Cyprus" continent="AS" ituz="39" cqz="20" startDate="1960-08-16T00:00:00Z" />
+    <dxccEntity code="284" callTemplate="SM#aaa" name="Sweden" continent="EU" ituz="18" cqz="14">
+      <pas code="AB" callTemplate="SM0aaa" />
+      <pas code="I" callTemplate="SM1aaa" />
+      <pas code="BD" callTemplate="SM2aaa" />
+      <pas code="AC" callTemplate="SM2aaa" />
+      <pas code="X" callTemplate="SM3aaa" />
+      <pas code="Z" callTemplate="SM3aaa" />
+      <pas code="Y" callTemplate="SM3aaa" />
+      <pas code="W" callTemplate="SM4aaa" />
+      <pas code="S" callTemplate="SM4aaa" />
+      <pas code="O" callTemplate="SM6aaa" />
+      <pas code="T" callTemplate="SM4aaa" />
+      <pas code="E" callTemplate="SM5aaa" />
+      <pas code="D" callTemplate="SM5aaa" />
+      <pas code="C" callTemplate="SM5aaa" />
+      <pas code="U" callTemplate="SM5aaa" />
+      <pas code="N" callTemplate="SM6aaa" />
+      <pas code="K" callTemplate="SM7aaa" />
+      <pas code="F" callTemplate="SM7aaa" />
+      <pas code="H" callTemplate="SM7aaa" />
+      <pas code="G" callTemplate="SM7aaa" />
+      <pas code="L" callTemplate="SM7aaa" />
+    </dxccEntity>
+    <dxccEntity code="285" callTemplate="KP2aaa" name="US Virgin Is." continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="286" callTemplate="5X#aaa" name="Uganda" continent="AF" ituz="48" cqz="37" />
+    <dxccEntity code="287" callTemplate="HB9aaa" name="Switzerland" continent="EU" ituz="28" cqz="14" />
+    <dxccEntity code="288" callTemplate="UR#aaa" name="Ukraine" continent="EU" ituz="29" cqz="16">
+      <pas code="SU" callTemplate="UR5Aaa" />
+      <pas code="TE" callTemplate="UR5Baa" />
+      <pas code="CH" callTemplate="UR5Caa" />
+      <pas code="ZA" callTemplate="UR5Daa" />
+      <pas code="DN" callTemplate="UR5Eaa" />
+      <pas code="OD" callTemplate="UR5Faa" />
+      <pas code="HE" callTemplate="UR5Gaa" />
+      <pas code="PO" callTemplate="UR5Haa" />
+      <pas code="DO" callTemplate="UR5Iaa" />
+      <pas code="RI" callTemplate="UR5Kaa" />
+      <pas code="HA" callTemplate="UR5Laa" />
+      <pas code="LU" callTemplate="UR5Maa" />
+      <pas code="VI" callTemplate="UR5Naa" />
+      <pas code="VO" callTemplate="UR5Paa" />
+      <pas code="ZP" callTemplate="UR5Qaa" />
+      <pas code="CR" callTemplate="UR5Raa" />
+      <pas code="IF" callTemplate="UR5Saa" />
+      <pas code="HM" callTemplate="UR5Taa" />
+      <pas code="KV" callTemplate="UR5Uaa" />
+      <pas code="KO" callTemplate="UR5Uaa" />
+      <pas code="KI" callTemplate="UR5Vaa" />
+      <pas code="LV" callTemplate="UR5Waa" />
+      <pas code="ZH" callTemplate="UR5Xaa" />
+      <pas code="CN" callTemplate="UR5Yaa" />
+      <pas code="NI" callTemplate="UR5Zaa" />
+      <pas code="KR" callTemplate="UU0aaa" />
+      <pas code="SL" callTemplate="UU9aaa" />
+    </dxccEntity>
+    <dxccEntity code="289" callTemplate="4U#UN" name="United Nations HQ" continent="NA" ituz="8" cqz="5" />
+    <dxccEntity code="291" callTemplate="W#aaa" name="United States of America" continent="NA" ituz="6" cqz="5">
+      <pas code="CT" callTemplate="W1aaa" />
+      <pas code="ME" callTemplate="W1aaa" />
+      <pas code="MA" callTemplate="W1aaa" />
+      <pas code="NH" callTemplate="W1aaa" />
+      <pas code="RI" callTemplate="W1aaa" />
+      <pas code="VT" callTemplate="W1aaa" />
+      <pas code="NJ" callTemplate="W2aaa" />
+      <pas code="NY" callTemplate="W2aaa" />
+      <pas code="DE" callTemplate="W3aaa" />
+      <pas code="DC" callTemplate="W3aaa" />
+      <pas code="MD" callTemplate="W3aaa" />
+      <pas code="PA" callTemplate="W3aaa" />
+      <pas code="AL" callTemplate="W4aaa" />
+      <pas code="FL" callTemplate="W4aaa" />
+      <pas code="GA" callTemplate="W4aaa" />
+      <pas code="KY" callTemplate="W4aaa" />
+      <pas code="NC" callTemplate="W4aaa" />
+      <pas code="SC" callTemplate="W4aaa" />
+      <pas code="TN" callTemplate="W4aaa" />
+      <pas code="VA" callTemplate="W4aaa" />
+      <pas code="AR" callTemplate="W5aaa" />
+      <pas code="LA" callTemplate="W5aaa" />
+      <pas code="MS" callTemplate="W5aaa" />
+      <pas code="NM" callTemplate="W5aaa" />
+      <pas code="OK" callTemplate="W5aaa" />
+      <pas code="TX" callTemplate="W5aaa" />
+      <pas code="CA" callTemplate="W6aaa" />
+      <pas code="AZ" callTemplate="W7aaa" />
+      <pas code="ID" callTemplate="W7aaa" />
+      <pas code="MT" callTemplate="W7aaa" />
+      <pas code="NV" callTemplate="W7aaa" />
+      <pas code="OR" callTemplate="W7aaa" />
+      <pas code="UT" callTemplate="W7aaa" />
+      <pas code="WA" callTemplate="W7aaa" />
+      <pas code="WY" callTemplate="W7aaa" />
+      <pas code="MI" callTemplate="W8aaa" />
+      <pas code="OH" callTemplate="W8aaa" />
+      <pas code="WV" callTemplate="W8aaa" />
+      <pas code="IL" callTemplate="W9aaa" />
+      <pas code="IN" callTemplate="W9aaa" />
+      <pas code="WI" callTemplate="W9aaa" />
+      <pas code="CO" callTemplate="W0aaa" />
+      <pas code="IA" callTemplate="W0aaa" />
+      <pas code="KS" callTemplate="W0aaa" />
+      <pas code="MN" callTemplate="W0aaa" />
+      <pas code="MO" callTemplate="W0aaa" />
+      <pas code="NE" callTemplate="W0aaa" />
+      <pas code="ND" callTemplate="W0aaa" />
+      <pas code="SD" callTemplate="W0aaa" />
+    </dxccEntity>
+    <dxccEntity code="292" callTemplate="UK#aaa" name="Uzbekistan" continent="AS" ituz="30" cqz="17" />
+    <dxccEntity code="293" callTemplate="3W#aaa" name="Vietnam" continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="294" callTemplate="GW#aaa" name="Wales" continent="EU" ituz="27" cqz="14" />
+    <dxccEntity code="295" callTemplate="HV#aaa" name="Vatican" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="296" callTemplate="YU#aaa" name="Serbia" continent="EU" ituz="28" cqz="15" />
+    <dxccEntity code="297" callTemplate="KH9aaa" name="Wake Is." continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="298" callTemplate="FW#aaa" name="Wallis &amp; Futuna Is." continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="299" callTemplate="9M2aaa" name="West Malaysia" continent="AS" ituz="54" cqz="28" startDate="1963-09-16T00:00:00Z" />
+    <dxccEntity code="301" callTemplate="T30aaa" name="Western Kiribati" continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="302" callTemplate="S0aaa" name="Western Sahara" continent="AF" ituz="37" cqz="33" />
+    <dxccEntity code="303" callTemplate="VK9W" name="Willis Is." continent="OC" ituz="60" cqz="30" />
+    <dxccEntity code="304" callTemplate="A9aaa" name="Bahrain" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="305" callTemplate="S2aaa" name="Bangladesh" continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="306" callTemplate="A5aaa" name="Bhutan" continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="307" callTemplate="VQ1aaa" name="Zanzibar" continent="AF" ituz="53" cqz="37" endDate="1974-05-31T23:59:59Z" deleted="true" />
+    <dxccEntity code="308" callTemplate="TI#aaa" name="Costa Rica" continent="NA" ituz="11" cqz="7" />
+    <dxccEntity code="309" callTemplate="XZ#aaa" name="Myanmar" continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="312" callTemplate="XU#aaa" name="Cambodia" continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="315" callTemplate="4S#aaa" name="Sri Lanka" continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="318" callTemplate="BY#aaa" name="China" continent="AS" ituz="33" cqz="24" />
+    <dxccEntity code="321" callTemplate="VR2aaa" name="Hong Kong" continent="AS" ituz="44" cqz="24" />
+    <dxccEntity code="324" callTemplate="VU#aaa" name="India" continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="327" callTemplate="YB#aaa" name="Indonesia" continent="OC" ituz="51" cqz="28" startDate="1963-05-01T00:00:00Z" />
+    <dxccEntity code="330" callTemplate="EP#aaa" name="Iran" continent="AS" ituz="40" cqz="21" />
+    <dxccEntity code="333" callTemplate="YI#aaa" name="Iraq" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="336" callTemplate="4Z#aaa" name="Israel" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="339" callTemplate="JA#aaa" name="Japan" continent="AS" ituz="45" cqz="25">
+      <pas code="12" callTemplate="JA1aaa" />
+      <pas code="16" callTemplate="JA1aaa" />
+      <pas code="14" callTemplate="JA1aaa" />
+      <pas code="11" callTemplate="JA1aaa" />
+      <pas code="13" callTemplate="JA1aaa" />
+      <pas code="15" callTemplate="JA1aaa" />
+      <pas code="10" callTemplate="JA1aaa" />
+      <pas code="17" callTemplate="JA1aaa" />
+      <pas code="20" callTemplate="JA2aaa" />
+      <pas code="19" callTemplate="JA2aaa" />
+      <pas code="21" callTemplate="JA2aaa" />
+      <pas code="18" callTemplate="JA2aaa" />
+      <pas code="27" callTemplate="JA3aaa" />
+      <pas code="22" callTemplate="JA3aaa" />
+      <pas code="24" callTemplate="JA3aaa" />
+      <pas code="25" callTemplate="JA3aaa" />
+      <pas code="23" callTemplate="JA3aaa" />
+      <pas code="26" callTemplate="JA3aaa" />
+      <pas code="35" callTemplate="JA4aaa" />
+      <pas code="31" callTemplate="JA4aaa" />
+      <pas code="32" callTemplate="JA4aaa" />
+      <pas code="34" callTemplate="JA4aaa" />
+      <pas code="33" callTemplate="JA4aaa" />
+      <pas code="38" callTemplate="JA5aaa" />
+      <pas code="36" callTemplate="JA5aaa" />
+      <pas code="39" callTemplate="JA5aaa" />
+      <pas code="37" callTemplate="JA5aaa" />
+      <pas code="40" callTemplate="JA6aaa" />
+      <pas code="46" callTemplate="JA6aaa" />
+      <pas code="43" callTemplate="JA6aaa" />
+      <pas code="45" callTemplate="JA6aaa" />
+      <pas code="42" callTemplate="JA6aaa" />
+      <pas code="44" callTemplate="JA6aaa" />
+      <pas code="47" callTemplate="JA6aaa" />
+      <pas code="41" callTemplate="JA6aaa" />
+      <pas code="04" callTemplate="JA7aaa" />
+      <pas code="02" callTemplate="JA7aaa" />
+      <pas code="07" callTemplate="JA7aaa" />
+      <pas code="03" callTemplate="JA7aaa" />
+      <pas code="06" callTemplate="JA7aaa" />
+      <pas code="05" callTemplate="JA7aaa" />
+      <pas code="01" callTemplate="JA8aaa" />
+      <pas code="29" callTemplate="JA9aaa" />
+      <pas code="30" callTemplate="JA9aaa" />
+      <pas code="28" callTemplate="JA9aaa" />
+      <pas code="09" callTemplate="JA0aaa" />
+      <pas code="08" callTemplate="JA0aaa" />
+    </dxccEntity>
+    <dxccEntity code="342" callTemplate="JY#aaa" name="Jordan" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="344" callTemplate="P5aaa" name="DPR of Korea (North Korea)" continent="AS" ituz="44" cqz="25" startDate="1995-05-14T00:00:00Z" />
+    <dxccEntity code="345" callTemplate="V8aaa" name="Brunei" continent="OC" ituz="54" cqz="28" />
+    <dxccEntity code="348" callTemplate="9K#aaa" name="Kuwait" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="354" callTemplate="OD#aaa" name="Lebanon" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="363" callTemplate="JT#aaa" name="Mongolia" continent="AS" ituz="32" cqz="23" />
+    <dxccEntity code="369" callTemplate="9N#aaa" name="Nepal" continent="AS" ituz="42" cqz="22" />
+    <dxccEntity code="370" callTemplate="A4aaa" name="Oman" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="372" callTemplate="AP#aaa" name="Pakistan" continent="AS" ituz="41" cqz="21" />
+    <dxccEntity code="375" callTemplate="DU#aaa" name="Philippines" continent="OC" ituz="50" cqz="27">
+      <pas code="AUR" callTemplate="DU1aaa" />
+      <pas code="BTG" callTemplate="DU1aaa" />
+      <pas code="CAV" callTemplate="DU1aaa" />
+      <pas code="LAG" callTemplate="DU1aaa" />
+      <pas code="MAD" callTemplate="DU1aaa" />
+      <pas code="MDC" callTemplate="DU1aaa" />
+      <pas code="MDR" callTemplate="DU1aaa" />
+      <pas code="PLW" callTemplate="DU1aaa" />
+      <pas code="QUE" callTemplate="DU1aaa" />
+      <pas code="RIZ" callTemplate="DU1aaa" />
+      <pas code="ROM" callTemplate="DU1aaa" />
+      <pas code="ILN" callTemplate="DU2aaa" />
+      <pas code="ILS" callTemplate="DU2aaa" />
+      <pas code="LUN" callTemplate="DU2aaa" />
+      <pas code="PAN" callTemplate="DU2aaa" />
+      <pas code="BTN" callTemplate="DU2aaa" />
+      <pas code="CAG" callTemplate="DU2aaa" />
+      <pas code="ISA" callTemplate="DU2aaa" />
+      <pas code="NUV" callTemplate="DU2aaa" />
+      <pas code="QUI" callTemplate="DU2aaa" />
+      <pas code="ABR" callTemplate="DU2aaa" />
+      <pas code="APA" callTemplate="DU2aaa" />
+      <pas code="BEN" callTemplate="DU2aaa" />
+      <pas code="IFU" callTemplate="DU2aaa" />
+      <pas code="KAL" callTemplate="DU2aaa" />
+      <pas code="MOU" callTemplate="DU2aaa" />
+      <pas code="BAN" callTemplate="DU3aaa" />
+      <pas code="BUL" callTemplate="DU3aaa" />
+      <pas code="NUE" callTemplate="DU3aaa" />
+      <pas code="PAM" callTemplate="DU3aaa" />
+      <pas code="TAR" callTemplate="DU3aaa" />
+      <pas code="ZMB" callTemplate="DU3aaa" />
+      <pas code="ALB" callTemplate="DU4aaa" />
+      <pas code="CAN" callTemplate="DU4aaa" />
+      <pas code="CAS" callTemplate="DU4aaa" />
+      <pas code="CAT" callTemplate="DU4aaa" />
+      <pas code="MAS" callTemplate="DU4aaa" />
+      <pas code="SOR" callTemplate="DU4aaa" />
+      <pas code="BIL" callTemplate="DU5aaa" />
+      <pas code="EAS" callTemplate="DU5aaa" />
+      <pas code="LEY" callTemplate="DU5aaa" />
+      <pas code="NSA" callTemplate="DU5aaa" />
+      <pas code="SLE" callTemplate="DU5aaa" />
+      <pas code="WSA" callTemplate="DU5aaa" />
+      <pas code="AKL" callTemplate="DU6aaa" />
+      <pas code="ANT" callTemplate="DU6aaa" />
+      <pas code="CAP" callTemplate="DU6aaa" />
+      <pas code="GUI" callTemplate="DU6aaa" />
+      <pas code="ILI" callTemplate="DU6aaa" />
+      <pas code="NEC" callTemplate="DU6aaa" />
+      <pas code="BOH" callTemplate="DU7aaa" />
+      <pas code="CEB" callTemplate="DU7aaa" />
+      <pas code="NER" callTemplate="DU7aaa" />
+      <pas code="SIG" callTemplate="DU7aaa" />
+      <pas code="ZAN" callTemplate="DU8aaa" />
+      <pas code="ZAS" callTemplate="DU8aaa" />
+      <pas code="ZSI" callTemplate="DU8aaa" />
+      <pas code="NCO" callTemplate="DU8aaa" />
+      <pas code="SUK" callTemplate="DU8aaa" />
+      <pas code="SAR" callTemplate="DU8aaa" />
+      <pas code="SCO" callTemplate="DU8aaa" />
+      <pas code="BAS" callTemplate="DU8aaa" />
+      <pas code="LAS" callTemplate="DU8aaa" />
+      <pas code="MAG" callTemplate="DU8aaa" />
+      <pas code="SLU" callTemplate="DU8aaa" />
+      <pas code="TAW" callTemplate="DU8aaa" />
+      <pas code="LAN" callTemplate="DU9aaa" />
+      <pas code="BUK" callTemplate="DU9aaa" />
+      <pas code="CAM" callTemplate="DU9aaa" />
+      <pas code="MSC" callTemplate="DU9aaa" />
+      <pas code="MSR" callTemplate="DU9aaa" />
+      <pas code="COM" callTemplate="DU9aaa" />
+      <pas code="DAV" callTemplate="DU9aaa" />
+      <pas code="DAS" callTemplate="DU9aaa" />
+      <pas code="DAO" callTemplate="DU9aaa" />
+      <pas code="AGN" callTemplate="DU9aaa" />
+      <pas code="AGS" callTemplate="DU9aaa" />
+      <pas code="SUN" callTemplate="DU9aaa" />
+      <pas code="SUR" callTemplate="DU9aaa" />
+    </dxccEntity>
+    <dxccEntity code="376" callTemplate="A7aaa" name="Qatar" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="378" callTemplate="HZ#aaa" name="Saudi Arabia" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="379" callTemplate="S7aaa" name="Seychelles" continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="381" callTemplate="9V#aaa" name="Singapore" continent="AS" ituz="54" cqz="28" startDate="1965-08-08T13:27:05Z" />
+    <dxccEntity code="382" callTemplate="J2aaa" name="Djibouti" continent="AF" ituz="48" cqz="37" />
+    <dxccEntity code="384" callTemplate="YK#aaa" name="Syria" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="386" callTemplate="BV#aaa" name="Taiwan" continent="AS" ituz="44" cqz="24" />
+    <dxccEntity code="387" callTemplate="HS#aaa" name="Thailand" continent="AS" ituz="49" cqz="26" />
+    <dxccEntity code="390" callTemplate="TA#aaa" name="Turkey" continent="AS" ituz="39" cqz="20" />
+    <dxccEntity code="391" callTemplate="A6aaa" name="United Arab Emirates" continent="AS" ituz="39" cqz="21" />
+    <dxccEntity code="400" callTemplate="7X#aaa" name="Algeria" continent="AF" ituz="37" cqz="33" />
+    <dxccEntity code="401" callTemplate="D2aaa" name="Angola" continent="AF" ituz="52" cqz="36" />
+    <dxccEntity code="402" callTemplate="A2aaa" name="Botswana" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="404" callTemplate="9U#aaa" name="Burundi" continent="AF" ituz="52" cqz="36" startDate="1962-07-01T00:00:00Z" />
+    <dxccEntity code="406" callTemplate="TJ#aaa" name="Cameroon" continent="AF" ituz="47" cqz="36" />
+    <dxccEntity code="408" callTemplate="TL#aaa" name="Central African Republic" continent="AF" ituz="47" cqz="36" startDate="1960-08-13T00:00:00Z" />
+    <dxccEntity code="409" callTemplate="D4aaa" name="Cape Verde" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="410" callTemplate="TT#aaa" name="Chad" continent="AF" ituz="47" cqz="36" startDate="1960-08-11T00:00:00Z" />
+    <dxccEntity code="411" callTemplate="D6aaa" name="Comoros" continent="AF" ituz="53" cqz="39" startDate="1975-07-06T00:00:00Z" />
+    <dxccEntity code="412" callTemplate="TN#aaa" name="Republic of the Congo" continent="AF" ituz="52" cqz="36" startDate="1960-08-15T00:00:00Z" />
+    <dxccEntity code="414" callTemplate="9Q#aaa" name="Dem. Rep. of Congo" continent="AF" ituz="52" cqz="36" />
+    <dxccEntity code="416" callTemplate="TY#aaa" name="Benin" continent="AF" ituz="46" cqz="35" startDate="1960-08-01T00:00:00Z" />
+    <dxccEntity code="420" callTemplate="TR#aaa" name="Gabon" continent="AF" ituz="52" cqz="36" startDate="1960-08-17T00:00:00Z" />
+    <dxccEntity code="422" callTemplate="C5aaa" name="The Gambia" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="424" callTemplate="9G#aaa" name="Ghana" continent="AF" ituz="46" cqz="35" startDate="1957-03-05T00:00:00Z" />
+    <dxccEntity code="428" callTemplate="TU#aaa" name="Cote d'Ivoire" continent="AF" ituz="46" cqz="35" startDate="1960-08-07T00:00:00Z" />
+    <dxccEntity code="430" callTemplate="5Z#aaa" name="Kenya" continent="AF" ituz="48" cqz="37" />
+    <dxccEntity code="432" callTemplate="7P#aaa" name="Lesotho" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="434" callTemplate="EL#aaa" name="Liberia" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="436" callTemplate="5A#aaa" name="Libya" continent="AF" ituz="38" cqz="34" />
+    <dxccEntity code="438" callTemplate="5R#aaa" name="Madagascar" continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="440" callTemplate="7Q#aaa" name="Malawi" continent="AF" ituz="53" cqz="37" />
+    <dxccEntity code="442" callTemplate="TZ#aaa" name="Mali" continent="AF" ituz="46" cqz="35" startDate="1960-06-20T00:00:00Z" />
+    <dxccEntity code="444" callTemplate="5T#aaa" name="Mauritania" continent="AF" ituz="46" cqz="35" startDate="1960-06-20T00:00:00Z" />
+    <dxccEntity code="446" callTemplate="CN#aaa" name="Morocco" continent="AF" ituz="37" cqz="33" />
+    <dxccEntity code="450" callTemplate="5N#aaa" name="Nigeria" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="452" callTemplate="Z2aaa" name="Zimbabwe" continent="AF" ituz="53" cqz="38" />
+    <dxccEntity code="453" callTemplate="FR#aaa" name="Reunion Is." continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="454" callTemplate="9X#aaa" name="Rwanda" continent="AF" ituz="52" cqz="36" startDate="1962-07-01T00:00:00Z" />
+    <dxccEntity code="456" callTemplate="6W#aaa" name="Senegal" continent="AF" ituz="46" cqz="35" startDate="1960-06-20T00:00:00Z" />
+    <dxccEntity code="458" callTemplate="9L#aaa" name="Sierra Leone" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="460" callTemplate="3D2R" name="Rotuma Is." continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="462" callTemplate="ZS#aaa" name="Republic of South Africa" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="464" callTemplate="V5aaa" name="Namibia" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="466" callTemplate="ST#aaa" name="Sudan" continent="AF" ituz="48" cqz="34" />
+    <dxccEntity code="468" callTemplate="3DA#aa" name="Swaziland" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="470" callTemplate="5H#aaa" name="Tanzania" continent="AF" ituz="53" cqz="37" />
+    <dxccEntity code="474" callTemplate="3V#aaa" name="Tunisia" continent="AF" ituz="37" cqz="33" />
+    <dxccEntity code="478" callTemplate="SU#aaa" name="Egypt" continent="AF" ituz="38" cqz="34" />
+    <dxccEntity code="480" callTemplate="XT#aaa" name="Burkina Faso" continent="AF" ituz="46" cqz="35" startDate="1960-08-16T00:00:00Z" />
+    <dxccEntity code="482" callTemplate="9J#aaa" name="Zambia" continent="AF" ituz="53" cqz="36" />
+    <dxccEntity code="483" callTemplate="5V#aaa" name="Togo" continent="AF" ituz="46" cqz="35" />
+    <dxccEntity code="488" callTemplate="ZS9aaa" name="Walvis Bay" continent="AF" ituz="57" cqz="38" startDate="1977-09-01T00:00:00Z" endDate="1994-02-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="489" callTemplate="3D2C" name="Conway Reef" continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="490" callTemplate="T33aaa" name="Banaba I. (Ocean I.)" continent="OC" ituz="65" cqz="31" />
+    <dxccEntity code="492" callTemplate="7O#aaa" name="Yemen" continent="AS" ituz="39" cqz="21" startDate="1990-05-22T00:00:00Z" />
+    <dxccEntity code="493" callTemplate="ZS0aaa" name="Penguin Is." continent="AF" ituz="57" cqz="38" endDate="1994-02-28T23:59:59Z" deleted="true" />
+    <dxccEntity code="497" callTemplate="9A#aaa" name="Croatia" continent="EU" ituz="28" cqz="15" startDate="1991-06-26T00:00:00Z" />
+    <dxccEntity code="499" callTemplate="S5aaa" name="Slovenia" continent="EU" ituz="28" cqz="15" startDate="1991-06-26T00:00:00Z" />
+    <dxccEntity code="501" callTemplate="E7aaa" name="Bosnia-Herzegovina" continent="EU" ituz="28" cqz="15" startDate="1991-10-15T00:00:00Z" />
+    <dxccEntity code="502" callTemplate="Z3aaa" name="Macedonia" continent="EU" ituz="28" cqz="15" startDate="1991-09-08T00:00:00Z" />
+    <dxccEntity code="503" callTemplate="OK#aaa" name="Czech Republic" continent="EU" ituz="28" cqz="15" startDate="1993-01-01T00:00:00Z">
+      <pas code="APA" callTemplate="OK1aaa" />
+      <pas code="APB" callTemplate="OK1aaa" />
+      <pas code="APC" callTemplate="OK1aaa" />
+      <pas code="APD" callTemplate="OK1aaa" />
+      <pas code="APE" callTemplate="OK1aaa" />
+      <pas code="APF" callTemplate="OK1aaa" />
+      <pas code="APG" callTemplate="OK1aaa" />
+      <pas code="APH" callTemplate="OK1aaa" />
+      <pas code="API" callTemplate="OK1aaa" />
+      <pas code="APJ" callTemplate="OK1aaa" />
+      <pas code="BBN" callTemplate="OK1aaa" />
+      <pas code="BBE" callTemplate="OK1aaa" />
+      <pas code="BKD" callTemplate="OK1aaa" />
+      <pas code="BKO" callTemplate="OK1aaa" />
+      <pas code="BKH" callTemplate="OK1aaa" />
+      <pas code="BME" callTemplate="OK1aaa" />
+      <pas code="BMB" callTemplate="OK1aaa" />
+      <pas code="BNY" callTemplate="OK1aaa" />
+      <pas code="BPZ" callTemplate="OK1aaa" />
+      <pas code="BPV" callTemplate="OK1aaa" />
+      <pas code="BPB" callTemplate="OK1aaa" />
+      <pas code="BRA" callTemplate="OK1aaa" />
+      <pas code="CBU" callTemplate="OK1aaa" />
+      <pas code="CCK" callTemplate="OK1aaa" />
+      <pas code="CJH" callTemplate="OK1aaa" />
+      <pas code="CPE" callTemplate="OK1aaa" />
+      <pas code="CPI" callTemplate="OK1aaa" />
+      <pas code="CPR" callTemplate="OK1aaa" />
+      <pas code="CST" callTemplate="OK1aaa" />
+      <pas code="CTA" callTemplate="OK1aaa" />
+      <pas code="DDO" callTemplate="OK1aaa" />
+      <pas code="DCH" callTemplate="OK1aaa" />
+      <pas code="DKV" callTemplate="OK1aaa" />
+      <pas code="DKL" callTemplate="OK1aaa" />
+      <pas code="DPM" callTemplate="OK1aaa" />
+      <pas code="DPJ" callTemplate="OK1aaa" />
+      <pas code="DPS" callTemplate="OK1aaa" />
+      <pas code="DRO" callTemplate="OK1aaa" />
+      <pas code="DSO" callTemplate="OK1aaa" />
+      <pas code="DTA" callTemplate="OK1aaa" />
+      <pas code="ECL" callTemplate="OK1aaa" />
+      <pas code="EDE" callTemplate="OK1aaa" />
+      <pas code="ECH" callTemplate="OK1aaa" />
+      <pas code="EJA" callTemplate="OK1aaa" />
+      <pas code="ELI" callTemplate="OK1aaa" />
+      <pas code="ELT" callTemplate="OK1aaa" />
+      <pas code="ELO" callTemplate="OK1aaa" />
+      <pas code="EMO" callTemplate="OK1aaa" />
+      <pas code="ETE" callTemplate="OK1aaa" />
+      <pas code="EUL" callTemplate="OK1aaa" />
+      <pas code="FHB" callTemplate="OK1aaa" />
+      <pas code="FHK" callTemplate="OK1aaa" />
+      <pas code="FCR" callTemplate="OK1aaa" />
+      <pas code="FJI" callTemplate="OK1aaa" />
+      <pas code="FNA" callTemplate="OK1aaa" />
+      <pas code="FPA" callTemplate="OK1aaa" />
+      <pas code="FRK" callTemplate="OK1aaa" />
+      <pas code="FSE" callTemplate="OK1aaa" />
+      <pas code="FSV" callTemplate="OK1aaa" />
+      <pas code="FTR" callTemplate="OK1aaa" />
+      <pas code="FUO" callTemplate="OK1aaa" />
+      <pas code="GBL" callTemplate="OK2aaa" />
+      <pas code="GBM" callTemplate="OK2aaa" />
+      <pas code="GBV" callTemplate="OK2aaa" />
+      <pas code="GBR" callTemplate="OK2aaa" />
+      <pas code="GHO" callTemplate="OK2aaa" />
+      <pas code="GJI" callTemplate="OK2aaa" />
+      <pas code="GKR" callTemplate="OK2aaa" />
+      <pas code="GPR" callTemplate="OK2aaa" />
+      <pas code="GTR" callTemplate="OK2aaa" />
+      <pas code="GUH" callTemplate="OK2aaa" />
+      <pas code="GVY" callTemplate="OK2aaa" />
+      <pas code="GZL" callTemplate="OK2aaa" />
+      <pas code="GZN" callTemplate="OK2aaa" />
+      <pas code="GZS" callTemplate="OK2aaa" />
+      <pas code="HBR" callTemplate="OK2aaa" />
+      <pas code="HFM" callTemplate="OK2aaa" />
+      <pas code="HJE" callTemplate="OK2aaa" />
+      <pas code="HKA" callTemplate="OK2aaa" />
+      <pas code="HNJ" callTemplate="OK2aaa" />
+      <pas code="HOL" callTemplate="OK2aaa" />
+      <pas code="HOP" callTemplate="OK2aaa" />
+      <pas code="HOS" callTemplate="OK2aaa" />
+      <pas code="HPR" callTemplate="OK2aaa" />
+      <pas code="HSU" callTemplate="OK2aaa" />
+      <pas code="HVS" callTemplate="OK2aaa" />
+    </dxccEntity>
+    <dxccEntity code="504" callTemplate="OM#aaa" name="Slovak Republic" continent="EU" ituz="28" cqz="15" startDate="1993-01-01T00:00:00Z">
+      <pas code="BAA" callTemplate="OM1aaa" />
+      <pas code="BAB" callTemplate="OM1aaa" />
+      <pas code="BAC" callTemplate="OM1aaa" />
+      <pas code="BAD" callTemplate="OM1aaa" />
+      <pas code="BAE" callTemplate="OM1aaa" />
+      <pas code="MAL" callTemplate="OM1aaa" />
+      <pas code="PEZ" callTemplate="OM1aaa" />
+      <pas code="SEN" callTemplate="OM1aaa" />
+      <pas code="DST" callTemplate="OM2aaa" />
+      <pas code="GAL" callTemplate="OM2aaa" />
+      <pas code="HLO" callTemplate="OM2aaa" />
+      <pas code="PIE" callTemplate="OM2aaa" />
+      <pas code="SEA" callTemplate="OM2aaa" />
+      <pas code="SKA" callTemplate="OM2aaa" />
+      <pas code="TRN" callTemplate="OM2aaa" />
+      <pas code="BAN" callTemplate="OM4aaa" />
+      <pas code="ILA" callTemplate="OM4aaa" />
+      <pas code="MYJ" callTemplate="OM4aaa" />
+      <pas code="NMV" callTemplate="OM4aaa" />
+      <pas code="PAR" callTemplate="OM4aaa" />
+      <pas code="PBY" callTemplate="OM4aaa" />
+      <pas code="PRI" callTemplate="OM4aaa" />
+      <pas code="PUC" callTemplate="OM4aaa" />
+      <pas code="TNC" callTemplate="OM4aaa" />
+      <pas code="KOM" callTemplate="OM5aaa" />
+      <pas code="LVC" callTemplate="OM5aaa" />
+      <pas code="NIT" callTemplate="OM5aaa" />
+      <pas code="NZA" callTemplate="OM5aaa" />
+      <pas code="SAL" callTemplate="OM5aaa" />
+      <pas code="TOP" callTemplate="OM5aaa" />
+      <pas code="ZMO" callTemplate="OM5aaa" />
+      <pas code="BYT" callTemplate="OM6aaa" />
+      <pas code="CAD" callTemplate="OM6aaa" />
+      <pas code="DKU" callTemplate="OM6aaa" />
+      <pas code="KNM" callTemplate="OM6aaa" />
+      <pas code="LMI" callTemplate="OM6aaa" />
+      <pas code="MAR" callTemplate="OM6aaa" />
+      <pas code="NAM" callTemplate="OM6aaa" />
+      <pas code="RUZ" callTemplate="OM6aaa" />
+      <pas code="TTE" callTemplate="OM6aaa" />
+      <pas code="TVR" callTemplate="OM6aaa" />
+      <pas code="ZIL" callTemplate="OM6aaa" />
+      <pas code="BBY" callTemplate="OM7aaa" />
+      <pas code="BST" callTemplate="OM7aaa" />
+      <pas code="BRE" callTemplate="OM7aaa" />
+      <pas code="DET" callTemplate="OM7aaa" />
+      <pas code="KRU" callTemplate="OM7aaa" />
+      <pas code="LUC" callTemplate="OM7aaa" />
+      <pas code="POL" callTemplate="OM7aaa" />
+      <pas code="REV" callTemplate="OM7aaa" />
+      <pas code="RSO" callTemplate="OM7aaa" />
+      <pas code="VKR" callTemplate="OM7aaa" />
+      <pas code="ZAR" callTemplate="OM7aaa" />
+      <pas code="ZIH" callTemplate="OM7aaa" />
+      <pas code="ZVO" callTemplate="OM7aaa" />
+      <pas code="GEL" callTemplate="OM8aaa" />
+      <pas code="KEA" callTemplate="OM8aaa" />
+      <pas code="KEB" callTemplate="OM8aaa" />
+      <pas code="KEC" callTemplate="OM8aaa" />
+      <pas code="KED" callTemplate="OM8aaa" />
+      <pas code="KEO" callTemplate="OM8aaa" />
+      <pas code="MIC" callTemplate="OM8aaa" />
+      <pas code="ROZ" callTemplate="OM8aaa" />
+      <pas code="SOB" callTemplate="OM8aaa" />
+      <pas code="SNV" callTemplate="OM8aaa" />
+      <pas code="TRE" callTemplate="OM8aaa" />
+      <pas code="BAR" callTemplate="OM0aaa" />
+      <pas code="HUM" callTemplate="OM0aaa" />
+      <pas code="KEZ" callTemplate="OM0aaa" />
+      <pas code="LEV" callTemplate="OM0aaa" />
+      <pas code="MED" callTemplate="OM0aaa" />
+      <pas code="POP" callTemplate="OM0aaa" />
+      <pas code="PRE" callTemplate="OM0aaa" />
+      <pas code="SAB" callTemplate="OM0aaa" />
+      <pas code="SNI" callTemplate="OM0aaa" />
+      <pas code="SLU" callTemplate="OM0aaa" />
+      <pas code="STR" callTemplate="OM0aaa" />
+      <pas code="SVI" callTemplate="OM0aaa" />
+      <pas code="VRT" callTemplate="OM0aaa" />
+    </dxccEntity>
+    <dxccEntity code="505" callTemplate="BV9P" name="Pratas Is." continent="AS" ituz="44" cqz="24" startDate="1994-01-01T00:00:00Z" />
+    <dxccEntity code="506" callTemplate="BS7aaa" name="Scarborough Reef" continent="AS" ituz="50" cqz="27" startDate="1995-01-01T00:00:00Z" />
+    <dxccEntity code="507" callTemplate="H40aaa" name="Temotu Province" continent="OC" ituz="51" cqz="32" startDate="1998-04-01T00:00:00Z" />
+    <dxccEntity code="508" callTemplate="FO#aa" name="Austral Is." continent="OC" ituz="63" cqz="32" startDate="1998-04-01T00:00:00Z" />
+    <dxccEntity code="509" callTemplate="FO#aaa" name="Marquesas Is." continent="OC" ituz="63" cqz="31" startDate="1998-04-01T00:00:00Z" />
+    <dxccEntity code="510" callTemplate="E4aaa" name="Palestine" continent="AS" ituz="39" cqz="20" startDate="1999-02-01T00:00:00Z" />
+    <dxccEntity code="511" callTemplate="4W#aaa" name="Timor-Leste" continent="OC" ituz="54" cqz="28" startDate="2000-03-01T00:00:00Z" />
+    <dxccEntity code="512" callTemplate="FK#aa" name="Chesterfield Is." continent="OC" ituz="56" cqz="30" startDate="2000-03-23T00:00:00Z" />
+    <dxccEntity code="513" callTemplate="VP6D" name="Ducie Is." continent="OC" ituz="63" cqz="32" startDate="2001-11-16T00:00:00Z" />
+    <dxccEntity code="514" callTemplate="4O#aaa" name="Montenegro" continent="EU" ituz="28" cqz="15" startDate="2006-06-28T00:00:00Z" />
+    <dxccEntity code="515" callTemplate="KH8Sa" name="Swains Is." continent="OC" ituz="62" cqz="32" startDate="2006-07-22T00:00:00Z" />
+    <dxccEntity code="516" callTemplate="FJ#aaa" name="Saint Barthelemy" continent="NA" ituz="11" cqz="8" startDate="2007-12-14T00:00:00Z" />
+    <dxccEntity code="517" callTemplate="PJ2aaa" name="Curacao Is." continent="SA" ituz="11" cqz="8" startDate="2010-10-10T04:01:00Z" />
+    <dxccEntity code="518" callTemplate="PJ7aaa" name="Sint Maarten" continent="NA" ituz="11" cqz="8" startDate="2010-10-10T04:01:00Z" />
+    <dxccEntity code="519" callTemplate="PJ5aaa" name="Saba &amp; Saint Eustatius Is." continent="NA" ituz="11" cqz="8" startDate="2010-10-10T04:01:00Z" />
+    <dxccEntity code="520" callTemplate="PJ4aaa" name="Bonaire Is." continent="SA" ituz="11" cqz="9" startDate="2010-10-10T04:01:00Z" />
+    <dxccEntity code="521" callTemplate="ST0aaa" name="Republic of South Sudan" continent="AF" ituz="48" cqz="34" startDate="2011-07-14T00:07:01Z" />
+    <dxccEntity code="522" callTemplate="Z6aaa" name="Republic of Kosovo" continent="EU" ituz="28" cqz="15" startDate="2018-01-21T00:00:00Z" />
+  </dxccEntities>
+</adif>
