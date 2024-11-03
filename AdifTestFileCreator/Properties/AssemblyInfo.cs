@@ -33,6 +33,11 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("3.1.5.0")]
-[assembly: AssemblyFileVersion("3.1.5.0")]
-[assembly: AssemblyInformationalVersion("3.1.5.0")]
+// For this application, they are not used in the conventional way, rather:
+//
+//      Major.Minor.Build are the most recent ADIF Specification supported.
+//      Revision          is used to represent updates to this application.
+//
+[assembly: AssemblyVersion("3.1.5.1")]
+[assembly: AssemblyFileVersion("3.1.5.1")]
+[assembly: AssemblyInformationalVersion("3.1.5.1")]
