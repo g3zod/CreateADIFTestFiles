@@ -2005,8 +2005,11 @@ namespace AdifXsltLib
             totalRecords = 0;
 
         private readonly string
-            adifVersion = string.Empty,
-            adifStatus  = string.Empty;
+            adifVersion =   string.Empty,
+            adifStatus =    string.Empty;
+
+        DateTime
+            adifDate = DateTime.MinValue;
 #pragma warning restore format
 
         private readonly int adifVersionInt = -1;
@@ -2284,6 +2287,20 @@ namespace AdifXsltLib
 
                     default:
                         throw new Exception($"ADIF Status '{StringToNullOrString(adifStatus)}' is not one of 'Draft', 'Proposed', or 'Released'");
+                }
+
+                {
+                    XPathNavigator datePathNavigator = nav.SelectSingleNode("/adif/@date");
+
+                    if (datePathNavigator != null &&
+                        !string.IsNullOrEmpty(datePathNavigator.Value))
+                    {
+                        adifDate = XmlConvert.ToDateTime(datePathNavigator.Value, XmlDateTimeSerializationMode.Utc);
+                    }
+                    else
+                    {
+                        Logger.Log("The document element does not contain a valid \"date\" attribute.");
+                    }
                 }
 
                 calls = new Calls(EntitiesXmlPath);
@@ -2803,9 +2820,18 @@ namespace AdifXsltLib
 
         public string CommentReport(bool full)
         {
-            StringBuilder message = new StringBuilder(10240);
+            StringBuilder message = new StringBuilder(65536);
 
             _ = message.Append("Report\r\n\r\n");
+
+            _ = message.Append($"ADIF Specification: {adifStatus} {adifVersion}");
+
+            if (adifDate != DateTime.MinValue)
+            {
+                _ = message.Append($" {adifDate.ToString("yyyy-MM-dd")}");
+            }
+
+            _ = message.Append("\r\n\r\n");
 
             if (UntestedFields.Count > 0)
             {
