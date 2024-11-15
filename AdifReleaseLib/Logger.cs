@@ -66,7 +66,7 @@ namespace AdifReleaseLib
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     $"{logName}Log {DateTime.UtcNow.ToString(fileNameDateTimeFormat)}.txt");
 
-                LogWriter = new StreamWriter(logPath, true, Common.Windows1252Encoding);
+                LogWriter = new StreamWriter(logPath, true, Encoding.UTF8);
                 LogListener = new TextWriterTraceListener(LogWriter);
                 _ = System.Diagnostics.Trace.Listeners.Add(LogListener);
                 Trace.AutoFlush = true;
