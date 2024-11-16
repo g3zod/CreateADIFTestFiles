@@ -1,7 +1,12 @@
-﻿/*******************************************************************************
- * NOTE: This file was copied from the .NET Framework 4.7 version of the project
- *       because the assembly attributes in the project file were being ignored.
- *******************************************************************************/
+﻿/********************************************************************************
+ * NOTES: This file was copied from the .NET Framework 4.7 version of the project
+ *        because after conversion to .NET 8, the assembly attributes in the
+ *        project file were being ignored.
+ *
+ *        The choice of excluding spaces and underlines in the name attributes is
+ *        based on minimizing the crazy number of directories that were being
+ *        created by the .NET 8 configuration runtime.
+ ********************************************************************************/
 
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -38,6 +43,6 @@ using System.Runtime.InteropServices;
 //      Major.Minor.Build are the most recent ADIF Specification supported.
 //      Revision          is used to represent updates to this application.
 //
-[assembly: AssemblyVersion("3.1.5.1")]
-[assembly: AssemblyFileVersion("3.1.5.1")]
-[assembly: AssemblyInformationalVersion("3.1.5.1")]
+[assembly: AssemblyVersion("3.1.5.2")]
+[assembly: AssemblyFileVersion("3.1.5.2")]
+[assembly: AssemblyInformationalVersion("3.1.5.2")]
