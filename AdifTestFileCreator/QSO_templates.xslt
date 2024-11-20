@@ -1007,8 +1007,8 @@ Change History:
         </xsl:when>
 
         <xsl:when test="$fieldName='MY_VUCC_GRIDS' or $fieldName='VUCC_GRIDS'">
-          <xsl:value-of select="ae:record('CALL', ae:callForDxcc($usaDxcc), $fieldName, 'EN98,FM08,EM97,FM07')"/>
-          <xsl:value-of select="ae:record('CALL', ae:callForDxcc($usaDxcc), $fieldName, 'fm07,em97,fm08,en98')"/>
+          <xsl:value-of select="ae:record('CALL', ae:callForDxcc($usaDxcc), $fieldName, 'EM98,FM08,EM97,FM07')"/>
+          <xsl:value-of select="ae:record('CALL', ae:callForDxcc($usaDxcc), $fieldName, 'fm07,em97,fm08,em98')"/>
         </xsl:when>
 
         <xsl:when test="$fieldName='NOTES'">
@@ -1444,7 +1444,8 @@ Change History:
           <!-- Include one with other than uppercase2 -->
           <xsl:value-of select="ae:record($fieldName, 'Usb', 'MODE', 'Ssb')"/>
           <!-- SUBMODE values do not have to be in the Submode enumeration -->
-          <xsl:value-of select="ae:record($fieldName, 'DSB', 'MODE', 'AM')"/>
+          <!-- Removed at 3.1.5 as in practice only the enumeration values are used-->
+          <!--<xsl:value-of select="ae:record($fieldName, 'DSB', 'MODE', 'AM')"/>-->
         </xsl:when>
 
         <xsl:when test="$fieldName='SWL'">
