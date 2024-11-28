@@ -17,8 +17,10 @@ namespace AdifReleaseLib
             contentsDateTimeFormat = "yyyy-MM-dd HH:mm:ss ",
             fileNameDateTimeFormat = "yyyyMMddHHmmss";
 
-        private static TextWriter LogWriter = null;
-        private static TextWriterTraceListener LogListener = null;
+#pragma warning disable CA1859 // Use concrete types when possible for improved performance
+        private static TextWriter LogWriter;
+#pragma warning restore CA1859 // Use concrete types when possible for improved performance
+        private static TextWriterTraceListener LogListener;
         private static string
             ProductName = string.Empty,
             ProductVersion = string.Empty;
@@ -36,7 +38,7 @@ namespace AdifReleaseLib
                     logTitle,
                     logPath;
 
-                StringBuilder logName = new StringBuilder(32);
+                StringBuilder logName = new(32);
 
                 logTitle = ProductName;
 
@@ -86,10 +88,10 @@ namespace AdifReleaseLib
         public static void StartLog(string productName, string productVersion)
         {
             ProductName = productName.Trim();
-            if (ProductName == null) { ProductName = string.Empty; }
+            ProductName ??= string.Empty;
 
             ProductVersion = productVersion.Trim();
-            if (ProductVersion == null) { ProductVersion = string.Empty; }
+            ProductVersion ??= string.Empty;
         }
 
         /**
@@ -138,7 +140,7 @@ namespace AdifReleaseLib
          *   Adds a message to the log file preceded by the current date and time.
          * </summary>
          * 
-         * <param name="message"></param>
+         * <param name="message">The message to be logged.</param>
          */
         public static void Log(string message)
         {
