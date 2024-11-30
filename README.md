@@ -5,7 +5,7 @@ XHTML file and create test files containing QSOs in these formats:
 - [ADIF ADI](https://adif.org.uk/ADIF_Current#ADI_File_Format) (.adi)
 - [ADIF ADX](https://adif.org.uk/ADIF_Current#ADX_File_Format) (.adx)
 
-The generated files for each ADIF version are then provided on the website in a ZIP file (created outside this applicaiton).
+The generated files for each ADIF version are then provided on the website in a ZIP file (created outside this application).
 
 ## Projects
 | Name  | Purpose |
