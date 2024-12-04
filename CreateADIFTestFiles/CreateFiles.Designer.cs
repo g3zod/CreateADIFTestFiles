@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Properties.Settings settings1 = new Properties.Settings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateFiles));
             SsProgress = new System.Windows.Forms.StatusStrip();
             TsslProgress = new System.Windows.Forms.ToolStripStatusLabel();
@@ -115,10 +114,6 @@
             // TxtAdifPath
             // 
             TxtAdifPath.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            settings1.SettingsKey = "";
-            settings1.TxtAdifPath = "";
-            settings1.Version = "0.0.0.0";
-            TxtAdifPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "TxtAdifPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             TxtAdifPath.Location = new System.Drawing.Point(160, 43);
             TxtAdifPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             TxtAdifPath.Name = "TxtAdifPath";

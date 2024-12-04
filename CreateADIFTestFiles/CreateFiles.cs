@@ -88,6 +88,8 @@ namespace CreateADIFTestFiles
          */
         private void CreateFiles_Load(object sender, EventArgs e)
         {
+            TxtAdifPath.Text = settings.TxtAdifPath;
+
             try
             {
                 EnableControls(true);
