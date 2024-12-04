@@ -28,127 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
+            Properties.Settings settings1 = new Properties.Settings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateFiles));
-            this.SsProgress = new System.Windows.Forms.StatusStrip();
-            this.TsslProgress = new System.Windows.Forms.ToolStripStatusLabel();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.BtnCreateQsosFiles = new System.Windows.Forms.Button();
-            this.BtnChooseFile = new System.Windows.Forms.Button();
-            this.LblAdif = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.TxtAdifPath = new System.Windows.Forms.TextBox();
-            this.FbdAdif = new System.Windows.Forms.FolderBrowserDialog();
-            this.SsProgress.SuspendLayout();
-            this.SuspendLayout();
+            SsProgress = new System.Windows.Forms.StatusStrip();
+            TsslProgress = new System.Windows.Forms.ToolStripStatusLabel();
+            BtnClose = new System.Windows.Forms.Button();
+            BtnCreateQsosFiles = new System.Windows.Forms.Button();
+            BtnChooseFile = new System.Windows.Forms.Button();
+            LblAdif = new System.Windows.Forms.Label();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            TxtAdifPath = new System.Windows.Forms.TextBox();
+            FbdAdif = new System.Windows.Forms.FolderBrowserDialog();
+            SsProgress.SuspendLayout();
+            SuspendLayout();
             // 
             // SsProgress
             // 
-            this.SsProgress.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TsslProgress});
-            this.SsProgress.Location = new System.Drawing.Point(0, 151);
-            this.SsProgress.Name = "SsProgress";
-            this.SsProgress.Size = new System.Drawing.Size(560, 22);
-            this.SsProgress.TabIndex = 11;
-            this.SsProgress.Text = "statusStrip1";
+            SsProgress.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { TsslProgress });
+            SsProgress.Location = new System.Drawing.Point(0, 178);
+            SsProgress.Name = "SsProgress";
+            SsProgress.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            SsProgress.Size = new System.Drawing.Size(653, 22);
+            SsProgress.TabIndex = 11;
+            SsProgress.Text = "statusStrip1";
             // 
             // TsslProgress
             // 
-            this.TsslProgress.Name = "TsslProgress";
-            this.TsslProgress.Size = new System.Drawing.Size(0, 17);
+            TsslProgress.Name = "TsslProgress";
+            TsslProgress.Size = new System.Drawing.Size(0, 17);
             // 
             // BtnClose
             // 
-            this.BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnClose.AutoSize = true;
-            this.BtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnClose.Location = new System.Drawing.Point(289, 111);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(104, 23);
-            this.BtnClose.TabIndex = 10;
-            this.BtnClose.Text = "Close";
-            this.toolTip.SetToolTip(this.BtnClose, "Close this application.");
-            this.BtnClose.UseVisualStyleBackColor = true;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            BtnClose.AutoSize = true;
+            BtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            BtnClose.Location = new System.Drawing.Point(337, 128);
+            BtnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnClose.Name = "BtnClose";
+            BtnClose.Size = new System.Drawing.Size(121, 27);
+            BtnClose.TabIndex = 10;
+            BtnClose.Text = "Close";
+            toolTip.SetToolTip(BtnClose, "Close this application.");
+            BtnClose.UseVisualStyleBackColor = true;
+            BtnClose.Click += BtnClose_Click;
             // 
             // BtnCreateQsosFiles
             // 
-            this.BtnCreateQsosFiles.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnCreateQsosFiles.Location = new System.Drawing.Point(172, 111);
-            this.BtnCreateQsosFiles.Name = "BtnCreateQsosFiles";
-            this.BtnCreateQsosFiles.Size = new System.Drawing.Size(104, 23);
-            this.BtnCreateQsosFiles.TabIndex = 9;
-            this.BtnCreateQsosFiles.Text = "Create QSOs Files";
-            this.toolTip.SetToolTip(this.BtnCreateQsosFiles, "Create the ADIF test QSOs files");
-            this.BtnCreateQsosFiles.UseVisualStyleBackColor = true;
-            this.BtnCreateQsosFiles.Click += new System.EventHandler(this.BtnCreateQsosFiles_Click);
+            BtnCreateQsosFiles.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            BtnCreateQsosFiles.Location = new System.Drawing.Point(201, 128);
+            BtnCreateQsosFiles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnCreateQsosFiles.Name = "BtnCreateQsosFiles";
+            BtnCreateQsosFiles.Size = new System.Drawing.Size(121, 27);
+            BtnCreateQsosFiles.TabIndex = 9;
+            BtnCreateQsosFiles.Text = "Create QSOs Files";
+            toolTip.SetToolTip(BtnCreateQsosFiles, "Create the ADIF test QSOs files");
+            BtnCreateQsosFiles.UseVisualStyleBackColor = true;
+            BtnCreateQsosFiles.Click += BtnCreateQsosFiles_Click;
             // 
             // BtnChooseFile
             // 
-            this.BtnChooseFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnChooseFile.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnChooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnChooseFile.Location = new System.Drawing.Point(514, 36);
-            this.BtnChooseFile.Name = "BtnChooseFile";
-            this.BtnChooseFile.Size = new System.Drawing.Size(30, 23);
-            this.BtnChooseFile.TabIndex = 8;
-            this.BtnChooseFile.Text = "...";
-            this.toolTip.SetToolTip(this.BtnChooseFile, "Browse for Directory");
-            this.BtnChooseFile.UseVisualStyleBackColor = true;
-            this.BtnChooseFile.Click += new System.EventHandler(this.BtnChooseDirectory_Click);
+            BtnChooseFile.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            BtnChooseFile.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            BtnChooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            BtnChooseFile.Location = new System.Drawing.Point(600, 42);
+            BtnChooseFile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnChooseFile.Name = "BtnChooseFile";
+            BtnChooseFile.Size = new System.Drawing.Size(35, 27);
+            BtnChooseFile.TabIndex = 8;
+            BtnChooseFile.Text = "...";
+            toolTip.SetToolTip(BtnChooseFile, "Browse for Directory");
+            BtnChooseFile.UseVisualStyleBackColor = true;
+            BtnChooseFile.Click += BtnChooseDirectory_Click;
             // 
             // LblAdif
             // 
-            this.LblAdif.AutoSize = true;
-            this.LblAdif.Location = new System.Drawing.Point(14, 40);
-            this.LblAdif.Name = "LblAdif";
-            this.LblAdif.Size = new System.Drawing.Size(117, 13);
-            this.LblAdif.TabIndex = 6;
-            this.LblAdif.Text = "ADIF Version Directory:";
-            this.toolTip.SetToolTip(this.LblAdif, "The directory path for the ADIF version.\r\nThis is normally the ADIF version as a " +
-        "3-digit number, e.g. 314 for ADIF version 3.1.4");
+            LblAdif.AutoSize = true;
+            LblAdif.Location = new System.Drawing.Point(16, 46);
+            LblAdif.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LblAdif.Name = "LblAdif";
+            LblAdif.Size = new System.Drawing.Size(127, 15);
+            LblAdif.TabIndex = 6;
+            LblAdif.Text = "ADIF Version Directory:";
+            toolTip.SetToolTip(LblAdif, "The directory path for the ADIF version.\r\nThis is normally the ADIF version as a 3-digit number, e.g. 314 for ADIF version 3.1.4");
             // 
             // TxtAdifPath
             // 
-            this.TxtAdifPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtAdifPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::CreateADIFTestFiles.Properties.Settings.Default, "TxtAdifPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TxtAdifPath.Location = new System.Drawing.Point(137, 37);
-            this.TxtAdifPath.Name = "TxtAdifPath";
-            this.TxtAdifPath.Size = new System.Drawing.Size(380, 20);
-            this.TxtAdifPath.TabIndex = 7;
-            this.TxtAdifPath.Text = global::CreateADIFTestFiles.Properties.Settings.Default.TxtAdifPath;
-            this.toolTip.SetToolTip(this.TxtAdifPath, "The directory path for the ADIF version.\r\nThis is normally the ADIF version as a " +
-        "3-digit number, e.g. 314 for ADIF version 3.1.4");
-            this.TxtAdifPath.TextChanged += new System.EventHandler(this.TxtAllFile_TextChanged);
+            TxtAdifPath.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            settings1.SettingsKey = "";
+            settings1.TxtAdifPath = "";
+            settings1.Version = "0.0.0.0";
+            TxtAdifPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "TxtAdifPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            TxtAdifPath.Location = new System.Drawing.Point(160, 43);
+            TxtAdifPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            TxtAdifPath.Name = "TxtAdifPath";
+            TxtAdifPath.Size = new System.Drawing.Size(443, 23);
+            TxtAdifPath.TabIndex = 7;
+            toolTip.SetToolTip(TxtAdifPath, "The directory path for the ADIF version.\r\nThis is normally the ADIF version as a 3-digit number, e.g. 314 for ADIF version 3.1.4");
+            TxtAdifPath.TextChanged += TxtAllFile_TextChanged;
             // 
             // FbdAdif
             // 
-            this.FbdAdif.Description = "Choose ADIF version number directory:";
-            this.FbdAdif.ShowNewFolderButton = false;
+            FbdAdif.Description = "Choose ADIF version number directory:";
+            FbdAdif.ShowNewFolderButton = false;
             // 
             // CreateFiles
             // 
-            this.AcceptButton = this.BtnCreateQsosFiles;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 173);
-            this.Controls.Add(this.SsProgress);
-            this.Controls.Add(this.BtnClose);
-            this.Controls.Add(this.BtnCreateQsosFiles);
-            this.Controls.Add(this.BtnChooseFile);
-            this.Controls.Add(this.LblAdif);
-            this.Controls.Add(this.TxtAdifPath);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CreateFiles";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create ADIF Test Files";
-            this.Load += new System.EventHandler(this.CreateFiles_Load);
-            this.SsProgress.ResumeLayout(false);
-            this.SsProgress.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = BtnCreateQsosFiles;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = BtnClose;
+            ClientSize = new System.Drawing.Size(653, 200);
+            Controls.Add(SsProgress);
+            Controls.Add(BtnClose);
+            Controls.Add(BtnCreateQsosFiles);
+            Controls.Add(BtnChooseFile);
+            Controls.Add(LblAdif);
+            Controls.Add(TxtAdifPath);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "CreateFiles";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Create ADIF Test Files";
+            Load += CreateFiles_Load;
+            SsProgress.ResumeLayout(false);
+            SsProgress.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
