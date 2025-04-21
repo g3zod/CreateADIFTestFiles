@@ -22,4 +22,4 @@ The generated files for each ADIF version are then provided on the website in a 
 - The application version is kept in step with the ADIF Specification versions.  This is because of the potential need to add code and / or QSO templates to support new features in the ADIF Specification.
 
 ## See Also
-[Create ADIF Test Files](https://github.com/g3zod/CreateADIFTestFiles)
+[Create ADIF Export Files](https://github.com/g3zod/CreateADIFExportFiles)
