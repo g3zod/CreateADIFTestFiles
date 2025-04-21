@@ -226,6 +226,7 @@ Change History:
 
         <xsl:when test="$fieldName='AGE'">
           <xsl:value-of select="ae:record($fieldName,   '9')"/>
+          <xsl:value-of select="ae:record($fieldName,  '42.5')"/>
           <xsl:value-of select="ae:record($fieldName,  '57')"/>
           <xsl:value-of select="ae:record($fieldName, '102')"/>
         </xsl:when>
