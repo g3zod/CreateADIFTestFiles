@@ -225,12 +225,10 @@ Change History:
         <xsl:when test="$fieldName='ADDRESS_INTL'"/>
 
         <xsl:when test="$fieldName='AGE'">
-          <xsl:value-of select="ae:record($fieldName,   '0')"/>
-          <xsl:value-of select="ae:record($fieldName,   '3.14159265358979323846')"/>
           <xsl:value-of select="ae:record($fieldName,   '9')"/>
+          <xsl:value-of select="ae:record($fieldName,  '42.5')"/>
           <xsl:value-of select="ae:record($fieldName,  '57')"/>
           <xsl:value-of select="ae:record($fieldName, '102')"/>
-          <xsl:value-of select="ae:record($fieldName, '120')"/>
         </xsl:when>
 
         <xsl:when test="$fieldName='ALTITUDE' or $fieldName='MY_ALTITUDE'">
