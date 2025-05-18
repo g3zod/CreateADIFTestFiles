@@ -228,6 +228,7 @@ Change History:
           <xsl:value-of select="ae:record($fieldName,   '9')"/>
           <xsl:value-of select="ae:record($fieldName,  '57')"/>
           <xsl:value-of select="ae:record($fieldName, '102')"/>
+          <xsl:value-of select="ae:record($fieldName, '120')"/>
         </xsl:when>
 
         <xsl:when test="$fieldName='ALTITUDE' or $fieldName='MY_ALTITUDE'">
