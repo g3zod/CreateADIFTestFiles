@@ -2,36 +2,38 @@
 
 #pragma warning disable IDE1006 // Naming Styles - disable because the naming is then consistent with the names in the .xlst file.
 
-namespace AdifTestFileCreator
+#pragma warning disable IDE0079 // Remove unnecessary suppression - stop the crazy development environment from disputing suppressions!
+#pragma warning disable CA1822 // Mark members as static - invalid in this case because the XSLT can only access instance methods.
+
+namespace AdifXsltLib
 {
     /**
      * <summary>
      *   This is used as an XSLT extension object.  It acts as an interface between the <![CDATA[Test_QSOs_<ijk>.xslt]]> file
-     *   and AdifXslt.cs
+     *   and AdifXslt.cs<br />
+     *   Every method is an instance method as is required by an XSLT extension object.
      * </summary>
      * 
      * <remarks>
-     *   The source here was originally in a script file accessed from the <![CDATA[QSO_templates.xslt]]> file.<br/>
-     *   <br />
-     *   Now that it is a compiled C# extension object rather than a script file, it could be removed and calls made<br />
-     *   directly to AdifXslt.cs but I think it is more readable to use this file for the interface to the XSLT<br />
-     *   and keep the implementation code in <see cref="AdifXsltLib.AdifXslt"/>.
+     *   The source here could be replaced with methods in the AdifXslt.cs but I think it is more readable to use this
+     *   file for the interface to the XSLT file and keep the implementation code in <see cref="AdifXslt"/>.
      * </remarks>
      */
     public class AdifXsltExtension
     {
-        private AdifXsltLib.AdifXslt adifXslt = null;
+        private AdifXslt adifXslt = null;
 
         public string initialize(
           string fileFormat,
           bool hasHeaderFields,
+          bool clubLogBandsOnly,
           System.Xml.XPath.XPathNavigator nav)
         {
-            adifXslt = new AdifXsltLib.AdifXslt(fileFormat, hasHeaderFields, nav);
+            adifXslt = new AdifXslt(fileFormat, hasHeaderFields, clubLogBandsOnly, nav);
             return string.Empty;
         }
 
-        private AdifXsltLib.AdifXslt lib
+        private AdifXslt lib
         {
             get
             {
@@ -51,11 +53,11 @@ namespace AdifTestFileCreator
 
         public int adifVersionInt() => lib.AdifVersionInt();
 
-        public string programId() => lib.ProgramId;
+        public string programId() => AdifXslt.ProgramId;
 
-        public string programVersion() => lib.ProgramVersion;
+        public string programVersion() => AdifXslt.ProgramVersion;
 
-        public string createdTimestamp() => lib.CreatedTimestamp;
+        public string createdTimestamp() => AdifXslt.CreatedTimestamp;
 
         public string saveQsoStartEnd() => lib.SaveQsoStartEnd();
 
@@ -70,7 +72,13 @@ namespace AdifTestFileCreator
             string primaryAdministrativeSubdivision)
             => lib.CallForPrimaryAdministrativeSubdivision(dxcc, primaryAdministrativeSubdivision);
 
-        public string bandForContest(string contest) => lib.BandForContest(contest);
+        public string callForDxccStartDate() => lib.CallForDxccStartDate();
+
+        public string callForDxccStartTime() => lib.CallForDxccStartTime();
+
+        public string bandForContest(string contest) => AdifXslt.BandForContest(contest);
+
+        public bool includeBand(string band) => lib.IncludeBand(band);
 
         public string comment(string text) => lib.Comment(text);
 
@@ -80,9 +88,12 @@ namespace AdifTestFileCreator
 
         public string commentReport(bool full) => lib.CommentReport(full);
 
+        public string dateToAdifDate(string date) => lib.DateToAdifDate(date);
+
         public string untestedField(string name) => lib.UntestedField(name);
 
         public string field(string name, string value) => lib.Field(name, value);
+        public string field(string name, string value, string dataTypeIndicator) => lib.Field(name, value, dataTypeIndicator);
 
         public string userDefNField(
           string name,
@@ -137,6 +148,14 @@ namespace AdifTestFileCreator
 
         public string record(string name1, string value1, string name2, string value2, string name3, string value3, string name4, string value4, string name5, string value5, string name6, string value6, string name7, string value7)
             => lib.Record(name1, value1, name2, value2, name3, value3, name4, value4, name5, value5, name6, value6, name7, value7);
+
+        // The development environment is insane ... it reports CA1822 but if that is suppressed,
+        // it then reports IDE0079 that the suppression of CA1822 is unnecessary!!!
+
+#pragma warning disable IDE0079 // Remove unnecessary suppression
+#pragma warning disable CA1822 // Mark members as static
+        public string log(string message) => AdifXslt.Log(message);
+#pragma warning restore CA1822, IDE0079
 
         //public XPathNodeIterator nodeset(string xml, string select)
         //{

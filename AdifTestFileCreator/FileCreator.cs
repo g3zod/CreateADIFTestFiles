@@ -182,10 +182,18 @@ namespace AdifTestFileCreator
          * </value>
          */
         private readonly string[] SupportedVersions =
-        {
+        [
             "314",
             "315",
-        };
+            "316",
+        ];
+
+        /**
+         * <value>
+         *   Whether or not the bands are to be restricted to those supported by Club Log.
+         * </value>
+         */
+        private bool ClubLogBandsOnly { get; set; }
 
         /**
          * <summary>
@@ -196,6 +204,7 @@ namespace AdifTestFileCreator
          * <param name="startupPath">The path to the directory that contains the excutable and DLL files.</param>
          * <param name="productName">The product name of the program for including in the <![CDATA[Entities<ijk>.xml]]> file.</param>
          * <param name="productVersion">The product version of the program for including in the <![CDATA[Entities<ijk>]]>.xml file.</param>
+         * <param name="clubLogBandsOnly">Whether the Bands output should be restricted to those supported by Club Log.</param>
          * <param name="reportProgress">A delegate object for reporting a short progress message for logging and / or status bar purposes.</param>
          * <param name="userPrompter">A delegate object for displaying a message to the user.</param>
          */
@@ -204,6 +213,7 @@ namespace AdifTestFileCreator
             string startupPath,
             string productName,
             string productVersion,
+            bool clubLogBandsOnly,
             ProgressReporter reportProgress,
             UserPrompter userPrompter)
         {
@@ -232,6 +242,7 @@ namespace AdifTestFileCreator
             StartupPath = startupPath;
             ProductName = productName;
             ProductVersion = productVersion;
+            ClubLogBandsOnly = clubLogBandsOnly;
 
             if (!Directory.Exists(TestsDirectoryPath))
             {
@@ -343,6 +354,7 @@ namespace AdifTestFileCreator
                 TestsDirectoryPath,
                 StartupPath,
                 AllDoc,
+                ClubLogBandsOnly,
                 ReportProgress).CreateFiles();
 
             ReportProgress?.Invoke("Completed");

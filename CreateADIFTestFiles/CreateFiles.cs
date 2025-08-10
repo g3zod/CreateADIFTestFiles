@@ -206,6 +206,7 @@ namespace CreateADIFTestFiles
                     Application.StartupPath,
                     Application.ProductName,
                     Application.ProductVersion,
+                    cboClubLogBandsOnly.Checked,
                     new FileCreator.ProgressReporter(ShowProgress),
                     new FileCreator.UserPrompter(PromptUser)).CreateAdifTestFiles();
             }

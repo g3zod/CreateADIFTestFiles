@@ -25,6 +25,8 @@ namespace AdifTestFileCreator
 
         private readonly XmlDocument AllDoc;
 
+        private readonly bool ClubLogBandsOnly;
+
         /**
          * <summary>
          *   Returns an object for creating ADIF ADI and ADX test QSOs files using the XML data file exported from the ADIF Specification.
@@ -35,20 +37,24 @@ namespace AdifTestFileCreator
          * <param name="testsDirectoryPath">The path to the tests directory.</param>
          * <param name="startupPath">The path to the directory that contains the excutable and DLL files.</param>
          * <param name="allDoc">An <see cref="XmlDocument"/> object loaded with the contents of the all.xml file</param>
+         * <param name="ClubLogBandsOnly">If true, the ADIF file will only include bands supported by Club Log.</param>
+         * <param name="reportProgress">A delegate that used to report progress to the calling class.</param>
          */
-        /// <param name="reportProgress">A delegate that used to report progress to the calling class.</param>
         internal TestQsoFileCreator(
             string adifVersion,
             string adifDirectoryPath,
             string testsDirectoryPath,
             string startupPath,
-            XmlDocument allDoc, ProgressReporter reportProgress)
+            XmlDocument allDoc,
+            bool clubLogBandsOnly,
+            ProgressReporter reportProgress)
         {
             AdifVersion = adifVersion;
             AdifDirectoryPath = adifDirectoryPath;
             TestsDirectoryPath = testsDirectoryPath;
             StartupPath = startupPath;
             AllDoc = allDoc;
+            ClubLogBandsOnly = clubLogBandsOnly;
             ReportProgress = reportProgress;
         }
 
@@ -96,74 +102,73 @@ namespace AdifTestFileCreator
 
                 ReportProgress?.Invoke($"Creating {adifTestQsosFilePath} ...");
 
-                using (XmlReader xmlDocReader = new XmlNodeReader(AllDoc))
+                using XmlReader xmlDocReader = new XmlNodeReader(AllDoc);
+                AppContext.SetSwitch("Switch.System.Xml.AllowDefaultResolver", true);  // Needed for .NET 8
+
+                XslCompiledTransform xslt = new();
+
+                xslt.Load(
+                    Path.Combine(StartupPath, $"QSO_templates.xslt"),
+                    XsltSettings.TrustedXslt,
+                    new XmlUrlResolver());
+
+                XsltArgumentList xslArgs = new();
+
+                xslArgs.AddExtensionObject(
+                    "urn:adifxsltextension",
+                    new AdifXsltLib.AdifXsltExtension());
+
+                xslArgs.AddParam("adifStyle", "", adifFileType == AdifFileType.ADI ? "ADI" : "ADX");
+                xslArgs.AddParam("clubLogBandsOnly", "", ClubLogBandsOnly);
+
+                string contents = string.Empty;
+
+                using (StringWriter stringWriter = new())
                 {
-                    AppContext.SetSwitch("Switch.System.Xml.AllowDefaultResolver", true);  // Needed for .NET 8
+                    xslt.Transform(xmlDocReader, xslArgs, stringWriter);
+                    contents = stringWriter.ToString();
+                }
 
-                    XslCompiledTransform xslt = new XslCompiledTransform();
+                string resultMessage;
 
-                    xslt.Load(
-                        Path.Combine(StartupPath, $"QSO_templates.xslt"),
-                        XsltSettings.TrustedXslt,
-                        new XmlUrlResolver());
-
-                    XsltArgumentList xslArgs = new XsltArgumentList();
-
-                    xslArgs.AddExtensionObject(
-                        "urn:adifxsltextension",
-                        new AdifXsltExtension());
-
-                    xslArgs.AddParam("adifStyle", "", adifFileType == AdifFileType.ADI ? "ADI" : "ADX");
-
-                    string contents = string.Empty;
-
-                    using (StringWriter stringWriter = new StringWriter())
+                if (AdifXsltLib.AdifXslt.Success)
+                {
+                    if (adifFileType == AdifFileType.ADX)
                     {
-                        xslt.Transform(xmlDocReader, xslArgs, stringWriter);
-                        contents = stringWriter.ToString();
-                    }
+                        // It is posisble to validate the ADX using both XML schemas since no
+                        // deprecated (import-only) items are included in the ADX.
+                        //
+                        // It is also a good test of the XML schemas themselves.
 
-                    string resultMessage;
-
-                    if (AdifXsltLib.AdifXslt.Success)
-                    {
-                        if (adifFileType == AdifFileType.ADX)
-                        {
-                            // It is posisble to validate the ADX using both XML schemas since no
-                            // deprecated (import-only) items are included in the ADX.
-                            //
-                            // It is also a good test of the XML schemas themselves.
-
-                            foreach (string schemaFileName in new string[] {
+                        foreach (string schemaFileName in new string[] {
                                 $"adx{AdifVersion}.xsd",
                                 $"adx{AdifVersion}generic.xsd" })
+                        {
+                            if (!ValidateAdx(
+                                    contents,
+                                    Path.Combine(AdifDirectoryPath, schemaFileName)))
                             {
-                                if (!ValidateAdx(
-                                        contents,
-                                        Path.Combine(AdifDirectoryPath, schemaFileName)))
-                                {
-                                    Logger.Log($"ADX file has failed validation\r\n\r\n{AdixValidationResults}");
-                                    throw new AdifXsltLib.AdifException("ADX file has failed validation - see log file for details");
-                                }
+                                Logger.Log($"ADX file has failed validation\r\n\r\n{AdixValidationResults}");
+                                throw new AdifXsltLib.AdifException("ADX file has failed validation - see log file for details");
                             }
                         }
+                    }
 
-                        using (StreamWriter streamWriter = new StreamWriter(adifTestQsosFilePath, false, encoding))
-                        {
-                            streamWriter.Write(contents);
-                        }
-                        resultMessage = $"Completed creating {adifTestQsosFilePath}";
-                    }
-                    else
+                    using (StreamWriter streamWriter = new(adifTestQsosFilePath, false, encoding))
                     {
-                        resultMessage = $"*** Error creating {adifTestQsosFilePath}";
+                        streamWriter.Write(contents);
                     }
-                    ReportProgress?.Invoke(resultMessage);
+                    resultMessage = $"Completed creating {adifTestQsosFilePath}";
                 }
+                else
+                {
+                    resultMessage = $"*** Error creating {adifTestQsosFilePath}";
+                }
+                ReportProgress?.Invoke(resultMessage);
             }
             catch (XsltException exc)
             {
-                StringBuilder message = new StringBuilder(1024);
+                StringBuilder message = new(1024);
 
                 _ = message.Append(string.IsNullOrEmpty(exc.Message) ?
                                 exc.GetType().Name :
@@ -204,7 +209,7 @@ namespace AdifTestFileCreator
             }
             catch (Exception exc)
             {
-                StringBuilder message = new StringBuilder(1024);
+                StringBuilder message = new(1024);
 
                 message.Append(string.IsNullOrEmpty(exc.Message) ?
                     exc.GetType().Name :
@@ -224,7 +229,7 @@ namespace AdifTestFileCreator
          *   Buffers the messages from <see cref="AdxValidationCallBack"/>.
          * </summary>
          */
-        private readonly StringBuilder AdixValidationResults = new StringBuilder(65536);
+        private readonly StringBuilder AdixValidationResults = new(65536);
 
 
         /**
@@ -249,7 +254,7 @@ namespace AdifTestFileCreator
 
             ReportProgress?.Invoke($"Validating ADX using schema {Path.GetFileName(schemaFilePath)} ...");
 
-            XmlReaderSettings settings = new XmlReaderSettings
+            XmlReaderSettings settings = new()
             {
                 ValidationType = ValidationType.Schema,
             };
@@ -258,7 +263,7 @@ namespace AdifTestFileCreator
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             settings.ValidationEventHandler += new ValidationEventHandler(AdxValidationCallBack);
 
-            using (StringReader stringReader = new StringReader(adx))
+            using (StringReader stringReader = new(adx))
             using (XmlReader xmlReader = XmlReader.Create(stringReader, settings))
             {
                 while (xmlReader.Read());

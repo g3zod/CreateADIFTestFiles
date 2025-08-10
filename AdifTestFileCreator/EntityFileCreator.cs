@@ -86,8 +86,8 @@ namespace AdifTestFileCreator
             date = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Month, date.Second);  // Remove milliseconds.
 
             XmlDocument
-                newDoc = new XmlDocument(),
-                oldDoc = new XmlDocument();
+                newDoc = new(),
+                oldDoc = new();
 
             using (XmlWriter xmlWriter = XmlWriter.Create(
                 newFilePath,

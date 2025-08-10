@@ -77,13 +77,13 @@
     <dxccEntity code="7" callTemplate="ZA#aaa" name="Albania" continent="EU" ituz="28" cqz="15" />
     <dxccEntity code="8" callTemplate="VQ9aaa" name="Aldabra" continent="AF" ituz="53" cqz="39" endDate="1976-06-28T23:59:59Z" deleted="true" />
     <dxccEntity code="9" callTemplate="KH8aaa" name="American Samoa" continent="OC" ituz="62" cqz="32" />
-    <dxccEntity code="10" callTemplate="FT09Z" name="Amsterdam &amp; St. Paul Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="10" callTemplate="FT1Z+FT2Z+FT3Z+FT4Z+FT5Z+FT6Z+FT7Z+" name="Amsterdam &amp; St. Paul Is." continent="AF" ituz="68" cqz="39" />
     <dxccEntity code="11" callTemplate="VU4aaa" name="Andaman &amp; Nicobar Is." continent="AS" ituz="49" cqz="26" />
     <dxccEntity code="12" callTemplate="VP2E" name="Anguilla" continent="NA" ituz="11" cqz="8" />
-    <dxccEntity code="13" callTemplate="ZL5aaa" name="Antarctica" continent="AN" ituz="67" cqz="13" />
+    <dxccEntity code="13" callTemplate="CX0aaa" name="Antarctica" continent="AN" ituz="67" cqz="13" />
     <dxccEntity code="14" callTemplate="EK#aaa" name="Armenia" continent="AS" ituz="29" cqz="21" />
-    <dxccEntity code="15" callTemplate="UA9aaa" name="Asiatic Russia" continent="AS" ituz="20" cqz="17">
-      <pas code="CB" callTemplate="UA9Aaa" />
+    <dxccEntity code="15" callTemplate="UA0aaa" name="Asiatic Russia" continent="AS" ituz="20" cqz="17">
+      <!--<pas code="CB" callTemplate="UA9Aaa" />
       <pas code="SV" callTemplate="UA9Caa" />
       <pas code="PM" callTemplate="UA9Faa" />
       <pas code="TO" callTemplate="UA9Haa" />
@@ -98,7 +98,7 @@
       <pas code="BA" callTemplate="UA9Waa" />
       <pas code="KO" callTemplate="UA9Xaa" />
       <pas code="AL" callTemplate="UA9Yaa" />
-      <pas code="GA" callTemplate="UA9Zaa" />
+      <pas code="GA" callTemplate="UA9Zaa" />-->
       <pas code="KK" callTemplate="UA0Baa" />
       <pas code="HK" callTemplate="UA0Caa" />
       <pas code="EA" callTemplate="UA0Daa" />
@@ -119,13 +119,13 @@
     <dxccEntity code="17" callTemplate="YV0aaa" name="Aves Is." continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="18" callTemplate="4J#aaa" name="Azerbaijan" continent="AS" ituz="29" cqz="21" />
     <dxccEntity code="19" callTemplate="HK0aaa" name="Bajo Nuevo" continent="NA" ituz="11" cqz="8" endDate="1981-09-16T23:59:59Z" deleted="true" />
-    <dxccEntity code="20" callTemplate="KH1aaa" name="Baker &amp; Howland Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="20" callTemplate="K1B=2002-05-01Z+KH1/N1DG=2018-07-02T12:00:00Z" name="Baker &amp; Howland Is." continent="OC" ituz="61" cqz="31" />
     <dxccEntity code="21" callTemplate="EA6aaa" name="Balearic Is." continent="EU" ituz="37" cqz="14">
       <pas code="IB" callTemplate="EA6aaa" />
     </dxccEntity>
     <dxccEntity code="22" callTemplate="T8aaa" name="Palau" continent="OC" ituz="64" cqz="27" />
     <dxccEntity code="23" callTemplate="1B#aa" name="Blenheim Reef" continent="AF" ituz="41" cqz="39" startDate="1967-05-04T00:00:00Z" endDate="1975-06-30T23:59:59Z" deleted="true" />
-    <dxccEntity code="24" callTemplate="3Y0a" name="Bouvet" continent="AN" ituz="67" cqz="38" />
+    <dxccEntity code="24" callTemplate="3Y0J=2023-02-06Z" name="Bouvet" continent="AN" ituz="67" cqz="38" />
     <dxccEntity code="25" callTemplate="ZC5aaa" name="British North Borneo" continent="OC" ituz="54" cqz="28" endDate="1963-09-15T23:59:59Z" deleted="true" />
     <dxccEntity code="26" callTemplate="VQ6aaa" name="British Somaliland" continent="AF" ituz="48" cqz="37" endDate="1960-06-30T23:59:59Z" deleted="true" />
     <dxccEntity code="27" callTemplate="EU#aaa" name="Belarus" continent="EU" ituz="29" cqz="16">
@@ -150,12 +150,12 @@
     <dxccEntity code="33" callTemplate="VQ9aaa" name="Chagos Is." continent="AF" ituz="41" cqz="39" />
     <dxccEntity code="34" callTemplate="ZL7aaa" name="Chatham Is." continent="OC" ituz="60" cqz="32" />
     <dxccEntity code="35" callTemplate="VK9X" name="Christmas Is." continent="OC" ituz="54" cqz="29" />
-    <dxccEntity code="36" callTemplate="FO#aa" name="Clipperton Is." continent="NA" ituz="10" cqz="7" />
+    <dxccEntity code="36" callTemplate="TX5S=2024-01-21Z" name="Clipperton Is." continent="NA" ituz="10" cqz="7" />
     <dxccEntity code="37" callTemplate="TI9aaa" name="Cocos Is." continent="NA" ituz="11" cqz="7" />
     <dxccEntity code="38" callTemplate="VK9C" name="Cocos-Keeling Is." continent="OC" ituz="54" cqz="29" />
     <dxccEntity code="39" callTemplate="FH#aaa" name="Comoros" continent="AF" ituz="53" cqz="39" endDate="1975-07-05T23:59:59Z" deleted="true" />
     <dxccEntity code="40" callTemplate="SV9aaa" name="Crete" continent="EU" ituz="28" cqz="20" />
-    <dxccEntity code="41" callTemplate="FT09W" name="Crozet Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="41" callTemplate="FT8WW=2023-01-01Z" name="Crozet Is." continent="AF" ituz="68" cqz="39" />
     <dxccEntity code="42" callTemplate="CR8aaa" name="Damao,Diu" continent="AS" ituz="41" cqz="22" endDate="1961-12-31T23:59:59Z" deleted="true" />
     <dxccEntity code="43" callTemplate="KP5aaa" name="Desecheo Is." continent="NA" ituz="11" cqz="8" startDate="1979-03-01T00:00:00Z" />
     <dxccEntity code="44" callTemplate="VQ9aaa" name="Desroches" continent="AF" ituz="53" cqz="39" endDate="1976-06-28T23:59:59Z" deleted="true" />
@@ -163,8 +163,8 @@
     <dxccEntity code="46" callTemplate="9M6aaa" name="East Malaysia" continent="OC" ituz="54" cqz="28" startDate="1963-09-16T00:00:00Z" />
     <dxccEntity code="47" callTemplate="CE0A" name="Easter Is." continent="SA" ituz="63" cqz="12" />
     <dxccEntity code="48" callTemplate="T32aaa" name="Eastern Kiribati" continent="OC" ituz="61" cqz="31" />
-    <dxccEntity code="49" callTemplate="3C#aaa" name="Equatorial Guinea" continent="AF" ituz="47" cqz="36" />
-    <dxccEntity code="50" callTemplate="XE#aaa" name="Mexico" continent="NA" ituz="10" cqz="6">
+    <dxccEntity code="49" callTemplate="3C1aaa+3C2aaa+3C3aaa+3C4aaa+3C5aaa+3C6aaa+3C7aaa+3C8aaa+3C9aaa+" name="Equatorial Guinea" continent="AF" ituz="47" cqz="36" />
+    <dxccEntity code="50" callTemplate="XE1aaa+XE2aaa+XE3aaa" name="Mexico" continent="NA" ituz="10" cqz="6">
       <pas code="COL" callTemplate="XE1aaa" />
       <pas code="DF" callTemplate="XE1aaa" />
       <pas code="EMX" callTemplate="XE1aaa" />
@@ -260,8 +260,8 @@
     <dxccEntity code="58" callTemplate="FI8aaa" name="French Indo-China" continent="AS" ituz="49" cqz="26" endDate="1950-12-20T23:59:59Z" deleted="true" />
     <dxccEntity code="59" callTemplate="FF#aaa" name="French West Africa" continent="AF" ituz="46" cqz="35" endDate="1960-08-06T23:59:59Z" deleted="true" />
     <dxccEntity code="60" callTemplate="C6aaa" name="Bahamas" continent="NA" ituz="11" cqz="8" />
-    <dxccEntity code="61" callTemplate="R1FJ" name="Franz Josef Land" continent="EU" ituz="75" cqz="40">
-      <pas code="AR" callTemplate="R1FJa" />
+    <dxccEntity code="61" callTemplate="UA3SYC/1" name="Franz Josef Land" continent="EU" ituz="75" cqz="40">
+      <pas code="AR" callTemplate="UA3SYC/1" />
     </dxccEntity>
     <dxccEntity code="62" callTemplate="8P#aaa" name="Barbados" continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="63" callTemplate="FY#aaa" name="French Guiana" continent="SA" ituz="12" cqz="9" />
@@ -296,7 +296,7 @@
     <dxccEntity code="96" callTemplate="VP2M" name="Montserrat" continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="97" callTemplate="J6aaa" name="Saint Lucia" continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="98" callTemplate="J8aaa" name="Saint Vincent" continent="NA" ituz="11" cqz="8" />
-    <dxccEntity code="99" callTemplate="FR#Ga" name="Glorioso Is." continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
+    <dxccEntity code="99" callTemplate="FT4GL=2024-06-01Z" name="Glorioso Is." continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
     <dxccEntity code="100" callTemplate="LU#aaa" name="Argentina" continent="SA" ituz="14" cqz="13">
       <pas code="C" callTemplate="LU#Aaa" />
       <pas code="B" callTemplate="LU#Daa" />
@@ -327,10 +327,10 @@
     <dxccEntity code="102" callTemplate="ZD4aaa" name="Gold Coast, Togoland" continent="AF" ituz="46" cqz="35" endDate="1957-03-05T23:59:59Z" deleted="true" />
     <dxccEntity code="103" callTemplate="KH2aaa" name="Guam" continent="OC" ituz="64" cqz="27" />
     <dxccEntity code="104" callTemplate="CP#aaa" name="Bolivia" continent="SA" ituz="12" cqz="10" />
-    <dxccEntity code="105" callTemplate="KG4aaa" name="Guantanamo Bay" continent="NA" ituz="11" cqz="8" />
+    <dxccEntity code="105" callTemplate="KG4NEX=1970-01-01Z+KG44WW=2006-03-26Z" name="Guantanamo Bay" continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="106" callTemplate="GU#aaa" name="Guernsey" continent="EU" ituz="27" cqz="14" />
     <dxccEntity code="107" callTemplate="3X#aaa" name="Guinea" continent="AF" ituz="46" cqz="35" />
-    <dxccEntity code="108" callTemplate="PY#aaa" name="Brazil" continent="SA" ituz="12" cqz="11">
+    <dxccEntity code="108" callTemplate="PY1aaa+PY2aaa+PY3aaa+PY4aaa+PY5aaa+PY6aaa+PY7aaa+PY8aaa+PY9aaa+" name="Brazil" continent="SA" ituz="12" cqz="11">
       <pas code="ES" callTemplate="PP1aaa" />
       <pas code="GO" callTemplate="PP2aaa" />
       <pas code="SC" callTemplate="PP5aaa" />
@@ -364,7 +364,7 @@
       <pas code="HI" callTemplate="KH6aaa" />
     </dxccEntity>
     <dxccEntity code="111" callTemplate="VK0H" name="Heard Is." continent="AF" ituz="68" cqz="39" />
-    <dxccEntity code="112" callTemplate="CE#aaa" name="Chile" continent="SA" ituz="14" cqz="12">
+    <dxccEntity code="112" callTemplate="CE1aaa+CE2aaa+CE3aaa+CE4aaa+CE5aaa+CE6aaa+CE7aaa+CE8aaa+" name="Chile" continent="SA" ituz="14" cqz="12">
       <pas code="II" callTemplate="CE1aaa" />
       <pas code="III" callTemplate="CE1aaa" />
       <pas code="I" callTemplate="CE1aaa" />
@@ -388,8 +388,8 @@
     <dxccEntity code="119" callTemplate="PK1aaa" name="Java" continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
     <dxccEntity code="120" callTemplate="HC#aaa" name="Ecuador" continent="SA" ituz="12" cqz="10" />
     <dxccEntity code="122" callTemplate="GJ#aaa" name="Jersey" continent="EU" ituz="27" cqz="14" />
-    <dxccEntity code="123" callTemplate="KH3aaa" name="Johnston Is." continent="OC" ituz="61" cqz="31" />
-    <dxccEntity code="124" callTemplate="FR#Ja" name="Juan de Nova, Europa" continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
+    <dxccEntity code="123" callTemplate="KH3/WM4M=1991-04-29Z+K3J=2001-09-15Z+NH6HX/KH3=1993-06-11Z" name="Johnston Is." continent="OC" ituz="61" cqz="31" />
+    <dxccEntity code="124" callTemplate="FT4JA=2016-04-01Z" name="Juan de Nova, Europa" continent="AF" ituz="53" cqz="39" startDate="1960-06-25T00:00:00Z" />
     <dxccEntity code="125" callTemplate="CE0Z" name="Juan Fernandez Is." continent="SA" ituz="14" cqz="12" />
     <dxccEntity code="126" callTemplate="UA2aaa" name="Kaliningrad" continent="EU" ituz="29" cqz="15">
       <pas code="KA" callTemplate="UA2Faa" />
@@ -398,7 +398,7 @@
     <dxccEntity code="128" callTemplate="UN1aaa" name="Karelo-Finnish Rep." continent="EU" ituz="18" cqz="15" endDate="1960-06-30T23:59:59Z" deleted="true" />
     <dxccEntity code="129" callTemplate="8R#aaa" name="Guyana" continent="SA" ituz="12" cqz="9" />
     <dxccEntity code="130" callTemplate="UN#aaa" name="Kazakhstan" continent="AS" ituz="29" cqz="17" />
-    <dxccEntity code="131" callTemplate="FT09X" name="Kerguelen Is." continent="AF" ituz="68" cqz="39" />
+    <dxccEntity code="131" callTemplate="FT4XW=2022-12-01Z" name="Kerguelen Is." continent="AF" ituz="68" cqz="39" />
     <dxccEntity code="132" callTemplate="ZP#aaa" name="Paraguay" continent="SA" ituz="14" cqz="11">
       <pas code="16" callTemplate="ZP1aaa" />
       <pas code="19" callTemplate="ZP1aaa" />
@@ -446,36 +446,36 @@
     </dxccEntity>
     <dxccEntity code="139" callTemplate="VS9H" name="Kura Muria I." continent="AS" ituz="39" cqz="21" endDate="1967-11-29T23:59:59Z" deleted="true" />
     <dxccEntity code="140" callTemplate="PZ#aaa" name="Suriname" continent="SA" ituz="12" cqz="9" />
-    <dxccEntity code="141" callTemplate="VP8F" name="Falkland Is." continent="SA" ituz="16" cqz="13" />
+    <dxccEntity code="141" callTemplate="VP8a" name="Falkland Is." continent="SA" ituz="16" cqz="13" />
     <dxccEntity code="142" callTemplate="VU7aaa" name="Lakshadweep Is." continent="AS" ituz="41" cqz="22" />
     <dxccEntity code="143" callTemplate="XW#aaa" name="Laos" continent="AS" ituz="49" cqz="26" />
-    <dxccEntity code="144" callTemplate="CX#aaa" name="Uruguay" continent="SA" ituz="14" cqz="13">
-      <pas code="MO" callTemplate="CX#Aaa" />
-      <pas code="CA" callTemplate="CX#Daa" />
-      <pas code="SJ" callTemplate="CX#Eaa" />
-      <pas code="CO" callTemplate="CX#Faa" />
-      <pas code="SO" callTemplate="CX#Gaa" />
-      <pas code="RN" callTemplate="CX#Haa" />
-      <pas code="PA" callTemplate="CX#Iaa" />
-      <pas code="SA" callTemplate="CX#Jaa" />
-      <pas code="AR" callTemplate="CX#Kaa" />
-      <pas code="FD" callTemplate="CX#Laa" />
-      <pas code="FS" callTemplate="CX#Maa" />
-      <pas code="DU" callTemplate="CX#Naa" />
-      <pas code="TA" callTemplate="CX#Oaa" />
-      <pas code="RV" callTemplate="CX#Paa" />
-      <pas code="MA" callTemplate="CX#Raa" />
-      <pas code="LA" callTemplate="CX#Saa" />
-      <pas code="RO" callTemplate="CX#Taa" />
-      <pas code="TT" callTemplate="CX#Uaa" />
-      <pas code="CL" callTemplate="CX#Vaa" />
+    <dxccEntity code="144" callTemplate="CX1aaa+CX2aaa+CX3aaa+CX4aaa+CX5aaa+CX6aaa+CX7aaa+CX8aaa+CX9aaa" name="Uruguay" continent="SA" ituz="14" cqz="13">
+      <pas code="MO" callTemplate="CX1Aaa+CX2Aaa+CX3Aaa+CX4Aaa+CX5Aaa+CX6Aaa+CX7Aaa+CX8Aaa+CX9Aaa+" />
+      <pas code="CA" callTemplate="CX1Daa+CX2Daa+CX3Daa+CX4Daa+CX5Daa+CX6Daa+CX7Daa+CX8Daa+CX9Daa+" />
+      <pas code="SJ" callTemplate="CX1Eaa+CX2Eaa+CX3Eaa+CX4Eaa+CX5Eaa+CX6Eaa+CX7Eaa+CX8Eaa+CX9Eaa+" />
+      <pas code="CO" callTemplate="CX1Faa+CX2Faa+CX3Faa+CX4Faa+CX5Faa+CX6Faa+CX7Faa+CX8Faa+CX9Faa+" />
+      <pas code="SO" callTemplate="CX1Gaa+CX2Gaa+CX3Gaa+CX4Gaa+CX5Gaa+CX6Gaa+CX7Gaa+CX8Gaa+CX9Gaa+" />
+      <pas code="RN" callTemplate="CX1Haa+CX2Haa+CX3Haa+CX4Haa+CX5Haa+CX6Haa+CX7Haa+CX8Haa+CX9Haa+" />
+      <pas code="PA" callTemplate="CX1Iaa+CX2Iaa+CX3Iaa+CX4Iaa+CX5Iaa+CX6Iaa+CX7Iaa+CX8Iaa+CX9Iaa+" />
+      <pas code="SA" callTemplate="CX1Jaa+CX2Jaa+CX3Jaa+CX4Jaa+CX5Jaa+CX6Jaa+CX7Jaa+CX8Jaa+CX9Jaa+" />
+      <pas code="AR" callTemplate="CX1Kaa+CX2Kaa+CX3Kaa+CX4Kaa+CX5Kaa+CX6Kaa+CX7Kaa+CX8Kaa+CX9Kaa+" />
+      <pas code="FD" callTemplate="CX1Laa+CX2Laa+CX3Laa+CX4Laa+CX5Laa+CX6Laa+CX7Laa+CX8Laa+CX9Laa+" />
+      <pas code="FS" callTemplate="CX1Maa+CX2Maa+CX3Maa+CX4Maa+CX5Maa+CX6Maa+CX7Maa+CX8Maa+CX9Maa+" />
+      <pas code="DU" callTemplate="CX1Naa+CX2Naa+CX3Naa+CX4Naa+CX5Naa+CX6Naa+CX7Naa+CX8Naa+CX9Naa+" />
+      <pas code="TA" callTemplate="CX1Oaa+CX2Oaa+CX3Oaa+CX4Oaa+CX5Oaa+CX6Oaa+CX7Oaa+CX8Oaa+CX9Oaa+" />
+      <pas code="RV" callTemplate="CX1Paa+CX2Paa+CX3Paa+CX4Paa+CX5Paa+CX6Paa+CX7Paa+CX8Paa+CX9Paa+" />
+      <pas code="MA" callTemplate="CX1Raa+CX2Raa+CX3Raa+CX4Raa+CX5Raa+CX6Raa+CX7Raa+CX8Raa+CX9Raa+" />
+      <pas code="LA" callTemplate="CX1Saa+CX2Saa+CX3Saa+CX4Saa+CX5Saa+CX6Saa+CX7Saa+CX8Saa+CX9Saa+" />
+      <pas code="RO" callTemplate="CX1Taa+CX2Taa+CX3Taa+CX4Taa+CX5Taa+CX6Taa+CX7Taa+CX8Taa+CX9Taa+" />
+      <pas code="TT" callTemplate="CX1Uaa+CX2Uaa+CX3Uaa+CX4Uaa+CX5Uaa+CX6Uaa+CX7Uaa+CX8Uaa+CX9Uaa+" />
+      <pas code="CL" callTemplate="CX1Vaa+CX2Vaa+CX3Vaa+CX4Vaa+CX5Vaa+CX6Vaa+CX7Vaa+CX8Vaa+CX9Vaa+" />
     </dxccEntity>
     <dxccEntity code="145" callTemplate="YL#aaa" name="Latvia" continent="EU" ituz="29" cqz="15" />
     <dxccEntity code="146" callTemplate="LY#aaa" name="Lithuania" continent="EU" ituz="29" cqz="15" />
-    <dxccEntity code="147" callTemplate="VK9L" name="Lord Howe Is." continent="OC" ituz="60" cqz="30">
-      <pas code="LH" callTemplate="VK9Laa" />
+    <dxccEntity code="147" callTemplate="VK9LNQ+VK2GEL/9+VK9/VK3TKB" name="Lord Howe Is." continent="OC" ituz="60" cqz="30">
+      <pas code="LH" callTemplate="VK9LNQ+VK2GEL/9+VK9/VK3TKB" />
     </dxccEntity>
-    <dxccEntity code="148" callTemplate="YV#aaa" name="Venezuela" continent="SA" ituz="12" cqz="9">
+    <dxccEntity code="148" callTemplate="YV1aaa+YV2aaa+YV3aaa+YV4aaa+YV5aaa+YV6aaa+YV7aaa+YV8aaa+YV9aaa+" name="Venezuela" continent="SA" ituz="12" cqz="9">
       <pas code="AM" callTemplate="YV9aaa" />
       <pas code="AN" callTemplate="YV6aaa" />
       <pas code="AP" callTemplate="YV9aaa" />
@@ -501,8 +501,8 @@
       <pas code="YA" callTemplate="YV3aaa" />
       <pas code="ZU" callTemplate="YV1aaa" />
     </dxccEntity>
-    <dxccEntity code="149" callTemplate="CU#aaa" name="Azores" continent="EU" ituz="36" cqz="14" />
-    <dxccEntity code="150" callTemplate="VK#aaa" name="Australia" continent="OC" ituz="55" cqz="30">
+    <dxccEntity code="149" callTemplate="CT8aaa" name="Azores" continent="EU" ituz="36" cqz="14" />
+    <dxccEntity code="150" callTemplate="VK1aaa+VK2aaa+VK3aaa+VK4aaa+VK5aaa+VK6aaa+VK7aaa+VK8aaa" name="Australia" continent="OC" ituz="55" cqz="30">
       <pas code="ACT" callTemplate="VK1aaa" />
       <pas code="NSW" callTemplate="VK2aaa" />
       <pas code="VIC" callTemplate="VK3aaa" />
@@ -516,8 +516,8 @@
       <pas code="LO" callTemplate="R1MVa" />
     </dxccEntity>
     <dxccEntity code="152" callTemplate="XX9aaa" name="Macao" continent="AS" ituz="44" cqz="24" />
-    <dxccEntity code="153" callTemplate="VK0M" name="Macquarie Is." continent="OC" ituz="60" cqz="30">
-      <pas code="MA" callTemplate="VK0aaa" />
+    <dxccEntity code="153" callTemplate="VK0GW=1997-12-01Z" name="Macquarie Is." continent="OC" ituz="60" cqz="30">
+      <pas code="MA" callTemplate="VK0GW=1997-12-01Z" />
     </dxccEntity>
     <dxccEntity code="154" callTemplate="4W#aaa" name="Yemen Arab Rep." continent="AS" ituz="39" cqz="21" endDate="1990-05-21T23:59:59Z" deleted="true" />
     <dxccEntity code="155" callTemplate="VS2aaa" name="Malaya" continent="AS" ituz="54" cqz="28" endDate="1963-09-15T23:59:59Z" deleted="true" />
@@ -534,7 +534,7 @@
     <dxccEntity code="167" callTemplate="OJ0aaa" name="Market Reef" continent="EU" ituz="18" cqz="15" />
     <dxccEntity code="168" callTemplate="V7aaa" name="Marshall Is." continent="OC" ituz="65" cqz="31" />
     <dxccEntity code="169" callTemplate="FH#aaa" name="Mayotte" continent="AF" ituz="53" cqz="39" startDate="1975-07-06T00:00:00Z" />
-    <dxccEntity code="170" callTemplate="ZL#aaa" name="New Zealand" continent="OC" ituz="60" cqz="32" />
+    <dxccEntity code="170" callTemplate="ZL0aaa+ZL1aaa+ZL2aaa+ZL3aaa+ZL4aaa+ZL6aaa" name="New Zealand" continent="OC" ituz="60" cqz="32" />
     <dxccEntity code="171" callTemplate="VK9M" name="Mellish Reef" continent="OC" ituz="56" cqz="30" />
     <dxccEntity code="172" callTemplate="VP6P" name="Pitcairn Is." continent="OC" ituz="63" cqz="32" />
     <dxccEntity code="173" callTemplate="V6aaa" name="Micronesia" continent="OC" ituz="65" cqz="27" />
@@ -546,7 +546,7 @@
     </dxccEntity>
     <dxccEntity code="178" callTemplate="1M#aaa" name="Minerva Reef" continent="OC" ituz="62" cqz="32" endDate="1972-07-15T23:59:59Z" deleted="true" />
     <dxccEntity code="179" callTemplate="ER#aaa" name="Moldova" continent="EU" ituz="29" cqz="16" />
-    <dxccEntity code="180" callTemplate="SV#aaa/A" name="Mount Athos" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="180" callTemplate="SV2RSG/A" name="Mount Athos" continent="EU" ituz="28" cqz="20" />
     <dxccEntity code="181" callTemplate="C9aaa" name="Mozambique" continent="AF" ituz="53" cqz="37" />
     <dxccEntity code="182" callTemplate="KP1aaa" name="Navassa Is." continent="NA" ituz="11" cqz="8" />
     <dxccEntity code="183" callTemplate="PK5aaa" name="Netherlands Borneo" continent="OC" ituz="54" cqz="28" endDate="1963-04-30T23:59:59Z" deleted="true" />
@@ -557,7 +557,7 @@
     <dxccEntity code="188" callTemplate="ZK2aaa" name="Niue" continent="OC" ituz="62" cqz="32" />
     <dxccEntity code="189" callTemplate="VK9N" name="Norfolk Is." continent="OC" ituz="60" cqz="32" />
     <dxccEntity code="190" callTemplate="5W#aaa" name="Samoa" continent="OC" ituz="62" cqz="32" />
-    <dxccEntity code="191" callTemplate="E51N" name="North Cook Is." continent="OC" ituz="62" cqz="32" />
+    <dxccEntity code="191" callTemplate="ZK1XP/N+E51PT+E51WL" name="North Cook Is." continent="OC" ituz="62" cqz="32" />
     <dxccEntity code="192" callTemplate="JD1O" name="Ogasawara" continent="AS" ituz="45" cqz="27">
       <pas code="O" callTemplate="JD1Oaa" />
     </dxccEntity>
@@ -567,7 +567,7 @@
     <dxccEntity code="196" callTemplate="ZC6aaa" name="Palestine" continent="AS" ituz="39" cqz="20" endDate="1968-06-30T23:59:59Z" deleted="true" />
     <dxccEntity code="197" callTemplate="KH5aaa" name="Palmyra &amp; Jarvis Is." continent="OC" ituz="61" cqz="31" />
     <dxccEntity code="198" callTemplate="P2aaa" name="Papua Territory" continent="OC" ituz="51" cqz="28" endDate="1975-09-15T23:59:59Z" deleted="true" />
-    <dxccEntity code="199" callTemplate="3YP#aaa" name="Peter I Is." continent="AN" ituz="72" cqz="12" />
+    <dxccEntity code="199" callTemplate="3Y0X=2006-02-09Z" name="Peter I Is." continent="AN" ituz="72" cqz="12" />
     <dxccEntity code="200" callTemplate="CR8aaa" name="Portuguese Timor" continent="OC" ituz="54" cqz="28" endDate="1976-09-14T23:59:59Z" deleted="true" />
     <dxccEntity code="201" callTemplate="ZS8aaa" name="Prince Edward &amp; Marion Is." continent="AF" ituz="57" cqz="38" />
     <dxccEntity code="202" callTemplate="KP4aaa" name="Puerto Rico" continent="NA" ituz="11" cqz="8" />
@@ -719,7 +719,7 @@
     <dxccEntity code="221" callTemplate="OZ#aaa" name="Denmark" continent="EU" ituz="18" cqz="14" />
     <dxccEntity code="222" callTemplate="OY#aaa" name="Faroe Is." continent="EU" ituz="18" cqz="14" />
     <dxccEntity code="223" callTemplate="G#aaa" name="England" continent="EU" ituz="27" cqz="14" />
-    <dxccEntity code="224" callTemplate="OH#aaa" name="Finland" continent="EU" ituz="18" cqz="15">
+    <dxccEntity code="224" callTemplate="OH1aaa+OH2aaa+OH3aaa+OH4aaa+OH5aaa+OH6aaa+OH7aaa+OH8aaa+OH9aaa" name="Finland" continent="EU" ituz="18" cqz="15">
       <pas code="100" callTemplate="OH1aaa" />
       <pas code="102" callTemplate="OH1aaa" />
       <pas code="103" callTemplate="OH1aaa" />
@@ -1151,7 +1151,7 @@
       <pas code="922" callTemplate="OH9aaa" />
       <pas code="923" callTemplate="OH9aaa" />
     </dxccEntity>
-    <dxccEntity code="225" callTemplate="IS#aaa" name="Sardinia" continent="EU" ituz="28" cqz="15">
+    <dxccEntity code="225" callTemplate="IS0aaa" name="Sardinia" continent="EU" ituz="28" cqz="15">
       <pas code="CA" callTemplate="IS0aaa" />
       <pas code="CI" callTemplate="IS0aaa" />
       <pas code="NU" callTemplate="IS0aaa" />
@@ -1170,10 +1170,10 @@
     <dxccEntity code="232" callTemplate="T5aaa" name="Somalia" continent="AF" ituz="48" cqz="37" />
     <dxccEntity code="233" callTemplate="ZB2aaa" name="Gibraltar" continent="EU" ituz="37" cqz="14" />
     <dxccEntity code="234" callTemplate="E51S" name="South Cook Is." continent="OC" ituz="62" cqz="32" />
-    <dxccEntity code="235" callTemplate="VP8G" name="South Georgia Is." continent="SA" ituz="73" cqz="13" />
-    <dxccEntity code="236" callTemplate="SV#aaa" name="Greece" continent="EU" ituz="28" cqz="20" />
+    <dxccEntity code="235" callTemplate="VP0G" name="South Georgia Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="236" callTemplate="SV0aaa+SV1aaa+SV2aaa+SV3aaa+SV4aaa+SV6aaa+SV7aaa+SV8aaa+" name="Greece" continent="EU" ituz="28" cqz="20" />
     <dxccEntity code="237" callTemplate="OX#aaa" name="Greenland" continent="NA" ituz="5" cqz="40" />
-    <dxccEntity code="238" callTemplate="VP8O" name="South Orkney Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="238" callTemplate="VP8JM" name="South Orkney Is." continent="SA" ituz="73" cqz="13" />
     <dxccEntity code="239" callTemplate="HA#aaa" name="Hungary" continent="EU" ituz="28" cqz="15">
       <pas code="GY" callTemplate="HA1aaa" />
       <pas code="VA" callTemplate="HA1aaa" />
@@ -1196,8 +1196,8 @@
       <pas code="HB" callTemplate="HA0aaa" />
       <pas code="SA" callTemplate="HA0aaa" />
     </dxccEntity>
-    <dxccEntity code="240" callTemplate="VP8S" name="South Sandwich Is." continent="SA" ituz="73" cqz="13" />
-    <dxccEntity code="241" callTemplate="VP8H" name="South Shetland Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="240" callTemplate="VP0S" name="South Sandwich Is." continent="SA" ituz="73" cqz="13" />
+    <dxccEntity code="241" callTemplate="HF0POL/LH" name="South Shetland Is." continent="SA" ituz="73" cqz="13" />
     <dxccEntity code="242" callTemplate="TF#aaa" name="Iceland" continent="EU" ituz="17" cqz="40" />
     <dxccEntity code="243" callTemplate="VS9A" name="People's Dem. Rep. of Yemen" continent="AS" ituz="39" cqz="21" endDate="1990-05-22T23:59:59Z" deleted="true" />
     <dxccEntity code="244" callTemplate="ST0aaa" name="Southern Sudan" continent="AF" ituz="48" cqz="34" startDate="1972-05-07T00:00:00Z" endDate="1994-12-31T23:59:59Z" deleted="true" />
@@ -1348,7 +1348,7 @@
     </dxccEntity>
     <dxccEntity code="270" callTemplate="ZK3aaa" name="Tokelau Is." continent="OC" ituz="62" cqz="31" />
     <dxccEntity code="271" callTemplate="I1aaa" name="Trieste" continent="EU" ituz="28" cqz="15" endDate="1957-03-31T23:59:59Z" deleted="true" />
-    <dxccEntity code="272" callTemplate="CT#aaa" name="Portugal" continent="EU" ituz="37" cqz="14" />
+    <dxccEntity code="272" callTemplate="CT0aaa+CT1aaa+CT2aaa+CT4aaa+CT5aaa+CT6aaa+CT7aaa" name="Portugal" continent="EU" ituz="37" cqz="14" />
     <dxccEntity code="273" callTemplate="PY0T" name="Trindade &amp; Martin Vaz Is." continent="SA" ituz="15" cqz="11" />
     <dxccEntity code="274" callTemplate="ZD9aaa" name="Tristan da Cunha &amp; Gough Is." continent="AF" ituz="66" cqz="38" />
     <dxccEntity code="275" callTemplate="YO#aaa" name="Romania" continent="EU" ituz="28" cqz="20">
@@ -1395,12 +1395,12 @@
       <pas code="PH" callTemplate="YO9aaa" />
       <pas code="TR" callTemplate="YO9aaa" />
     </dxccEntity>
-    <dxccEntity code="276" callTemplate="FR#aaa/T" name="Tromelin Is." continent="AF" ituz="53" cqz="39" />
+    <dxccEntity code="276" callTemplate="FB8BK+FR/T/F6KDF+FT4T" name="Tromelin Is." continent="AF" ituz="53" cqz="39" />
     <dxccEntity code="277" callTemplate="FP#aaa" name="Saint Pierre &amp; Miquelon" continent="NA" ituz="9" cqz="5" />
     <dxccEntity code="278" callTemplate="T7aaa" name="San Marino" continent="EU" ituz="28" cqz="15" />
     <dxccEntity code="279" callTemplate="GM#aaa" name="Scotland" continent="EU" ituz="27" cqz="14" />
-    <dxccEntity code="280" callTemplate="EZ#aaa" name="Turkmenistan" continent="AS" ituz="30" cqz="17" />
-    <dxccEntity code="281" callTemplate="EA#aaa" name="Spain" continent="EU" ituz="37" cqz="14">
+    <dxccEntity code="280" callTemplate="R8E=1993-12-01Z+R8H=1993-12-02Z+R8W=1993-12-03Z+R8Y=1993-12-04Z+RK8A=1993-12-05Z+RK8B=1993-12-06Z+RK8E=1993-12-07Z+RK8H=1993-12-08Z+RK8W=1993-12-09Z+RK8Y=1993-12-10Z+RN8B=1993-12-11Z+RN8E=1993-12-12Z+RN8H=1993-12-13Z+RN8W=1993-12-14Z+U8Y=1993-12-15Z" name="Turkmenistan" continent="AS" ituz="30" cqz="17" />
+    <dxccEntity code="281" callTemplate="EA1aaa+EA2aaa+EA3aaa+EA4aaa+EA5aaa+EA7aaa" name="Spain" continent="EU" ituz="37" cqz="14">
       <pas code="AV" callTemplate="EA1aaa" />
       <pas code="BU" callTemplate="EA1aaa" />
       <pas code="C" callTemplate="EA1aaa" />
@@ -1579,7 +1579,7 @@
     <dxccEntity code="315" callTemplate="4S#aaa" name="Sri Lanka" continent="AS" ituz="41" cqz="22" />
     <dxccEntity code="318" callTemplate="BY#aaa" name="China" continent="AS" ituz="33" cqz="24" />
     <dxccEntity code="321" callTemplate="VR2aaa" name="Hong Kong" continent="AS" ituz="44" cqz="24" />
-    <dxccEntity code="324" callTemplate="VU#aaa" name="India" continent="AS" ituz="41" cqz="22" />
+    <dxccEntity code="324" callTemplate="VU0aaa+VU1aaa+VU2aaa+VU3aaa+VU5aaa+VU6aaa+VU8aaa+VU9aaa" name="India" continent="AS" ituz="41" cqz="22" />
     <dxccEntity code="327" callTemplate="YB#aaa" name="Indonesia" continent="OC" ituz="51" cqz="28" startDate="1963-05-01T00:00:00Z" />
     <dxccEntity code="330" callTemplate="EP#aaa" name="Iran" continent="AS" ituz="40" cqz="21" />
     <dxccEntity code="333" callTemplate="YI#aaa" name="Iraq" continent="AS" ituz="39" cqz="21" />
@@ -1752,7 +1752,7 @@
     <dxccEntity code="430" callTemplate="5Z#aaa" name="Kenya" continent="AF" ituz="48" cqz="37" />
     <dxccEntity code="432" callTemplate="7P#aaa" name="Lesotho" continent="AF" ituz="57" cqz="38" />
     <dxccEntity code="434" callTemplate="EL#aaa" name="Liberia" continent="AF" ituz="46" cqz="35" />
-    <dxccEntity code="436" callTemplate="5A#aaa" name="Libya" continent="AF" ituz="38" cqz="34" />
+    <dxccEntity code="436" callTemplate="5A21MB" name="Libya" continent="AF" ituz="38" cqz="34" />
     <dxccEntity code="438" callTemplate="5R#aaa" name="Madagascar" continent="AF" ituz="53" cqz="39" />
     <dxccEntity code="440" callTemplate="7Q#aaa" name="Malawi" continent="AF" ituz="53" cqz="37" />
     <dxccEntity code="442" callTemplate="TZ#aaa" name="Mali" continent="AF" ituz="46" cqz="35" startDate="1960-06-20T00:00:00Z" />
@@ -1764,8 +1764,8 @@
     <dxccEntity code="454" callTemplate="9X#aaa" name="Rwanda" continent="AF" ituz="52" cqz="36" startDate="1962-07-01T00:00:00Z" />
     <dxccEntity code="456" callTemplate="6W#aaa" name="Senegal" continent="AF" ituz="46" cqz="35" startDate="1960-06-20T00:00:00Z" />
     <dxccEntity code="458" callTemplate="9L#aaa" name="Sierra Leone" continent="AF" ituz="46" cqz="35" />
-    <dxccEntity code="460" callTemplate="3D2R" name="Rotuma Is." continent="OC" ituz="56" cqz="32" />
-    <dxccEntity code="462" callTemplate="ZS#aaa" name="Republic of South Africa" continent="AF" ituz="57" cqz="38" />
+    <dxccEntity code="460" callTemplate="3D2VB/R+3D2VB/3D2/R+3D2WB/R+3D2RI+3D2/R" name="Rotuma Is." continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="462" callTemplate="ZS0aaa+ZS1aaa+ZS2aaa+ZS3aaa+ZS4aaa+ZS5aaa+ZS6aaa+ZS9aaa" name="Republic of South Africa" continent="AF" ituz="57" cqz="38" />
     <dxccEntity code="464" callTemplate="V5aaa" name="Namibia" continent="AF" ituz="57" cqz="38" />
     <dxccEntity code="466" callTemplate="ST#aaa" name="Sudan" continent="AF" ituz="48" cqz="34" />
     <dxccEntity code="468" callTemplate="3DA#aa" name="Swaziland" continent="AF" ituz="57" cqz="38" />
@@ -1776,7 +1776,7 @@
     <dxccEntity code="482" callTemplate="9J#aaa" name="Zambia" continent="AF" ituz="53" cqz="36" />
     <dxccEntity code="483" callTemplate="5V#aaa" name="Togo" continent="AF" ituz="46" cqz="35" />
     <dxccEntity code="488" callTemplate="ZS9aaa" name="Walvis Bay" continent="AF" ituz="57" cqz="38" startDate="1977-09-01T00:00:00Z" endDate="1994-02-28T23:59:59Z" deleted="true" />
-    <dxccEntity code="489" callTemplate="3D2C" name="Conway Reef" continent="OC" ituz="56" cqz="32" />
+    <dxccEntity code="489" callTemplate="3D2CCC=2024-05-01Z" name="Conway Reef" continent="OC" ituz="56" cqz="32" />
     <dxccEntity code="490" callTemplate="T33aaa" name="Banaba I. (Ocean I.)" continent="OC" ituz="65" cqz="31" />
     <dxccEntity code="492" callTemplate="7O#aaa" name="Yemen" continent="AS" ituz="39" cqz="21" startDate="1990-05-22T00:00:00Z" />
     <dxccEntity code="493" callTemplate="ZS0aaa" name="Penguin Is." continent="AF" ituz="57" cqz="38" endDate="1994-02-28T23:59:59Z" deleted="true" />
@@ -1956,11 +1956,11 @@
     <dxccEntity code="505" callTemplate="BV9P" name="Pratas Is." continent="AS" ituz="44" cqz="24" startDate="1994-01-01T00:00:00Z" />
     <dxccEntity code="506" callTemplate="BS7aaa" name="Scarborough Reef" continent="AS" ituz="50" cqz="27" startDate="1995-01-01T00:00:00Z" />
     <dxccEntity code="507" callTemplate="H40aaa" name="Temotu Province" continent="OC" ituz="51" cqz="32" startDate="1998-04-01T00:00:00Z" />
-    <dxccEntity code="508" callTemplate="FO#aa" name="Austral Is." continent="OC" ituz="63" cqz="32" startDate="1998-04-01T00:00:00Z" />
-    <dxccEntity code="509" callTemplate="FO#aaa" name="Marquesas Is." continent="OC" ituz="63" cqz="31" startDate="1998-04-01T00:00:00Z" />
+    <dxccEntity code="508" callTemplate="TX7W=2024-04-18Z" name="Austral Is." continent="OC" ituz="63" cqz="32" startDate="1998-04-01T00:00:00Z" />
+    <dxccEntity code="509" callTemplate="FO5QS/M+FO5QS" name="Marquesas Is." continent="OC" ituz="63" cqz="31" startDate="1998-04-01T00:00:00Z" />
     <dxccEntity code="510" callTemplate="E4aaa" name="Palestine" continent="AS" ituz="39" cqz="20" startDate="1999-02-01T00:00:00Z" />
     <dxccEntity code="511" callTemplate="4W#aaa" name="Timor-Leste" continent="OC" ituz="54" cqz="28" startDate="2000-03-01T00:00:00Z" />
-    <dxccEntity code="512" callTemplate="FK#aa" name="Chesterfield Is." continent="OC" ituz="56" cqz="30" startDate="2000-03-23T00:00:00Z" />
+    <dxccEntity code="512" callTemplate="TX3X=2015-10-05Z" name="Chesterfield Is." continent="OC" ituz="56" cqz="30" startDate="2000-03-23T00:00:00Z" />
     <dxccEntity code="513" callTemplate="VP6D" name="Ducie Is." continent="OC" ituz="63" cqz="32" startDate="2001-11-16T00:00:00Z" />
     <dxccEntity code="514" callTemplate="4O#aaa" name="Montenegro" continent="EU" ituz="28" cqz="15" startDate="2006-06-28T00:00:00Z" />
     <dxccEntity code="515" callTemplate="KH8Sa" name="Swains Is." continent="OC" ituz="62" cqz="32" startDate="2006-07-22T00:00:00Z" />
@@ -1969,7 +1969,7 @@
     <dxccEntity code="518" callTemplate="PJ7aaa" name="Sint Maarten" continent="NA" ituz="11" cqz="8" startDate="2010-10-10T04:01:00Z" />
     <dxccEntity code="519" callTemplate="PJ5aaa" name="Saba &amp; Saint Eustatius Is." continent="NA" ituz="11" cqz="8" startDate="2010-10-10T04:01:00Z" />
     <dxccEntity code="520" callTemplate="PJ4aaa" name="Bonaire Is." continent="SA" ituz="11" cqz="9" startDate="2010-10-10T04:01:00Z" />
-    <dxccEntity code="521" callTemplate="ST0aaa" name="Republic of South Sudan" continent="AF" ituz="48" cqz="34" startDate="2011-07-14T00:07:01Z" />
+    <dxccEntity code="521" callTemplate="Z8aaa" name="Republic of South Sudan" continent="AF" ituz="48" cqz="34" startDate="2011-07-14T00:07:01Z" />
     <dxccEntity code="522" callTemplate="Z6aaa" name="Republic of Kosovo" continent="EU" ituz="28" cqz="15" startDate="2018-01-21T00:00:00Z" />
   </dxccEntities>
 </adif>

@@ -6,7 +6,7 @@ This XSLT file transforms the XML file exported from the ADIF Specification into
 All fields and enumerations within the specification are included in QSO records except for "Deleted" and "Import-only"
 (deprecated) items.
 
-It is ADIF version-specific because each new version of the specification inttroduces changes to enumerations, fields,
+It is ADIF version-specific because each new version of the specification introduces changes to enumerations, fields,
 etc.
 
 It uses features in Microsoft .NET and XSLT version 1.0 along with Microsoft and custom extension functions.
@@ -14,15 +14,23 @@ The custom extension functions provide a library that generates ADI and ADX form
 must be used to create all output or the ADI or ADX generated may be incorrect.
 
 Parameters:
-  adifStyle is an XSLT string that can have these values:
+  adifStyle:
+    This is an XSLT string that can have these values:
       
     Value  Description
     =====  ===========
     'adi'  Create ADI file format.
     'adx'  Create ADX file format.
+    
+  clubLogBandsOnly:
+    This is a boolean that indicates whether to output only the bands supported by Club Log.
+    It allows the ADI file to be validated by uploading it to a test callsign on Club Log (with G7VJR's permission)
+    with minimal extraneous error messages.
+    For ADIF Releases, it must be set to false.
 
 Change History:
   2024-10-28: Created for ADIF Specification 3.1.5
+  2025-08-09: Added support for ADIF 3.1.6
 -->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -33,8 +41,9 @@ Change History:
 
   <xsl:output method="text" encoding="UTF-8"/>
 
-  <xsl:param    name="adifStyle"      select="'adi'"/>
-  <xsl:variable name="linePerRecord"  select="false()"/>
+  <xsl:param    name="adifStyle"        select="'adi'"/>
+  <xsl:param    name="clubLogBandsOnly" select="false()"/>
+  <xsl:variable name="linePerRecord"    select="false()"/>
 
   <xsl:variable name="fieldSeparator">
     <xsl:choose>
@@ -86,8 +95,6 @@ Change History:
       <xsl:variable name="dxcc" select="normalize-space(substring-before($txt,','))"/>
       <xsl:variable name="dxccRecord" select="/adif/enumerations/enumeration[@name='DXCC_Entity_Code']/record[value[@name='Entity Code'] = $dxcc]"/>
       <xsl:choose>
-        <!-- The Microsoft documentation says that MSXML later than version 2 requires their node-set() function
-             when using a variable as node set. -->
         <xsl:when test="ms:node-set($dxccRecord)/value[@name='Import-only' or @name='Deleted']">
           <xsl:call-template name="deletedOrReadOnly">
             <xsl:with-param name="name" select="$fieldName"/>
@@ -95,7 +102,32 @@ Change History:
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="ae:record($fieldName, value[@name='Abbreviation'], 'CALL', ae:callForDxcc($dxcc), 'DXCC', $dxcc)"/>
+          <!-- For some DXCC entities, Club Log does not allow *any* current prefixes/callsigns.  To workaround this,
+               a historic QSO is chosen from Club Log's exception list and the date (and possibly time) are output. -->
+                
+          <xsl:variable name="call"      select="ae:callForDxcc($dxcc)"/>
+          <xsl:variable name="startDate" select="ae:callForDxccStartDate()"/>
+          <xsl:variable name="startTime" select="ae:callForDxccStartTime()"/>
+                                          
+          <xsl:if test="$startDate != ''">
+            <xsl:value-of select="ae:saveQsoStartEnd()"/>                
+          </xsl:if>
+
+          <xsl:value-of select="ae:record(
+            $fieldName, value[@name='Abbreviation'],
+            'CALL',     $call,
+            'DXCC',     $dxcc,
+            'QSO_DATE', $startDate,
+            'TIME_ON',  $startTime)"/>
+            
+          <xsl:if test="$startTime != ''">
+            <xsl:value-of select="ae:restoreQsoStartEnd()"/>
+          </xsl:if>
+
+          <!--<xsl:value-of select="ae:record(
+            $fieldName, value[@name='Abbreviation'],
+            'CALL',     ae:callForDxcc($dxcc),
+            'DXCC',     $dxcc)"/>-->
         </xsl:otherwise>
       </xsl:choose>
     </xsl:element>
@@ -119,7 +151,7 @@ Change History:
   <xsl:variable name="usaDxcc"        select="291"/>
   <xsl:variable name="walesDxcc"      select="294"/>
   <xsl:variable name="serbiaDxcc"     select="296"/>
-  <xsl:variable name="kosovoDxcc"     select="522"/>  
+  <xsl:variable name="kosovoDxcc"     select="522"/>
 
   <xsl:variable name="booleanValues">
     <ex:values>
@@ -136,7 +168,7 @@ Change History:
 
     <!-- Experiment: <xsl:value-of select="system-property('ms:version')"/> -->
 
-    <xsl:value-of select="ae:initialize($adifStyle, true(), /adif)"/>
+    <xsl:value-of select="ae:initialize($adifStyle, true(), $clubLogBandsOnly, /adif)"/>
     <xsl:value-of select="ae:setOptions($fieldSeparator, $recordSeparator)"/>
     <xsl:value-of select="ae:bof()"/>
 
@@ -228,7 +260,6 @@ Change History:
           <xsl:value-of select="ae:record($fieldName,   '9')"/>
           <xsl:value-of select="ae:record($fieldName,  '57')"/>
           <xsl:value-of select="ae:record($fieldName, '102')"/>
-          <xsl:value-of select="ae:record($fieldName, '120')"/>
         </xsl:when>
 
         <xsl:when test="$fieldName='ALTITUDE' or $fieldName='MY_ALTITUDE'">
@@ -304,12 +335,29 @@ Change History:
         </xsl:when>        
         
         <xsl:when test="$fieldName='BAND' or $fieldName='BAND_RX'">
-          <!-- BAND and BAND_RX are tested thoroughly as part of FREQ and FREQ_RX, so just test here that abbreviations with uppercase are okay. -->
-          <xsl:value-of select="ae:record($fieldName, '20M')"/>
-          <xsl:value-of select="ae:record($fieldName, '70Cm')"/>
-          <xsl:value-of select="ae:record($fieldName, '23CM')"/>
-          <xsl:value-of select="ae:record($fieldName, '6Mm')"/>
-          <xsl:value-of select="ae:record($fieldName, '4MM')"/>
+          <!-- BAND and BAND_RX are tested thoroughly as part of FREQ and FREQ_RX, so just test here that abbreviations with upper/mixed case are okay. -->
+          
+          <xsl:variable name="bandCasings">
+            <ex:bandCasings>
+              <ex:bandCasing value="20M"/>
+              <ex:bandCasing value="70Cm"/>
+              <ex:bandCasing value="23CM"/>
+              <ex:bandCasing value="13cM"/>
+              <ex:bandCasing value="6Mm"/>
+              <ex:bandCasing value="4MM"/>
+              <ex:bandCasing value="2.5mM"/>
+              <ex:bandCasing value="SUBMM"/>
+              <ex:bandCasing value="Submm"/>
+              <ex:bandCasing value="subMM"/>
+           </ex:bandCasings>
+          </xsl:variable>
+          
+          <xsl:for-each select="ms:node-set($bandCasings)//ex:bandCasings/ex:bandCasing/@value">
+            <xsl:if test="ae:includeBand(value[@name='.'])">
+              <xsl:value-of select="ae:record($fieldName, .)"/>
+            </xsl:if>
+          </xsl:for-each>
+          
         </xsl:when>
 
         <xsl:when test="$fieldName='CALL'">
@@ -321,8 +369,12 @@ Change History:
           <xsl:value-of select="ae:record($fieldName, 'G2CCC/MM')"/>
           <xsl:value-of select="ae:record($fieldName, 'K6DF/1')"/>
 
-          <xsl:value-of select="ae:commentLine('This is a real call - see http://www.southgatearc.org/news/february2013/romanian_special_event_station_yo2013eyowf.htm')"/>
+          <xsl:value-of select="ae:commentLine('This is a real call that was documented in the Southgate ARC News in February 2013')"/>
           <xsl:value-of select="ae:record($fieldName, 'YO2013EYOWF')"/>
+
+          <xsl:value-of select="ae:commentLine('Applications must accept an optional Data Type Indicator in ADIF-defined fields in ADI files')"/>
+          <xsl:value-of select="ae:field($fieldName, 'G2DDD', 'S')"/>
+          <xsl:value-of select="ae:record()"/>
         </xsl:when>
 
         <xsl:when test="$fieldName='CHECK'">
@@ -360,8 +412,6 @@ Change History:
                   <xsl:with-param name="value" select="concat($code, ' deleted (DXCC ', $dxcc, ')')"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- The Microsoft documentation says that MSXML later than version 2 requires their node-set() function
-                   when using a variable as node set. -->
               <xsl:when test="ms:node-set($dxccRecord)/value[@name='Import-only' or @name='Deleted']">
                 <xsl:call-template name="deletedOrReadOnly">
                   <xsl:with-param name="name" select="$fieldName"/>
@@ -597,10 +647,30 @@ Change History:
                   <xsl:with-param name="value" select="value[@name='Entity Code']"/>
                 </xsl:call-template>
               </xsl:when>
+                            
               <xsl:otherwise>
+                <!-- For some DXCC entities, Club Log does not allow *any* current prefixes/callsigns.  To workaround this,
+                     a historic QSO is chosen from Club Log's exception list and the date (and possibly time if the DXpedition
+                     last less than 1 day) are output. -->
+                
+                <xsl:variable name="call" select="ae:callForDxcc(value[@name='Entity Code'])"/>
+                <xsl:variable name="startDate" select="ae:callForDxccStartDate()"/>
+                <xsl:variable name="startTime" select="ae:callForDxccStartTime()"/>
+                                     
+                <xsl:if test="$startDate != ''">
+                  <xsl:value-of select="ae:saveQsoStartEnd()"/>                
+                </xsl:if>
+                
                 <xsl:value-of select="ae:record(
                   $fieldName, value[@name='Entity Code'],
-                  'CALL',     ae:callForDxcc(value[@name='Entity Code']))"/>
+                  'CALL',     $call,
+                  'QSO_DATE', $startDate,
+                  'TIME_ON',  $startTime)"/>
+
+                <xsl:if test="$startTime != ''">
+                  <xsl:value-of select="ae:restoreQsoStartEnd()"/>
+                </xsl:if>
+              
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
@@ -663,6 +733,12 @@ Change History:
           </xsl:for-each>
         </xsl:when>
 
+        <xsl:when test="$fieldName='EQSL_AG'">
+          <xsl:for-each select="/adif/enumerations/enumeration[@name='EQSL_AG']/record">
+            <xsl:value-of select="ae:record($fieldName, value[@name='Status'])"/>
+          </xsl:for-each>
+        </xsl:when>          
+          
         <xsl:when test="$fieldName='FISTS'">
           <xsl:value-of select="ae:record($fieldName,     '1', 'CALL', 'GX0IPX')"/>
           <xsl:value-of select="ae:record($fieldName,  '8385', 'CALL', 'G3ZOD')"/>
@@ -683,11 +759,16 @@ Change History:
         <xsl:when test="$fieldName='FREQ' or $fieldName='FREQ_RX'">
           <xsl:variable name="fieldSuffix" select="substring-after($fieldName, 'FREQ')"/>
           <xsl:for-each select="/adif/enumerations/enumeration[@name='Band']/record">
-            <xsl:variable name="freqLo" select="value[@name='Lower Freq (MHz)']"/>
-            <xsl:variable name="freqHi" select="value[@name='Upper Freq (MHz)']"/>
-            <xsl:value-of select="ae:record($fieldName, $freqLo)"/>
-            <xsl:value-of select="ae:record($fieldName, $freqLo, concat('BAND', $fieldSuffix), '{}')"/>
-            <xsl:value-of select="ae:record($fieldName, $freqHi, concat('BAND', $fieldSuffix), '{}')"/>
+            
+            <xsl:if test="ae:includeBand(value[@name='Band'])">
+            
+              <xsl:variable name="freqLo" select="value[@name='Lower Freq (MHz)']"/>
+              <xsl:variable name="freqHi" select="value[@name='Upper Freq (MHz)']"/>
+              <xsl:value-of select="ae:record($fieldName, $freqLo)"/>
+              <xsl:value-of select="ae:record($fieldName, $freqLo, concat('BAND', $fieldSuffix), '{}')"/>
+              <xsl:value-of select="ae:record($fieldName, $freqHi, concat('BAND', $fieldSuffix), '{}')"/>
+              
+            </xsl:if>
           </xsl:for-each>
         </xsl:when>
 
@@ -883,7 +964,28 @@ Change History:
                 </xsl:call-template>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="ae:record($fieldName, value[@name='Entity Code'])"/>
+                <!-- Unlike the test of the DXCC field, because none of STATION_CALLSIGN, OPERATOR, & OWNER are included in the
+                     QSO, for MY_DXCC it is not necessary to output a date/time for a DXCC entity that has only a historic QSO. -->
+                <!--<xsl:value-of select="ae:record($fieldName, value[@name='Entity Code'])"/>-->
+                
+                <xsl:variable name="stationCallsign" select="ae:callForDxcc(value[@name='Entity Code'])"/>
+                <xsl:variable name="startDate"       select="ae:callForDxccStartDate()"/>
+                <xsl:variable name="startTime"       select="ae:callForDxccStartTime()"/>
+                                     
+                <xsl:if test="$startDate != ''">
+                  <xsl:value-of select="ae:saveQsoStartEnd()"/>                
+                </xsl:if>
+                
+                <xsl:value-of select="ae:record(
+                  $fieldName,         value[@name='Entity Code'],
+                  'STATION_CALLSIGN', $stationCallsign,
+                  'QSO_DATE',         $startDate,
+                  'TIME_ON',          $startTime)"/>
+                
+                <xsl:if test="$startTime != ''">
+                  <xsl:value-of select="ae:restoreQsoStartEnd()"/>
+                </xsl:if>
+                                
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
@@ -974,19 +1076,44 @@ Change History:
                   <xsl:with-param name="value" select="concat($code, ' deleted (DXCC ', $dxcc, ')')"/>
                 </xsl:call-template>
               </xsl:when>
-              <!-- The Microsoft documentation says that MSXML later than version 2 requires their node-set() function
-                   when using a variable as node set. -->
+              
               <xsl:when test="ms:node-set($dxccRecord)/value[@name='Import-only' or @name='Deleted']">
                 <xsl:call-template name="deletedOrReadOnly">
                   <xsl:with-param name="name" select="$fieldName"/>
                   <xsl:with-param name="value" select="concat($code, ' (DXCC ', $dxcc, ' deleted)')"/>
                 </xsl:call-template>
               </xsl:when>
+              
               <xsl:otherwise>
+                <!-- For some DXCC entities, Club Log does not allow *any* current prefixes/callsigns.  To workaround this,
+                     a historic QSO is chosen from Club Log's exception list and the date (and possibly time) are output. -->
+                
+                <xsl:variable name="call" select="ae:callForPrimaryAdministrativeSubdivision($dxcc, $code)"/>
+                <xsl:variable name="startDate" select="ae:callForDxccStartDate()"/>
+                <xsl:variable name="startTime" select="ae:callForDxccStartTime()"/>
+                                
+                <xsl:if test="$startDate != ''">
+                  <xsl:value-of select="ae:saveQsoStartEnd()"/>
+                                    
+                  <!--<xsl:if test="$call = 'K1B' or $call = 'KH1/N1DG'">
+                    <xsl:value-of select="ae:log('(MY_)STATE:')"/>
+                    <xsl:value-of select="ae:log($call)"/>
+                    <xsl:value-of select="ae:log($startDate)"/>
+                    <xsl:value-of select="ae:log($startTime)"/>
+                  </xsl:if>-->
+                </xsl:if>
+
                 <xsl:value-of select="ae:record(
-                    'CALL',                       ae:callForPrimaryAdministrativeSubdivision($dxcc, $code),
-                    concat($fieldPrefix, 'DXCC'), $dxcc,
-                    $fieldName,                   $code)"/>
+                  'CALL',                       $call,
+                  concat($fieldPrefix, 'DXCC'), $dxcc,
+                  $fieldName,                   $code,
+                  'QSO_DATE',                   $startDate,
+                  'TIME_ON',                    $startTime)"/>
+            
+                <xsl:if test="$startDate != ''">
+                  <xsl:value-of select="ae:restoreQsoStartEnd()"/>
+                </xsl:if>
+
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
@@ -1233,88 +1360,97 @@ Change History:
             <xsl:value-of select="ae:record('MODE', @mode, 'BAND', '6m', 'RST_RCVD', @value, 'RST_SENT', @value)"/>
           </xsl:for-each>
         </xsl:when>
-
+        
         <xsl:when test="$fieldName='REGION'">
           <xsl:if test="$version306OrLater">
+            <!-- The REGION enumeration in prior to ADIF 3.1.6 does not accurately reflect the three KO (Kosovo) DXCC
+                 entities, so only include KO test QSOs if this is ADIF 3.1.6 or later. -->
+            
             <xsl:for-each select="/adif/enumerations/enumeration[@name='Region']/record">
               <xsl:variable name="region" select="value[@name='Region Entity Code']"/>
               <xsl:variable name="dxcc">
                 <xsl:choose>
                   <xsl:when test="$region='NONE'"><xsl:value-of select="'0'"/></xsl:when>
-                  <xsl:when test="$region='KO'"><xsl:value-of select="'0'"/></xsl:when>
                   <xsl:otherwise><xsl:value-of select="value[@name='DXCC Entity Code']"/></xsl:otherwise>
                 </xsl:choose>
-              </xsl:variable>              
-              <xsl:variable name="call">
-                <xsl:choose>
-                  <xsl:when test="$region='NONE'">M0ZZA/MM</xsl:when>
-                  <xsl:when test="$region='IV'"  >4U1V</xsl:when>
-                  <xsl:when test="$region='AI'"  >IG9ZZB</xsl:when>
-                  <xsl:when test="$region='SY'"  >IT9ZZC</xsl:when>
-                  <xsl:when test="$region='BI'"  >JW0ZZD/B</xsl:when>
-                  <xsl:when test="$region='SI'"  >GM0ZZE/S</xsl:when>
-                  <xsl:when test="$region='KO'"  >Z6ZZF</xsl:when>
-                  <xsl:when test="$region='ET'"  >TA1ZZG</xsl:when>
-                  <xsl:otherwise                 ></xsl:otherwise>
-                </xsl:choose>
               </xsl:variable>
+              
+              <!--! It is necessary to convert the Start Date and End Date (if specified) from the hyphenated
+                    format in the ADIF Specification to the ADIF Date data type format, e.g. 2018-01-21
+                    must be converted to 20180121.  XSLT 1.0 does not provide a string 'replace' function,
+                    so instead the conversion is performed by the extension object method dateToAdifDate. -->
+              
+              <xsl:variable name="startDate" select="ae:dateToAdifDate(value[@name='Start Date'])"/>
+              <xsl:variable name="endDate"   select="ae:dateToAdifDate(value[@name='End Date'])"/>
+              
               <xsl:choose>
-                <xsl:when test="$region='KO'">
-                  <!-- Up to ADIF 3.1.5, Kosovo is represented in the table as a single row.
-                       That should change to three rows in ADIF 3.1.6.
-                       For now, just ensure that the following three QSOs are not emitted for
-                       ADIF 3.1.6 and later.
-                  -->
-                  <xsl:choose>
-                    <xsl:when test="ae:adifVersionInt() &lt;= 315">
-                      <xsl:value-of select="ae:saveQsoStartEnd()"/>
-                      <xsl:value-of select="ae:record(
-                        $fieldName,     $region,
-                        'DXCC',         $serbiaDxcc,
-                        'CALL',         'YU8ZZH',
-                        'QSO_DATE',     '20120911',
-                        'QSO_DATE_OFF', '20120911',
-                        'TIME_ON',      '2350',
-                        'TIME_OFF',     '2355')"/>                  
-
-                      <xsl:value-of select="ae:record(
-                        $fieldName,     $region,
-                        'DXCC',         $kosovoDxccNone,
-                        'CALL',         $call,
-                        'QSO_DATE',     '20180120',
-                        'QSO_DATE_OFF', '20180120',
-                        'TIME_ON',      '2350',
-                        'TIME_OFF',     '2355')"/>                  
-
-                      <xsl:value-of select="ae:record(
-                        $fieldName,     $region,
-                        'DXCC',         $kosovoDxcc,
-                        'CALL',         $call,
-                        'QSO_DATE',     '20180121',
-                        'QSO_DATE_OFF', '20180121',
-                        'TIME_ON',      '2350',
-                        'TIME_OFF',     '2355')"/>                  
-                      </xsl:when>
-                    
-                      <xsl:otherwise>
-                        <!-- TODO: Add a QSO for ADIF 3.1.6 and later. -->
-                      </xsl:otherwise>
+                <xsl:when test="$region='KO'">                 
+                  <xsl:variable name="qsoDate">
+                    <xsl:choose>
+                      <xsl:when test="$endDate   != ''"><xsl:value-of select="$endDate"/></xsl:when>
+                      <xsl:when test="$startDate != ''"><xsl:value-of select="$startDate"/></xsl:when>
                     </xsl:choose>
-                    <xsl:value-of select="ae:restoreQsoStartEnd()"/>
-                  </xsl:when>
-                <xsl:when test="$call=''">
-                  <xsl:value-of select="ae:commentLine2(
-                    concat('==== Not including region ',
-                    $region,
-                    ' because it is not recognised'))"/>
-                </xsl:when>
-                <xsl:otherwise>
+                  </xsl:variable>                  
+
+                  <xsl:variable name="call">
+                    <xsl:choose>
+                      <xsl:when test="$dxcc=$serbiaDxcc">YU8ZZH</xsl:when>
+                      <xsl:when test="$dxcc=$kosovoDxccNone">Z6ZZF</xsl:when>
+                      <xsl:when test="$dxcc=$kosovoDxcc">Z6ZZF</xsl:when>
+                      <xsl:otherwise>?</xsl:otherwise>
+                    </xsl:choose>                  
+                  </xsl:variable>
+
+                  <xsl:if test ="call = '?'">
+                    <xsl:value-of select="ae:commentLine2(concat(
+                      '==== ERROR: Unexpected Region KO (Kosovo) DXCC: ',
+                      $dxcc))"/>
+                  </xsl:if>
+                  
+                  <xsl:value-of select="ae:saveQsoStartEnd()"/>
                   <xsl:value-of select="ae:record(
-                  $fieldName, $region,
-                  'DXCC',     $dxcc,
-                  'CALL',     $call)"/>
+                    $fieldName,     $region,
+                    'DXCC',         $dxcc,
+                    'CALL',         $call,
+                    'QSO_DATE',     $qsoDate,
+                    'QSO_DATE_OFF', $qsoDate,
+                    'TIME_ON',      '2350',
+                    'TIME_OFF',     '2355')"/>
+                  <xsl:value-of select="ae:restoreQsoStartEnd()"/>
+                </xsl:when>
+                  
+                <xsl:otherwise>
+                  <xsl:variable name="call">
+                    <xsl:choose>
+                      <xsl:when test="$region='NONE'">M0ZZA/MM</xsl:when>
+                      <xsl:when test="$region='IV'"  >4U1V</xsl:when>
+                      <xsl:when test="$region='AI'"  >IG9ZZB</xsl:when>
+                      <xsl:when test="$region='SY'"  >IT9ZZC</xsl:when>
+                      <xsl:when test="$region='BI'"  >JW0ZZD/B</xsl:when>
+                      <xsl:when test="$region='SI'"  >GM0ZZE/S</xsl:when>
+                      <xsl:when test="$region='ET'"  >TA1ZZG</xsl:when>
+                      <xsl:otherwise                 >?</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+
+                  <xsl:choose>
+                    <xsl:when test="$call = '?'">
+                      <xsl:value-of select="ae:commentLine2(concat(
+                        '==== ERROR: Ignoring unexpected REGION: ',
+                        $region))"/>                        
+                    </xsl:when>
+                      
+                    <xsl:otherwise>
+                      <xsl:value-of select="ae:record(
+                        $fieldName, $region,
+                        'DXCC',     $dxcc,
+                        'CALL',     $call)"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                    
                 </xsl:otherwise>
               </xsl:choose>
+                           
             </xsl:for-each>
           </xsl:if>
         </xsl:when>
@@ -1324,7 +1460,7 @@ Change History:
 
         <xsl:when test="$fieldName='RX_PWR'">
           <!-- Milliwatts are represented by digits to the right of the decimal point, e.g. 100 milliwatts can be .1
-               This is also a convenient for testing a variety of positive Number data type variations. -->
+               This is also a convenient place to test a variety of positive Number data type value variations. -->
 
           <xsl:variable name="qsoPowerValues">
             <ex:qsoPowers>

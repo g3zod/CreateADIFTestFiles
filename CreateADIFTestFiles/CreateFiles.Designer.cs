@@ -39,6 +39,7 @@
             toolTip = new System.Windows.Forms.ToolTip(components);
             TxtAdifPath = new System.Windows.Forms.TextBox();
             FbdAdif = new System.Windows.Forms.FolderBrowserDialog();
+            cboClubLogBandsOnly = new System.Windows.Forms.CheckBox();
             SsProgress.SuspendLayout();
             SuspendLayout();
             // 
@@ -127,6 +128,17 @@
             FbdAdif.Description = "Choose ADIF version number directory:";
             FbdAdif.ShowNewFolderButton = false;
             // 
+            // cboClubLogBandsOnly
+            // 
+            cboClubLogBandsOnly.AutoSize = true;
+            cboClubLogBandsOnly.Location = new System.Drawing.Point(19, 78);
+            cboClubLogBandsOnly.Name = "cboClubLogBandsOnly";
+            cboClubLogBandsOnly.Size = new System.Drawing.Size(252, 19);
+            cboClubLogBandsOnly.TabIndex = 12;
+            cboClubLogBandsOnly.Text = "Only include Bands supported by Club Log";
+            toolTip.SetToolTip(cboClubLogBandsOnly, "This can be checked if the test QSO file is to be validated using Club Log.  For ADIF releases, it must NOT be set.");
+            cboClubLogBandsOnly.UseVisualStyleBackColor = true;
+            // 
             // CreateFiles
             // 
             AcceptButton = BtnCreateQsosFiles;
@@ -134,6 +146,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = BtnClose;
             ClientSize = new System.Drawing.Size(653, 200);
+            Controls.Add(cboClubLogBandsOnly);
             Controls.Add(SsProgress);
             Controls.Add(BtnClose);
             Controls.Add(BtnCreateQsosFiles);
@@ -163,6 +176,7 @@
         private System.Windows.Forms.TextBox TxtAdifPath;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.FolderBrowserDialog FbdAdif;
+        private System.Windows.Forms.CheckBox cboClubLogBandsOnly;
     }
 }
 

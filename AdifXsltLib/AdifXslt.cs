@@ -14,7 +14,7 @@ namespace AdifXsltLib
      *   These are called from the <![CDATA[QSO_templates.xslt]]> file.
      * </summary>
      */
-    public class AdifXslt
+    public partial class AdifXslt
     {
         private class BandEntry
         {
@@ -29,28 +29,25 @@ namespace AdifXsltLib
                 UpperLimit = upperLimit;
             }
 
-            internal bool IsInBand(float freq)
-            {
-                return freq >= LowerLimit && freq <= UpperLimit;
-            }
+            internal bool IsInBand(float freq) => freq >= LowerLimit && freq <= UpperLimit;
 
-            internal static bool Band(float freq, Dictionary<string, BandEntry> bands, out BandEntry bandEntry)
-            {
-                bandEntry = null;
-                foreach (BandEntry be in bands.Values)
-                {
-                    if (be.IsInBand(freq))
-                    {
-                        bandEntry = be;
-                        break;
-                    }
-                }
-                return bandEntry != null;
-            }
+            //internal static bool Band(float freq, Dictionary<string, BandEntry> bands, out BandEntry bandEntry)
+            //{
+            //    bandEntry = null;
+            //    foreach (BandEntry be in bands.Values)
+            //    {
+            //        if (be.IsInBand(freq))
+            //        {
+            //            bandEntry = be;
+            //            break;
+            //        }
+            //    }
+            //    return bandEntry != null;
+            //}
 
             internal static string RandomBand(Dictionary<string, BandEntry> bands, Random random)
             {
-                int index = random.Next(0, bands.Count);
+                int index = random.Next(bands.Count);
                 int i = 0;
                 string band = string.Empty;
 
@@ -68,7 +65,7 @@ namespace AdifXsltLib
 
         private class ModeEntry
         {
-            private static readonly char[] commaSplitChar = new char[] { ',' };
+            private static readonly char[] commaSplitChar = [','];
 
             internal string Mode;
             internal string[] Submodes;  // Not currently used because the SUBMODE field exercises all the Submode enumeration values.
@@ -87,6 +84,8 @@ namespace AdifXsltLib
             internal int CqZone;
             internal int ItuZone;
             internal string Cont;
+            internal DateTime QsoStartDateTime;
+            internal bool QsoHasStartTime;
 
             private CallEntry()
             {
@@ -97,21 +96,25 @@ namespace AdifXsltLib
                 string call)
             {
                 System.Diagnostics.Debug.Assert(call != null);
-                System.Diagnostics.Debug.Assert(!call.Contains("a"));
+                System.Diagnostics.Debug.Assert(!call.Contains('a'));
 
-                this.Call = call;
-                this.Dxcc = 0;
-                this.CqZone = 0;
-                this.ItuZone = 0;
-                this.Cont = string.Empty;
+                Call = call;
+                Dxcc = 0;
+                CqZone = 0;
+                ItuZone = 0;
+                Cont = string.Empty;
+                QsoStartDateTime = DateTime.MinValue;
+                QsoHasStartTime = false;
             }
 
             internal CallEntry(
                 string call,
-                XmlElement dxccEl)
+                XmlElement dxccEl,
+                DateTime qsoStartDateTime,
+                bool qsoStartHasTime)
             {
                 System.Diagnostics.Debug.Assert(call != null);
-                System.Diagnostics.Debug.Assert(!call.Contains("a"));
+                System.Diagnostics.Debug.Assert(!call.Contains('a'));
                 System.Diagnostics.Debug.Assert(dxccEl != null);
                 System.Diagnostics.Debug.Assert(dxccEl.GetAttribute("callTemplate") != null);
                 System.Diagnostics.Debug.Assert(dxccEl.GetAttribute("code") != null);
@@ -123,23 +126,25 @@ namespace AdifXsltLib
                 CqZone = int.Parse(dxccEl.GetAttribute("cqz"));
                 ItuZone = int.Parse(dxccEl.GetAttribute("ituz"));
                 Cont = dxccEl.GetAttribute("continent");
+                QsoStartDateTime = qsoStartDateTime;
+                QsoHasStartTime = qsoStartHasTime;
             }
         }
 
         private class Calls
         {
-            internal SortedDictionary<string, int> CallCounts = new SortedDictionary<string, int>();
+            internal SortedDictionary<string, int> CallCounts = [];
             internal int RepeatedCallsTotal = 0;
             internal int RepeatedCalls = 0;
 
             private readonly XmlElement testDxccsEl;
-            private readonly Random random = new Random(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
-            private readonly List<int> validDxccs = new List<int>(1000);
-            private readonly Dictionary<string, CallEntry> callEntries = new Dictionary<string, CallEntry>(8192);
+            private readonly Random random = new(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
+            private readonly List<int> validDxccs = new(1000);
+            private readonly Dictionary<string, CallEntry> callEntries = new(8192);
 
             internal Calls(string fileName)
             {
-                XmlDocument testData = new XmlDocument();
+                XmlDocument testData = new();
 
                 testData.Load(fileName);
                 testDxccsEl = (XmlElement)testData.DocumentElement.SelectSingleNode("dxccEntities");
@@ -155,7 +160,7 @@ namespace AdifXsltLib
                 // This cycles through 3 letters in alphabetical order: AAA, AAB, AAC, ... ZZZ.
                 // When it reaches ZZZ, it goes back to AAA.
 
-                private readonly char[] letters = { 'A', 'A', 'A' };
+                private readonly char[] letters = ['A', 'A', 'A'];
 
                 internal char[] Next()
                 {
@@ -190,39 +195,93 @@ namespace AdifXsltLib
             }
 
             private readonly Callsequencer
-                cs1 = new Callsequencer(),
-                cs2 = new Callsequencer(),
-                cs3 = new Callsequencer();
+                cs1 = new(),
+                cs2 = new(),
+                cs3 = new();
 
-            private string InstantiateCallTemplate(string callTemplate)
+            private static readonly char[]
+                XmlTimeSeparator = ['t', 'T'],
+                CallTemplateListSeparator = ['+'];
+
+            /**
+             * <summary>
+             *   <para>Creates a callsign modelled on a template.</para>
+             *   
+             *   <para>Callsign templates can have one, two, or three lower case letter 'a's representing any letter,
+             *   and a '#' representing a digit.  Examples: W#aaa G2aa</para>
+             *    
+             *   <para>The idea is that the lower case letter 'a's are replace by an alphabetical sequence
+             *   of letters, e.g. K2aaa produces W2AAA, W2AAB, W2AAC, ... W2ZZZ.  The use of a sequence
+             *   instead of random letters reduces the chances of a duplicate call in sequential QSOs.</para>
+             *  
+             *   <para>The sequence of characters is maintained in three CallSequencer objects.</para>
+             *  
+             *   <para>Since those templates with 1 or 2 letter 'a's have fewer callsigns available before a repeat
+             *   occurs (e.g. G2aa has 26^2 callsigns and W1a has only 26 possibilec allsigns), a separate sequence
+             *   is kept for 3, 2, and 1 letter 'a' templates so that available letters for (in partciular) the
+             *   1 letter 'a' templates aren't "used" up by the 2 and 3 letter templates.</para>
+             *  
+             *   <para>It would reduce the time between repeats even more if the sequence were kept separately for each
+             *   callsign template rather than the groups of templates with 1, 2, and 3 letter 'a's.  However, at the
+             *   moment, I don't believe that level of complexity is necessary.</para>
+             * </summary>
+             * 
+             * <param name="callTemplate">The callsign template <see cref="string"/> from the Entities.xml file.</param>
+             * 
+             * <returns>A callsign instantiated from the callTemplate <see cref="string"/>.</returns>
+             */
+            private string InstantiateCallTemplate(string callTemplate, out DateTime qsoStartDateTime, out bool qsoHasStartTime)
             {
-                // This method creates a callsign modelled on a template.
-                //
-                // Callsign templates can have one, two, or three lower case letter 'a's representing any letter,
-                // and a '#' representing a digit.  E.g. W#aaa G2aa
-                //
-                // The idea is that the lower case letter 'a's are replace by an alphabetical sequence
-                // of letters, e.g. K2aaa produces W2AAA, W2AAB, W2AAC, ... W2ZZZ.  The use of a sequence
-                // instead of random letters reduces the chances of a duplicate call in sequential QSOs.
-                //
-                // The sequence of characters is maintained in three CallSequencer objects.
-                //
-                // Since those templates with 1 or 2 letter 'a's have fewer callsigns available before a repeat
-                // occurs (e.g. G2aa has 26^2 callsigns and W1a has only 26 possibilec allsigns), a separate sequence
-                // is kept for 3, 2, and 1 letter 'a' templates so that available letters for (in partciular) the
-                // 1 letter 'a' templates aren't "used" up by the 2 and 3 letter templates.
-                //
-                // It would reduce the time between repeats even more if the sequence were kept separately for each
-                // callsign template rather than the groups of templates with 1, 2, and 3 letter 'a's.  However, at the
-                // moment, I don't believe that level of complexity is necessary.
+                string[] callList = callTemplate.Split(CallTemplateListSeparator, StringSplitOptions.RemoveEmptyEntries);
 
-                StringBuilder call = new StringBuilder(callTemplate);
+                qsoStartDateTime = DateTime.MinValue;
+                qsoHasStartTime = false;
 
-                if (callTemplate.Contains("#"))
+                if (callList.Length > 1)
                 {
-                    call.Replace('#', (char)random.Next((int)'0', (int)'9' + 1));
+                    // Choose between several callsign templates.
+
+                    callTemplate = new(callList[random.Next(callList.Length)]);
                 }
+
+                if (callTemplate.Contains('#'))
+                {
+                    callTemplate = callTemplate.Replace('#', (char)random.Next('0', '9' + 1));
+                }
+
+                {
+                    // The call entry can include a date and possibly the time for the QSO.  This is necessary where
+                    // Club Log's country does not allow mapping by prefix and it is necessary to include a historical
+                    // QSO.
+                    //
+                    // Examples:
+                    //    WA#aaa=2021-12-03Z
+                    //    MD#bbb=2019-04-12T23:15:00Z
+
+                    string[] callTemplateParts = callTemplate.Split('=');
+
+                    if (callTemplateParts.Length == 2)
+                    {
+                        // Call entry includes the date and possibly the time for the QSO.  This is necessary where
+                        // Club Log's country list does not allow mapping by prefix.
+
+                        callTemplate = callTemplateParts[0];
+
+                        string qsoDateTimeString = callTemplateParts[1];
+
+                        qsoStartDateTime = XmlConvert.ToDateTime(qsoDateTimeString, XmlDateTimeSerializationMode.Utc);
+                        qsoHasStartTime = qsoDateTimeString.Split(XmlTimeSeparator).Length == 2;
+                    }
+                    //if (callTemplate.ToString() == "K1B")
+                    //{
+
+                    //}
+                }
+
+                StringBuilder call = new(callTemplate);
+
                 int aPosn = callTemplate.IndexOf('a');
+
                 if (aPosn >= 0)
                 {
                     if (callTemplate.Contains("aaa"))
@@ -240,7 +299,7 @@ namespace AdifXsltLib
                         call[aPosn + 0] = letters[1];
                         call[aPosn + 1] = letters[2];
                     }
-                    else if (callTemplate.Contains("a"))
+                    else if (callTemplate.Contains('a'))
                     {
                         char[] letters = cs1.Next();
 
@@ -262,12 +321,57 @@ namespace AdifXsltLib
                 {
                     CallCounts.Add(callString, 1);
                 }
+
+                if (callString == "YS0CJW")
+                {
+                    // TODO:
+                }
+
                 return callString;
             }
 
+            //internal CallEntry RandomCall()
+            //{
+            //    XmlElement dxccEl = null;
+
+            //    while (dxccEl == null)
+            //    {
+            //        int index = random.Next(1, validDxccs.Count - 1);
+            //        int dxcc = validDxccs[index];
+
+            //        dxccEl = (XmlElement)testDxccsEl.SelectSingleNode(
+            //            "dxccEntity[(@code='" + dxcc.ToString() + "') and not(@deleted)]");
+            //    }
+            //    string call = InstantiateCallTemplate(dxccEl.GetAttribute("callTemplate"), out DateTime qsoStartDateTime, out bool qsoStartHasTime);
+
+            //    return SaveCallEntry(new CallEntry(call, dxccEl, qsoStartDateTime, qsoStartHasTime));
+            //}
+
+
+            /**
+             * <summary>
+             *   Creates a random callsign and returns it in a <see cref="CallEntry"/> object.
+             *   These must not have an associated specific QSO start date because the XSLT templates that
+             *   invoke this method are not expecting to have to emit a DXCC field and a historical start date;
+             *   without those, the QSO will almost certainly fail to be acceptable to Club Log.
+             * </summary>
+             * 
+             * <remarks>
+             *   TODO: Avoiding callsigns with a specific QSO is done here by looping until one is found.  It would
+             *   be "cleaner" instead to change <see cref="InstantiateCallTemplate(string, out DateTime, out bool)"/>
+             *   to exclude those but for now, the code here works.
+             * </remarks>
+             */
             internal CallEntry RandomCall()
             {
+                const int maxSkips = 100;
+
+                int skipCount = 0;
+
                 XmlElement dxccEl = null;
+                string call = string.Empty;
+                DateTime qsoStartDateTime = DateTime.MinValue;
+                bool qsoHasStartTime = false;
 
                 while (dxccEl == null)
                 {
@@ -276,17 +380,41 @@ namespace AdifXsltLib
 
                     dxccEl = (XmlElement)testDxccsEl.SelectSingleNode(
                         "dxccEntity[(@code='" + dxcc.ToString() + "') and not(@deleted)]");
+
+                    if (dxccEl != null)
+                    {
+                        call = InstantiateCallTemplate(dxccEl.GetAttribute("callTemplate"), out qsoStartDateTime, out qsoHasStartTime);
+                        if (qsoStartDateTime != DateTime.MinValue)
+                        {
+                            // For random calls, the template is not expecting to have calls returned that have a
+                            // specified QSO date/time, so try again.
+
+                            if (skipCount++ == maxSkips)
+                            {
+                                // Avoid an infinite loop.
+
+                                throw new AdifException($"Unable to select a random call after {skipCount} attempts");
+                            }
+
+                            dxccEl = null;
+                        }
+                    }
                 }
-                return SaveCallEntry(new CallEntry(InstantiateCallTemplate(dxccEl.GetAttribute("callTemplate")), dxccEl));
+
+                System.Diagnostics.Debug.Assert(qsoStartDateTime == DateTime.MinValue);
+
+                return SaveCallEntry(new CallEntry(call, dxccEl, qsoStartDateTime, qsoHasStartTime));
             }
 
-            internal CallEntry CallForDxcc(int dxcc)
+            internal CallEntry CallForDxcc(int dxcc, out DateTime qsoStartDateTime, out bool qsoHasStartTime)
             {
                 string callTemplate;
                 CallEntry callEntry;
                 if (dxcc == 0)
                 {
-                    callEntry = new CallEntry(InstantiateCallTemplate("M0aaa/MM"));
+                    callEntry = new CallEntry(InstantiateCallTemplate("M0aaa/MM", out _, out _));
+                    qsoStartDateTime = DateTime.MinValue;
+                    qsoHasStartTime = false;
                 }
                 else
                 {
@@ -295,7 +423,13 @@ namespace AdifXsltLib
                             "Internal error: Calls.CallForDxcc({0}): DXCC entity code not found or is deleted",
                             dxcc.ToString()));
                     callTemplate = dxccEl.GetAttribute("callTemplate");
-                    callEntry = new CallEntry(InstantiateCallTemplate(callTemplate), dxccEl);
+                    //callEntry = new CallEntry(InstantiateCallTemplate(callTemplate), dxccEl);
+                    string call = InstantiateCallTemplate(callTemplate, out qsoStartDateTime, out qsoHasStartTime);
+                    callEntry = new CallEntry(
+                        call,
+                        dxccEl,
+                        qsoStartDateTime,
+                        qsoHasStartTime);
                 }
                 return SaveCallEntry(callEntry);
             }
@@ -313,16 +447,22 @@ namespace AdifXsltLib
 
                     if (dxccEl == null)
                     {
-                        throw new Exception(string.Format(
-                            "Internal error: Calls.CallForCont(\"{0}\"): Continent not found",
-                            StringToNullOrString(cont)));
+                        throw new Exception($"Internal error: Calls.CallForCont(\"{StringToNullOrString(cont)}\"): Continent not found");
                     }
                 }
                 callTemplate = dxccEl.GetAttribute("callTemplate");
-                return SaveCallEntry(new CallEntry(InstantiateCallTemplate(callTemplate), dxccEl));
+                string call = InstantiateCallTemplate(callTemplate, out DateTime qsoStartDateTime, out bool qsoHasStartTime);
+                return SaveCallEntry(new CallEntry(
+                    call,
+                    dxccEl,
+                    qsoStartDateTime, qsoHasStartTime));
             }
 
-            internal CallEntry CallForPrimaryAdministrativeSubdivision(int dxcc, string primaryAdministrativeSubdivision)
+            internal CallEntry CallForPrimaryAdministrativeSubdivision(
+                int dxcc,
+                string primaryAdministrativeSubdivision,
+                out DateTime qsoStartDateTime,
+                out bool qsoHasStartTime)
             {
                 string callTemplate;
 
@@ -347,26 +487,28 @@ namespace AdifXsltLib
                 XmlElement pasEl = (XmlElement)dxccEl.SelectSingleNode(
                     "pas[(@code='" + primaryAdministrativeSubdivision + "') and not(@deleted)]");
                 callTemplate = (pasEl ?? dxccEl).GetAttribute("callTemplate");
-                return SaveCallEntry(new CallEntry(InstantiateCallTemplate(callTemplate), dxccEl));
+                string call = InstantiateCallTemplate(callTemplate, out qsoStartDateTime, out qsoHasStartTime);
+                return SaveCallEntry(new CallEntry(
+                    call,
+                    dxccEl,
+                    qsoStartDateTime,
+                    qsoHasStartTime));
             }
 
             private CallEntry SaveCallEntry(CallEntry callEntry)
             {
-                if (!callEntries.ContainsKey(callEntry.Call))
-                {
-                    callEntries.Add(callEntry.Call, callEntry);
-                }
+                callEntries.TryAdd(callEntry.Call, callEntry);
                 return callEntry;
             }
 
             internal CallEntry Previous(string call)
             {
-                callEntries.TryGetValue(call, out CallEntry callEntry);
+                _ = callEntries.TryGetValue(call, out CallEntry callEntry);
                 return callEntry;
             }
         }
 
-        private class DataTypeEntry
+        private partial class DataTypeEntry
         {
 #pragma warning disable format, IDE0055
             private const string
@@ -404,10 +546,10 @@ namespace AdifXsltLib
 #pragma warning restore format, IDE0055
 
             private static readonly char[]
-                ampersandSplitChar = new char[] { '&' },
-                colonSplitChar = new char[] { ':' },
-                commaSplitChar = new char[] { ',' },
-                nullSplitChar = new char[] { '\0' };
+                ampersandSplitChar = ['&'],
+                colonSplitChar = [':'],
+                commaSplitChar = [','],
+                nullSplitChar = ['\0'];
 
             internal AdifXslt AdifXslt;  // Needed to access the enumerations dictionary.
 
@@ -478,21 +620,18 @@ namespace AdifXsltLib
 
             private bool IsValidContinent(string continent)
             {
-                if (continentEnumeration == null)
-                {
-                    continentEnumeration = AdifXslt.enumerations["CONTINENT"];
-                }
+                continentEnumeration ??= AdifXslt.enumerations["CONTINENT"];
                 continentEnumeration.Validate(continent);  // This throws an exception if the Validate() fails.
                 return true;
             }
 
             private static readonly Regex
                 AdifVerRegex =
-                    new Regex(@"3\.[0-9]\.[0-9]"),
+                    _AdifVerRegex(),
                 PotaRefRegex =
-                    new Regex(@"[a-zA-Z0-9]{1,4}\-[0-9]{4,5}(@[a-zA-Z]{2}\-[a-zA-Z0-9]{1,3})?(,[a-zA-Z0-9]{1,4}\-[0-9]{4,5}(@[a-zA-Z]{2}\-[a-zA-Z0-9]{1,3})?)*"),
+                    _PotaRefRegex(),
                 CreatedTimestampRegex =
-                    new Regex(@"(19[3-9][0-9]|[2-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|[3][0-1]) ([0-1][0-9]|2[0-3])([0-5][0-9]){2}");
+                    _CreatedTimestampRegex();
 
             /**
              * <summary>
@@ -610,7 +749,7 @@ namespace AdifXsltLib
 
                     case CreditListDataType:
                         {
-                            List<string> creditItemsChecklist = new List<string>(32);
+                            List<string> creditItemsChecklist = new(32);
                             string[] creditItems = value.Split(commaSplitChar);
 
                             if (creditEnumeration == null || qslMediumEnumeration == null)
@@ -621,7 +760,7 @@ namespace AdifXsltLib
 
                             foreach (string creditItem in creditItems)
                             {
-                                List<string> mediumItemsChecklist = new List<string>(3);
+                                List<string> mediumItemsChecklist = new(3);
                                 string[] creditPair = creditItem.Split(colonSplitChar);
 
                                 if (creditPair.Length < 1 || creditPair.Length > 2)
@@ -677,14 +816,11 @@ namespace AdifXsltLib
                         {
                             string[] awards = value.Split(commaSplitChar);
 
-                            if (awardSponsorEnumeration == null)
-                            {
-                                awardSponsorEnumeration = AdifXslt.enumerations["AWARD_SPONSOR"];
-                            }
+                            awardSponsorEnumeration ??= AdifXslt.enumerations["AWARD_SPONSOR"];
 
                             foreach (string award in awards)
                             {
-                                StringBuilder nullDelimitedAward = new StringBuilder(128);
+                                StringBuilder nullDelimitedAward = new(128);
                                 int partNo = 0;
 
                                 foreach (char c in award)
@@ -815,8 +951,8 @@ namespace AdifXsltLib
                     case DateDataType:
                         try
                         {
-                            new DateTime(
-                                int.Parse(value.Substring(0, 4)),
+                            _ = new DateTime(
+                                int.Parse(value[..4]),
                                 int.Parse(value.Substring(4, 2)),
                                 int.Parse(value.Substring(6, 2)));
                         }
@@ -832,11 +968,11 @@ namespace AdifXsltLib
                     case TimeDataType:
                         try
                         {
-                            new DateTime(
+                            _ = new DateTime(
                                 1900,
                                 01,
                                 01,
-                                int.Parse(value.Substring(0, 2)),
+                                int.Parse(value[..2]),
                                 int.Parse(value.Substring(2, 2)),
                                 value.Length == 4 ?
                                     00 :
@@ -855,9 +991,9 @@ namespace AdifXsltLib
                     case IotaRefNoDataType:
                         {
                             if (value.Length != 6 ||
-                                (!IsValidContinent(value.Substring(0, 2))) ||
+                                (!IsValidContinent(value[..2])) ||
                                 value[2] != '-' ||
-                                (!int.TryParse(value.Substring(3), out _)))
+                                (!int.TryParse(value[3..], out _)))
                             {
                                 error = string.Format(
                                     "'{0}' is not allowed in a field of type {1}",
@@ -1038,7 +1174,7 @@ namespace AdifXsltLib
                                     •yyyyyy **Optional** is the 4 to 6 character ISO 3166-2 code to differentiate which state/province/prefecture/primary administration location the contact represents, in the case that the park reference spans more than one location (such as a trail). 
                              */
 
-                            string[] potaRefs = value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] potaRefs = value.Split([','], StringSplitOptions.RemoveEmptyEntries);
 
                             foreach (string potaRef in potaRefs)
                             {
@@ -1077,7 +1213,7 @@ namespace AdifXsltLib
 
                         // The dictionary is used to check that each enumeration-name in a record is unique.
 
-                        Dictionary<string, string> includedEnumerationNames = new Dictionary<string, string>(
+                        Dictionary<string, string> includedEnumerationNames = new(
                             16,
                             StringComparer.OrdinalIgnoreCase);
                         string[] subdivisionCodes = value.Split(';');
@@ -1145,13 +1281,13 @@ namespace AdifXsltLib
                                     value,
                                     Name));
                             }
-                            string referenceNumber = value.Substring(slashPosition + 1);
+                            string referenceNumber = value[(slashPosition + 1)..];
 
                             if (referenceNumber.Length != 6 ||
                                 referenceNumber[2] != '-' ||
                                 (!char.IsLetter(referenceNumber[0])) ||
                                 (!char.IsLetter(referenceNumber[1])) ||
-                                (!int.TryParse(referenceNumber.Substring(3), out int _)))
+                                (!int.TryParse(referenceNumber[3..], out int _)))
                             {
                                 throw new AdifValidationException(string.Format(
                                     "{0} does not contain a valid SOTA Reference Number in the righthand 6 characters in a field of type {1}",
@@ -1174,7 +1310,7 @@ namespace AdifXsltLib
                             // This would be a lot shorter and tidier using a single regular expression, although that would be slower
                             // and the exception messages would be less specific.
 
-                            string[] parts = value.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+                            string[] parts = value.Split(['-'], StringSplitOptions.RemoveEmptyEntries);
 
                             if (parts.Length != 2)
                             {
@@ -1335,6 +1471,18 @@ namespace AdifXsltLib
 
                 return valid;
             }
+
+
+            [GeneratedRegex(@"3\.[0-9]\.[0-9]")]
+            private static partial Regex _AdifVerRegex();
+
+
+            [GeneratedRegex(@"[a-zA-Z0-9]{1,4}\-[0-9]{4,5}(@[a-zA-Z]{2}\-[a-zA-Z0-9]{1,3})?(,[a-zA-Z0-9]{1,4}\-[0-9]{4,5}(@[a-zA-Z]{2}\-[a-zA-Z0-9]{1,3})?)*")]
+            private static partial Regex _PotaRefRegex();
+
+
+            [GeneratedRegex(@"(19[3-9][0-9]|[2-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|[3][0-1]) ([0-1][0-9]|2[0-3])([0-5][0-9]){2}")]
+            private static partial Regex _CreatedTimestampRegex();
         }
 
         private class FieldEntry
@@ -1347,8 +1495,8 @@ namespace AdifXsltLib
             }
 
             private static readonly char[]
-                commaSplitChar = new char[] { ',' },
-                colonSplitChar = new char[] { ':' };
+                commaSplitChar = [','],
+                colonSplitChar = [':'];
 
             internal string Name;
             internal bool Header;
@@ -1379,7 +1527,7 @@ namespace AdifXsltLib
                 this.Variant = FieldVariant.User;
                 this.UserDefNumber = userDefNumber;
                 this.Enumeration = enumerationOrRange.ToUpper();
-                this.EnumStrings = new List<string>(0);
+                this.EnumStrings = [];
                 this.EnumMin = float.MinValue;
                 this.EnumMax = float.MaxValue;
                 this.MinimumValue = double.MinValue;
@@ -1395,14 +1543,14 @@ namespace AdifXsltLib
                     //}
                     enumerationOrRange = enumerationOrRange.ToUpper().Substring(1, enumerationOrRange.Length - 2);
 
-                    if (enumerationOrRange.Contains(","))
+                    if (enumerationOrRange.Contains(','))
                     {
                         if (DataType.Name != "ENUMERATION")
                         {
                             throw new Exception("USERDEFn field has an enumeration without Data Type Indicator E");
                         }
 
-                        EnumStrings = new List<string>(enumerationOrRange.Split(commaSplitChar, StringSplitOptions.RemoveEmptyEntries));
+                        EnumStrings = [.. enumerationOrRange.Split(commaSplitChar, StringSplitOptions.RemoveEmptyEntries)];
                     }
                     else
                     {
@@ -1439,7 +1587,7 @@ namespace AdifXsltLib
                 this.Variant = FieldVariant.App;
                 this.UserDefNumber = 0;
                 this.Enumeration = string.Empty;
-                this.EnumStrings = new List<string>(0);
+                this.EnumStrings = [];
                 this.EnumMin = float.MinValue;
                 this.EnumMax = float.MaxValue;
                 this.MinimumValue = double.MinValue;
@@ -1464,7 +1612,7 @@ namespace AdifXsltLib
                 this.Variant = FieldVariant.Adif;
                 this.UserDefNumber = 0;
                 this.Enumeration = enumeration;
-                this.EnumStrings = new List<string>(0);
+                this.EnumStrings = [];
                 this.EnumMin = float.MinValue;
                 this.EnumMax = float.MaxValue;
                 this.MinimumValue = minimumValue;
@@ -1619,13 +1767,25 @@ namespace AdifXsltLib
 
             internal void Validate(string value)
             {
-                if (!Values.ContainsKey(value.ToUpper()))
-                {
-                    //foreach (string val in Values.Keys)
-                    //{
-                    //    reportError("Val = " + val);
-                    //}
+                bool found = Values.ContainsKey(value.ToUpper()); ;
 
+                if (!found)
+                {
+                    // The REGION enumeration contains compound keys that comprise the region code followed by \t followed by the DXCC.
+                    // So, instead of looking up the key, see if the collection includes the value.
+
+                    foreach (string enumerationValue in Values.Values)
+                    {
+                        if (value.Equals(enumerationValue, StringComparison.OrdinalIgnoreCase))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
                     Logger.Log(null, true, $"Enumeration '{Name}' does not include the value '{value}'");
 
                     foreach (string key in Values.Keys)
@@ -1638,14 +1798,16 @@ namespace AdifXsltLib
             }
         }
 
+        private readonly bool ClubLogBandsOnly = false;
+
         private class Qso
         {
             private const string defaultBand = "20m";
             private const float defaultFreq = 14.050f;
-            private static readonly char[] plusSplitChar = new char[] { '+' };
+            private static readonly char[] plusSplitChar = ['+'];
 
             internal AdifXslt adifXslt;
-            internal Random random = new Random(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
+            internal Random random = new(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
             internal DateTime Start;
             internal DateTime End;
             internal string Call = "VE3AAA";
@@ -1659,8 +1821,8 @@ namespace AdifXsltLib
             internal int Cqz = 5;
             internal string Cont = "NA";
 
-            private DateTime savedStart;
-            private DateTime savedEnd;
+            private DateTime SavedStart;
+            private DateTime SavedEnd;
             private CallEntry callEntry;
 
             internal Qso(AdifXslt adifXslt, DateTime start, TimeSpan duration)
@@ -1668,8 +1830,8 @@ namespace AdifXsltLib
                 this.adifXslt = adifXslt;
                 this.Start = start;
                 this.End = start.Add(duration);
-                this.savedStart = this.Start;
-                this.savedEnd = this.End;
+                this.SavedStart = this.Start;
+                this.SavedEnd = this.End;
             }
 
             internal void Next(string lastCall)
@@ -1688,36 +1850,56 @@ namespace AdifXsltLib
                     this.Cont = callEntry.Cont;
                 }
                 {
-                    this.Band = BandEntry.RandomBand(adifXslt.bands, random);
+                    this.Band = BandEntry.RandomBand(
+                        adifXslt.ClubLogBandsOnly ?
+                            adifXslt.clubLogBands :
+                            adifXslt.bands,
+                        random);
                     this.Freq = float.Parse(adifXslt.Freq(this.Band), adifNumberStyles, adifNumberFormatInfo);
                 }
                 {
-                    this.BandRx = BandEntry.RandomBand(adifXslt.bands, random);
+                    this.BandRx = BandEntry.RandomBand(
+                        adifXslt.ClubLogBandsOnly ?
+                            adifXslt.clubLogBands :
+                            adifXslt.bands,
+                        random);
                     this.FreqRx = float.Parse(adifXslt.Freq(this.BandRx), adifNumberStyles, adifNumberFormatInfo);
 
-                    if (++adifXslt.messages < 6)
-                    {
-                        ReportError("Next() has set qso.BandRx to " + this.BandRx + " and " +
-                                                   "qsp.FreqRx to " + this.FreqRx.ToString(adifNumberFormatInfo));
-                    }
+                    //if (++adifXslt.messages < MaxMessages)
+                    //{
+                    //    ReportError("Next() has set qso.BandRx to " + this.BandRx + " and " +
+                    //                               "qsp.FreqRx to " + this.FreqRx.ToString(adifNumberFormatInfo));
+                    //}
                 }
                 {
-                    ModeEntry modeEntry = adifXslt.modesByEntry[random.Next(0, adifXslt.modesByEntry.Count)];
+                    ModeEntry modeEntry = adifXslt.modesByEntry[random.Next(adifXslt.modesByEntry.Count)];
 
                     this.Mode = modeEntry.Mode;
                 }
             }
 
-            internal void SaveStartEnd()
+            internal string SaveStartEnd()
             {
-                savedStart = Start;
-                savedEnd = End;
+                if (Start.Date == new DateTime(1997,12,01))
+                {
+                    //
+                }
+                System.Diagnostics.Debug.Assert(Start.Year >= 2024);
+                SavedStart = Start;
+                SavedEnd = End;
+                return string.Empty;
             }
 
-            internal void RestoreStartEnd()
+            internal string RestoreStartEnd()
             {
-                Start = savedStart;
-                End = savedEnd;
+                if (Start.Date == new DateTime(1997, 12, 01))
+                {
+                    //
+                }
+                System.Diagnostics.Debug.Assert(SavedStart.Year >= 2024);
+                Start = SavedStart;
+                End = SavedEnd;
+                return string.Empty;
             }
 
             internal string Substitute(string nameUpper, string value)
@@ -1754,12 +1936,12 @@ namespace AdifXsltLib
                 //      {CONT}
                 //      {BAND_FOR_CONTEST(xx)}  where xx is a contest
 
-                if (value.IndexOf('{') >= 0)
+                if (value.Contains('{', StringComparison.Ordinal))
                 {
                     float addDays = 0;
                     string param = string.Empty;
 
-                    if (value.Length < 2 || value[0] != '{' || value[value.Length - 1] != '}')
+                    if (value.Length < 2 || value[0] != '{' || value[^1] != '}')
                     {
                         throw new Exception("Substitution value does not start and end with '{' and '}'");
                     }
@@ -1769,7 +1951,7 @@ namespace AdifXsltLib
                     }
                     else
                     {
-                        value = value.Substring(1, value.Length - 2);
+                        value = value[1..^1];
                     }
                     {
                         string[] parts = value.Split(plusSplitChar, StringSplitOptions.RemoveEmptyEntries);
@@ -1803,17 +1985,16 @@ namespace AdifXsltLib
 
                         if (paramStart > 0)
                         {
-                            if (value[value.Length - 1] != ')')
+                            if (value[^1] != ')')
                             {
                                 throw new Exception("Parameter must end with a ')' character");
                             }
                             param = value.Substring(paramStart + 1, value.Length - paramStart - 2);
-                            value = value.Substring(0, paramStart);
+                            value = value[..paramStart];
 
                             if (value != "YEAR_OF_BIRTH")
                             {
-                                throw new Exception(string.Format(
-                                    "A parameter cannot be used with [0}"));
+                                throw new Exception($"A parameter cannot be used with {value}");
                             }
                         }
                     }
@@ -1858,7 +2039,7 @@ namespace AdifXsltLib
 
                         case "FREQ":
                             {
-                                value = Freq.ToString();
+                                value = Freq.ToString();  //TODO: Formatting!
                             }
                             break;
 
@@ -1870,7 +2051,7 @@ namespace AdifXsltLib
 
                         case "FREQ_RX":
                             {
-                                value = FreqRx.ToString();
+                                value = FreqRx.ToString();  //TODO: Formatting!
                             }
                             break;
 
@@ -1975,7 +2156,7 @@ namespace AdifXsltLib
          */
         public static bool Success { get; set; }
 
-        public Random random = new Random(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
+        public Random random = new(1);  // Produce a fixed sequence each time to enable some repeatability when debugging.
 
         private readonly bool
             adiStyle = true,
@@ -1990,14 +2171,15 @@ namespace AdifXsltLib
 
         private readonly Qso qso;
 
-        private readonly Dictionary<string, BandEntry>           bands                   = new Dictionary<string, BandEntry>           (64);
-        private readonly List      <ModeEntry>                   modesByEntry            = new List      <ModeEntry>                  (512);
-        private readonly Dictionary<string, string>              recordFieldsEmitted     = new Dictionary<string, string>              (32);
-        private readonly Dictionary<string, string>              fieldNamesWithIntlField = new Dictionary<string, string>            (1024);
-        private readonly Dictionary<string, string>              headerFieldNames        = new Dictionary<string, string>              (16);
-        private readonly Dictionary<string, DataTypeEntry>       dataTypes               = new Dictionary<string, DataTypeEntry>       (64);
-        private readonly Dictionary<string, FieldEntry>          fields                  = new Dictionary<string, FieldEntry>        (1024);
-        private readonly Dictionary<string, EnumerationEntry>    enumerations            = new Dictionary<string, EnumerationEntry>   (128);
+        private readonly Dictionary<string, BandEntry>          clubLogBands            = new(64);
+        private readonly Dictionary<string, BandEntry>          bands                   = new(64);
+        private readonly List      <ModeEntry>                  modesByEntry            = new(512);
+        private readonly Dictionary<string, string>             recordFieldsEmitted     = new(32);
+        private readonly Dictionary<string, string>             fieldNamesWithIntlField = new(1024);
+        private readonly Dictionary<string, string>             headerFieldNames        = new(16);
+        private readonly Dictionary<string, DataTypeEntry>      dataTypes               = new(64);
+        private readonly Dictionary<string, FieldEntry>         fields                  = new(1024);
+        private readonly Dictionary<string, EnumerationEntry>   enumerations            = new(128);
 
         private readonly Calls calls;
 
@@ -2008,7 +2190,7 @@ namespace AdifXsltLib
             adifVersion =   string.Empty,
             adifStatus =    string.Empty;
 
-        DateTime
+        readonly DateTime
             adifDate = DateTime.MinValue;
 #pragma warning restore format
 
@@ -2046,9 +2228,8 @@ namespace AdifXsltLib
 
         private AdifXslt()
         {
-            System.Diagnostics.StackFrame fr = new System.Diagnostics.StackFrame(1, true);
-            System.Diagnostics.StackTrace st = new System.Diagnostics.StackTrace(fr);
-            string stack = st.ToString();
+            System.Diagnostics.StackFrame fr = new(1, true);
+            string stack = new System.Diagnostics.StackTrace(fr).ToString();
 
             throw new Exception($"A call to the AdifXslt parameterless constructor is not allowed\r\n\r\n{stack}");
         }
@@ -2057,12 +2238,15 @@ namespace AdifXsltLib
 #pragma warning disable format
             string          adifStyle,
             bool            hasHeaderFields,
+            bool            clubLogBandsOnly,
             XPathNavigator  nav)
 #pragma warning restore format
         {
             try
             {
                 Success = false;  // Guilty until proven innocent!
+
+                ClubLogBandsOnly = clubLogBandsOnly;
 
                 qsoDuration = new TimeSpan(00, 04, 37);
                 qsoInterval = new TimeSpan(00, 01, 06);
@@ -2072,23 +2256,17 @@ namespace AdifXsltLib
                     DateTime.UtcNow.Date.AddMonths(-2),  // Set start time to 00:00:00 so that separate runs produce the same dates & times during a day.
                     qsoDuration);
 
-                switch (adifStyle.ToUpper())
+                adiStyle = adifStyle.ToUpperInvariant() switch
                 {
-                    case "ADI":
-                        adiStyle = true;
-                        break;
-
-                    case "ADX":
-                        adiStyle = false;
-                        break;
-
-                    default:
-                        throw new Exception("Invalid adifStyle parameter");
-                }
-
+                    "ADI" => true,
+                    "ADX" => false,
+                    _ => throw new Exception("Invalid adifStyle parameter"),
+                };
                 this.hasHeaderFields = hasHeaderFields;
 
                 bands.Clear();
+                clubLogBands.Clear();
+
                 nav = nav.SelectSingleNode("/adif/enumerations/enumeration[@name='Band']/record");
                 do
                 {
@@ -2096,7 +2274,34 @@ namespace AdifXsltLib
                     float lowerLimit = float.Parse(nav.SelectSingleNode("value[@name='Lower Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
                     float upperLimit = float.Parse(nav.SelectSingleNode("value[@name='Upper Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
 
-                    bands.Add(band, new BandEntry(band, lowerLimit, upperLimit));
+                    BandEntry bandEntry = new(band, lowerLimit, upperLimit);
+
+                    bands.Add(band, bandEntry);
+
+                    switch (band.ToLowerInvariant())
+                    {
+                        case "160m":
+                        case "80m":
+                        case "60m":
+                        case "40m":
+                        case "30m":
+                        case "20m":
+                        case "17m":
+                        case "15m":
+                        case "12m":
+                        case "10m":
+                        case "6m":
+                        case "4m":
+                        case "2m":
+                        case "70cm":
+                        case "23cm":
+                        case "13cm":
+                            clubLogBands.Add(band, bandEntry);
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
                 while (nav.MoveToNext("record", string.Empty));
 
@@ -2108,7 +2313,7 @@ namespace AdifXsltLib
                     {
                         string mode = nav.SelectSingleNode("value[@name='Mode']").Value;
                         XPathNavigator submodesNav = nav.SelectSingleNode("value[@name='Submodes']");
-                        ModeEntry modeEntry = new ModeEntry(mode, submodesNav == null ? string.Empty : submodesNav.Value);
+                        ModeEntry modeEntry = new(mode, submodesNav == null ? string.Empty : submodesNav.Value);
 
                         modesByEntry.Add(modeEntry);
                     }
@@ -2163,9 +2368,9 @@ namespace AdifXsltLib
 
                         if (indexOfSquareBracket > 0)
                         {
-                            enumeration = enumeration.Substring(0, indexOfSquareBracket);
+                            enumeration = enumeration[..indexOfSquareBracket];
 
-                            Logger.Log($"Field '{field}' Enumeration '{enumeration}' is a function");
+                            // Logger.Log($"Field '{field}' Enumeration '{enumeration}' is a function");
                         }
                     }
 
@@ -2183,7 +2388,7 @@ namespace AdifXsltLib
                     {
                         if (field.EndsWith("_INTL"))
                         {
-                            fieldNamesWithIntlField.Add(field.Substring(0, field.Length - ("_INTL".Length)), field);
+                            fieldNamesWithIntlField.Add(field[..^"_INTL".Length], field);
                         }
 
                         if (header)
@@ -2200,7 +2405,7 @@ namespace AdifXsltLib
                 do
                 {
                     string enumerationName = nav.SelectSingleNode("@name").Value.ToUpper();
-                    Dictionary<string, string> values = new Dictionary<string, string>(2048);
+                    Dictionary<string, string> values = new(2048);
                     XPathNavigator valueNav = nav.SelectSingleNode("record");
 
                     do
@@ -2208,7 +2413,7 @@ namespace AdifXsltLib
                         string value = valueNav.SelectSingleNode("value[2]").Value.ToUpper();
                         string key = value;
 
-                        if (enumerationName == "Primary_Administrative_Subdivision".ToUpper())
+                        if (enumerationName.Equals("Primary_Administrative_Subdivision", StringComparison.OrdinalIgnoreCase))
                         {
                             // Each value has to have a 2-part key comprising value and DXCC entity code.
                             // Additionally, some entries need a 3-part key because the values are 'Deleted'.
@@ -2222,6 +2427,22 @@ namespace AdifXsltLib
                             {
                                 key += "\tDeleted";
                             }
+                        }
+                        else if (enumerationName.Equals("Region", StringComparison.OrdinalIgnoreCase))
+                        {
+                            try
+                            {
+                                XPathNavigator dxccNode = valueNav.SelectSingleNode("value[@name='DXCC Entity Code']");
+
+                                if (dxccNode != null)
+                                {
+                                    string dxcc = dxccNode.Value;
+                                    //string dxcc = valueNav.SelectSingleNode("value[@name='DXCC Entity Code']").Value;
+
+                                    key += '\t' + dxcc;
+                                }
+                            }
+                            catch { }
                         }
 
                         if (values.ContainsKey(key))
@@ -2244,7 +2465,7 @@ namespace AdifXsltLib
 
                 {
                     string sas = "SECONDARY_ADMINISTRATIVE_SUBDIVISION";
-                    Dictionary<string, string> sasDictionary = new Dictionary<string, string>();
+                    Dictionary<string, string> sasDictionary = [];
 
                     sasDictionary = enumerations[sas].Values;
 
@@ -2331,7 +2552,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.AdfiXslt({0}, {1}, {2}) Exception: {3}",
+                    "AdifXslt.AdifXslt({0}, {1}, {2}) Exception: {3}",
                     StringToNullOrString(adifStyle),
                     hasHeaderFields.ToString(),
                     nav == null ? "[null]" : "[XPathNavigator]",
@@ -2354,7 +2575,7 @@ namespace AdifXsltLib
             }
             catch (Exception exc)
             {
-                ReportError($"AdfiXslt.SetOptions({StringToNullOrString(fieldSeparator)}, {StringToNullOrString(recordSeparator)}) Exception: {exc.Message}");
+                ReportError($"AdifXslt.SetOptions({StringToNullOrString(fieldSeparator)}, {StringToNullOrString(recordSeparator)}) Exception: {exc.Message}");
                 throw;
             }
             return string.Empty;
@@ -2388,7 +2609,7 @@ namespace AdifXsltLib
         //    catch (Exception exc)
         //    {
         //        reportError(string.Format(
-        //            "AdfiXslt.Property({0}) Exception: {1}",
+        //            "AdifXslt.Property({0}) Exception: {1}",
         //            StringToNullOrString(name),
         //            exc.Message));
         //        throw;
@@ -2396,29 +2617,23 @@ namespace AdifXsltLib
         //    return value;
         //}
 
-        public string AdifVersion()
-        {
-            return adifVersion;
-        }
+        public string AdifVersion() => adifVersion;
 
-        public int AdifVersionInt()
-        {
-            return adifVersionInt;
-        }
+        public int AdifVersionInt() => adifVersionInt;
 
         /**
          * <value>
          *   The name of this program, e.g. "CreateADIFTestFiles".
          * </value>
          */
-        public string ProgramId => ApplicationName;
+        public static string ProgramId => ApplicationName;
 
         /**
          * <value>
          *   The version of this program as a string, e.g. "1.2.3.4".
          * </value>
          */
-        public string ProgramVersion => ApplicationVersion;
+        public static string ProgramVersion => ApplicationVersion;
 
         /**
          * <summary>
@@ -2427,29 +2642,46 @@ namespace AdifXsltLib
          * 
          * <returns>the current UTC date and time in the format required by the ADIF CREATED_TIMESTAMP field.</returns>
          */
-        public string CreatedTimestamp => DateTime.UtcNow.ToString("yyyyMMdd HHmmss");
+        public static string CreatedTimestamp => DateTime.UtcNow.ToString("yyyyMMdd HHmmss");
 
-        private static readonly char[] xmlEscapeChars = new char[] { '&', '<', '>', '\'', '"' };
+        private static readonly char[] xmlEscapeChars = ['&', '<', '>', '\'', '"'];
 
+        /**
+         * <summary>
+         *   Encodes any characters in a <see cref="string"/> that are not allowed unencoded in XML. 
+         * </summary>
+         * 
+         * <param name="text">The <see cref="string"/> to be encoded.</param>
+         * 
+         * <returns>The input <see cref="string"/> with characters encoded.</returns>
+         */
         private string Encode(string text)
         {
             if (!adiStyle)
             {
-                if (text.IndexOfAny(xmlEscapeChars) >= 0)
+                if (text.IndexOfAny(xmlEscapeChars) >= 0)  // Optimisation to avoid unnecessary multiple calls to string.Replace.
                 {
 #pragma warning disable format
-                    text = text.Replace("&" , "&amp;").  // Must change ampersand first or else it itself will get replaced.
-                                Replace("<" , "&lt;").
-                                Replace(">" , "&gt;").
-                                Replace("'" , "&apos;").
-                                Replace("\"", "&quot;");
+                    text = text.
+                        Replace("&" , "&amp;").  // Must change ampersand first or else it itself will get replaced.
+                        Replace("<" , "&lt;").
+                        Replace(">" , "&gt;").
+                        Replace("'" , "&apos;").
+                        Replace("\"", "&quot;");
 #pragma warning restore format
                 }
             }
             return text;
         }
 
-        // These encoding methods are more "puristic" but extremely inefficient compared to the above.
+        // While the XmlEncode method below is more "puristic" than using string.Replace() per the Encode method
+        // above, the XmlWriter's WriteString method is designed to encode element values and hence does not
+        // encode apostrophes (') or double-quotes (") because they are valid.  This means that it is no use for
+        // encoding attribute values where they *do* needed to be encoded.
+        //
+        // While WriteAttributeString would probably work, it has to be called in the context of writing an
+        // element and then the wanted encoded string would need to be extracted from the resulting XML;
+        // it's not worth the effort when string.Replace() works fine.
 
         //public static string XmlEncode(string value)
         //{
@@ -2480,14 +2712,28 @@ namespace AdifXsltLib
         //    }
         //}
 
+        /**
+         * <summary>
+         *   Accepts a <see cref="string"/> value and converts it to a value for incorporating in
+         *   error messages and exceptions.<br />
+         *   <br />
+         *   If the string is null, "[null]" is returned.<br />
+         *   If the string contains \r, \n, or \t, these are converted to "\\r", "\\n" and "\\t" respectively.
+         * </summary>
+         * 
+         * <param name="value">The <see cref="string"/> to be converted.</param>
+         * 
+         * <returns>The converted <see cref="string"/> value.</returns>
+         */
         internal static string StringToNullOrString(string value)
         {
             if (!string.IsNullOrEmpty(value))
             {
 #pragma warning disable format
-                value = value.Replace("\r", "\\r").
-                              Replace("\n", "\\n").
-                              Replace("\t", "\\t");
+                value = value.
+                    Replace("\r", "\\r").
+                    Replace("\n", "\\n").
+                    Replace("\t", "\\t");
 #pragma warning restore format
             }
 
@@ -2496,22 +2742,28 @@ namespace AdifXsltLib
                 $"\"{value}\"";
         }
 
-        public string SaveQsoStartEnd()
-        {
-            qso.SaveStartEnd();
-            return string.Empty;
-        }
+        /**
+         * <summary>
+         *   Saves the last used QSO start date and time prior to a QSO being output with a
+         *   pre-defined date and time.  This is so that after the QSO has been output,
+         *   the last used QSO start date and time can be restored.
+         * </summary>
+         * 
+         * <returns>An empty <see cref="string"/> because no output is being included in the ADIF file.</returns>
+         */
+        public string SaveQsoStartEnd() => qso.SaveStartEnd();
 
-        public string RestoreQsoStartEnd()
-        {
-            qso.RestoreStartEnd();
-            return string.Empty;
-        }
+        /**
+         * <summary>
+         *   Restores the saved QSO start date and time back to the last used QSO data and time after a QSO
+         *   has been output with a pre-defined date and time.
+         * </summary>
+         * 
+         * <returns>An empty <see cref="string"/> because no output is being included in the ADIF file.</returns>
+         */
+        public string RestoreQsoStartEnd() => qso.RestoreStartEnd();
 
-        private string QsoDate()
-        {
-            return qso.Start.ToString("yyyyMMdd");
-        }
+        private string QsoDate() => qso.Start.ToString("yyyyMMdd");
 
         // Not curently required - QSO_DATE_OFF fields are nevertheless generated by QSO_templates.xslt
         //
@@ -2527,10 +2779,7 @@ namespace AdifXsltLib
         //    return qso.Start.ToString("HHmm");
         //}
 
-        private string TimeOn6()
-        {
-            return qso.Start.ToString("HHmmss");
-        }
+        private string TimeOn6() => qso.Start.ToString("HHmmss");
 
         // Not currently required; however 4-digit TIME_OFF fields are nevertheless generated by QSO_templates.xslt
         //
@@ -2539,15 +2788,9 @@ namespace AdifXsltLib
         //    return qso.End.ToString("HHmm");
         //}
 
-        private string TimeOff6()
-        {
-            return qso.End.ToString("HHmmss");
-        }
+        private string TimeOff6() => qso.End.ToString("HHmmss");
 
-        private string Band()
-        {
-            return qso.Band;
-        }
+        private string Band() => qso.Band;
 
         private string Band(float freq)
         {
@@ -2579,7 +2822,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.Band({0}) Exception: {1}",
+                    "AdifXslt.Band({0}) Exception: {1}",
                     freq.ToString(),
                     exc.Message));
                 throw;
@@ -2599,7 +2842,7 @@ namespace AdifXsltLib
             }
             catch (Exception exc)
             {
-                ReportError("AdfiXslt.Freq() Exception: " + exc.Message);
+                ReportError("AdifXslt.Freq() Exception: " + exc.Message);
                 throw;
             }
             return freq;
@@ -2623,7 +2866,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.Freq({0}) Exception:  {1}",
+                    "AdifXslt.Freq({0}) Exception:  {1}",
                     StringToNullOrString(band),
                     exc.Message));
                 throw;
@@ -2633,7 +2876,7 @@ namespace AdifXsltLib
 
         //private string bandRx()
         //{
-        //    if (++messages < 6)
+        //    if (++messages < MaxMessages)
         //    {
         //        reportError("BandRx() returning " + qso.BandRx);
         //    }
@@ -2646,7 +2889,7 @@ namespace AdifXsltLib
         //    return qso.FreqRx.ToString();
         //}
 
-        public string BandForContest(string contest)
+        public static string BandForContest(string contest)
         {
             string band;
 
@@ -2693,15 +2936,23 @@ namespace AdifXsltLib
             return band;
         }
 
-        private string Call()
-        {
-            return qso.Call;
-        }
+        public bool IncludeBand(string band) => !ClubLogBandsOnly || clubLogBands.ContainsKey(band);
 
-        public string CallForDxcc(int dxccEntity)
-        {
-            return calls.CallForDxcc(dxccEntity).Call;
-        }
+        private DateTime DxccQsoStartDateTime;
+
+        private bool DxccQsoHasStartTime;
+
+        internal string CallForDxccStartDate() => DxccQsoStartDateTime != DateTime.MinValue ?
+                DxccQsoStartDateTime.ToString("yyyyMMdd") :
+                string.Empty;
+
+        internal string CallForDxccStartTime() => DxccQsoHasStartTime ?
+                DxccQsoStartDateTime.ToString("HHmmss") :
+                string.Empty;
+
+        private string Call() => qso.Call;
+
+        public string CallForDxcc(int dxccEntity) => calls.CallForDxcc(dxccEntity, out DxccQsoStartDateTime, out DxccQsoHasStartTime).Call;
 
         public string CallForCont(string cont)
         {
@@ -2718,7 +2969,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.CallForCont({0}) Exception: {1}",
+                    "AdifXslt.CallForCont({0}) Exception: {1}",
                     StringToNullOrString(cont),
                     exc.Message));
                 throw;
@@ -2736,12 +2987,12 @@ namespace AdifXsltLib
                 {
                     throw new Exception("primaryAdministrativeSubdivision is [null] or empty");
                 }
-                callEntry = calls.CallForPrimaryAdministrativeSubdivision(dxcc, primaryAdministrativeSubdivision);
+                callEntry = calls.CallForPrimaryAdministrativeSubdivision(dxcc, primaryAdministrativeSubdivision, out DxccQsoStartDateTime, out DxccQsoHasStartTime);
             }
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.CallForPrimaryAdministrativeSubdivision({0}, \"{1}\" Exception: {2}",
+                    "AdifXslt.CallForPrimaryAdministrativeSubdivision({0}, \"{1}\" Exception: {2}",
                     dxcc.ToString(),
                     StringToNullOrString(primaryAdministrativeSubdivision),
                     exc.Message));
@@ -2757,19 +3008,14 @@ namespace AdifXsltLib
         //    return qso.Dxcc;
         //}
 
-        private string Mode()
-        {
-            return qso.Mode;
-        }
+        private string Mode() => qso.Mode;
 
-        private bool IgnoreField(string nameUpper)
-        {
-            return adiStyle ?
+        private bool IgnoreField(string nameUpper) =>
+            adiStyle ?
                 nameUpper.EndsWith("_INTL") :
                 fieldNamesWithIntlField.ContainsKey(nameUpper);
-        }
 
-        private readonly List<string> UntestedFields = new List<string>();
+        private readonly List<string> UntestedFields = [];
 
         public string UntestedField(string name)
         {
@@ -2783,14 +3029,14 @@ namespace AdifXsltLib
             {
                 if (adiStyle)
                 {
-                    if (text.IndexOf('<') >= 0)
+                    if (text.Contains('<', StringComparison.Ordinal))
                     {
                         throw new Exception("Comments in ADI files cannot include a '<'");
                     }
                 }
                 else
                 {
-                    if (text.IndexOf("--") >= 0)
+                    if (text.Contains("--", StringComparison.Ordinal))
                     {
                         throw new Exception("Comments in ADX files cannot include '--'");
                     }
@@ -2800,7 +3046,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.Comment({0}) Exception: {1}",
+                    "AdifXslt.Comment({0}) Exception: {1}",
                     StringToNullOrString(text),
                     exc.Message));
                 throw;
@@ -2808,19 +3054,13 @@ namespace AdifXsltLib
             return text;
         }
 
-        public string CommentLine(string text)
-        {
-            return Comment(text) + "\r\n";
-        }
+        public string CommentLine(string text) => Comment(text) + "\r\n";
 
-        public string CommentLine2(string text)
-        {
-            return CommentLine(text) + "\r\n";
-        }
+        public string CommentLine2(string text) => CommentLine(text) + "\r\n";
 
         public string CommentReport(bool full)
         {
-            StringBuilder message = new StringBuilder(65536);
+            StringBuilder message = new(65536);
 
             _ = message.Append("Report\r\n\r\n");
 
@@ -2901,14 +3141,24 @@ namespace AdifXsltLib
             return CommentLine(message.ToString());
         }
 
+        /**
+         * <summary>
+         *   Converts a date in the format "yyyy-MM-dd" to the ADIF date format "yyyyMMdd".
+         * </summary>
+         * 
+         * <param name="date">The date to be converted.</param>
+         * 
+         * <returns>The date in the ADIF date format.</returns>
+         */
+        public string DateToAdifDate(string date) => date.Replace("-", string.Empty);
+
         public string Field(
             string name,
-            string value)
-        {
-            return Field(name, value, string.Empty);
-        }
+            string value) => Field(name, value, string.Empty);
 
-        private int messages = 7;
+        private const int MaxMessages = 6;
+
+        private int messages = 0;
 
         public string Field(
             string name,
@@ -2917,10 +3167,12 @@ namespace AdifXsltLib
         {
             // TBS should check value against ADIF spec data types.
 
-            StringBuilder field = new StringBuilder(2048);
+            StringBuilder field = new(2048);
 
             try
             {
+                bool isAdifDefinedQsoField = false;
+
                 totalFields++;
                 if (string.IsNullOrEmpty(name))
                 {
@@ -2980,6 +3232,7 @@ namespace AdifXsltLib
                                         throw new Exception("if a Data Type Indicator is supplied, it must match the one for the field in the ADIF specification");
                                     }
                                 }
+                                isAdifDefinedQsoField = true;
                                 break;
 
                             case FieldEntry.FieldVariant.App:
@@ -2998,7 +3251,7 @@ namespace AdifXsltLib
                     }
 
                     {
-                        StringBuilder newValue = new StringBuilder(2 * value.Length);
+                        StringBuilder newValue = new(2 * value.Length);
                         bool expectLf = false;
 
                         foreach (char c in value)
@@ -3044,7 +3297,7 @@ namespace AdifXsltLib
                         case "QSO_DATE":
                             {
                                 qso.Start = new DateTime(
-                                    int.Parse(value.Substring(0, 4)),
+                                    int.Parse(value[..4]),
                                     int.Parse(value.Substring(4, 2)),
                                     int.Parse(value.Substring(6, 2)),
                                     qso.Start.Hour,
@@ -3061,7 +3314,7 @@ namespace AdifXsltLib
                         case "QSO_DATE_OFF":
                             {
                                 qso.End = new DateTime(
-                                    int.Parse(value.Substring(0, 4)),
+                                    int.Parse(value[..4]),
                                     int.Parse(value.Substring(4, 2)),
                                     int.Parse(value.Substring(6, 2)),
                                     qso.End.Hour,
@@ -3089,7 +3342,7 @@ namespace AdifXsltLib
                                     qso.Start.Year,
                                     qso.Start.Month,
                                     qso.Start.Day,
-                                    int.Parse(fullValue.Substring(0, 2)),
+                                    int.Parse(fullValue[..2]),
                                     int.Parse(fullValue.Substring(2, 2)),
                                     int.Parse(fullValue.Substring(4, 2)));
 
@@ -3114,7 +3367,7 @@ namespace AdifXsltLib
                                     qso.End.Year,
                                     qso.End.Month,
                                     qso.End.Day,
-                                    int.Parse(fullValue.Substring(0, 2)),
+                                    int.Parse(fullValue[..2]),
                                     int.Parse(fullValue.Substring(2, 2)),
                                     int.Parse(fullValue.Substring(4, 2)));
 
@@ -3156,7 +3409,7 @@ namespace AdifXsltLib
                             {
                                 if (!bands.TryGetValue(value.ToLower(), out BandEntry bandEntry))
                                 {
-                                    throw new Exception("value parameter is not a band in the ADIF specification");
+                                    throw new Exception($"value parameter {value} is not a band in the ADIF specification");
                                 }
                                 qso.Band = value;
                                 if (!bandEntry.IsInBand(qso.Freq))
@@ -3184,11 +3437,11 @@ namespace AdifXsltLib
                                 {
                                     qso.FreqRx = float.Parse(Freq(value), adifNumberStyles, adifNumberFormatInfo);
                                 }
-                                if (++messages < 6)
-                                {
-                                    ReportError("Field('" + name + "', '" + value + "') has set qso.FreqRx to " + qso.FreqRx.ToString() +
-                                                                                          " and qso.BandRx to " + qso.BandRx);
-                                }
+                                //if (++messages < MaxMessages)
+                                //{
+                                //    ReportError("Field('" + name + "', '" + value + "') has set qso.FreqRx to " + qso.FreqRx.ToString() +
+                                //                                                          " and qso.BandRx to " + qso.BandRx);
+                                //}
                             }
                             break;
 
@@ -3197,11 +3450,11 @@ namespace AdifXsltLib
                                 qso.FreqRx = float.Parse(value, adifNumberStyles, adifNumberFormatInfo);
                                 qso.BandRx = Band(qso.FreqRx);
 
-                                if (++messages < 6)
-                                {
-                                    ReportError("Field('" + name + "', '" + value + "') has set qso.FreqRx to " + qso.FreqRx.ToString() +
-                                                                                          " and qso.BandRx to " + qso.BandRx);
-                                }
+                                //if (++messages < MaxMessages)
+                                //{
+                                //    ReportError("Field('" + name + "', '" + value + "') has set qso.FreqRx to " + qso.FreqRx.ToString() +
+                                //                                                          " and qso.BandRx to " + qso.BandRx);
+                                //}
                             }
                             break;
 
@@ -3215,7 +3468,7 @@ namespace AdifXsltLib
 
                         case "CQZ":
                             {
-                                int.TryParse(value, out int valueInt);
+                                _ = int.TryParse(value, out int valueInt);
                                 if (valueInt <= 0)
                                 {
                                     throw new Exception(string.Format(
@@ -3236,7 +3489,7 @@ namespace AdifXsltLib
 
                         case "ITUZ":
                             {
-                                int.TryParse(value, out int valueInt);
+                                _ = int.TryParse(value, out int valueInt);
                                 if (valueInt <= 0)
                                 {
                                     throw new Exception(string.Format(
@@ -3262,24 +3515,24 @@ namespace AdifXsltLib
 
                     if (adiStyle)
                     {
-                        field.AppendFormat(
-                            "<{0}{1}:{2}>{3}",
+                        _ = field.AppendFormat(
+                            "<{0}:{1}{2}>{3}",
                             name,
+                            value.Length.ToString(),
                             string.IsNullOrEmpty(dataTypeIndicator) ?
                                 string.Empty :
                                 ":" + dataTypeIndicator,
-                            value.Length.ToString(),
                             value).
                               Append(fieldSeparator);
                     }
                     else
                     {
-                        field.AppendFormat(
+                        _ = field.AppendFormat(
                             "<{0}{1}>{2}</{0}>",
                             Encode(name.ToUpper()),
-                            string.IsNullOrEmpty(dataTypeIndicator) ?
-                                string.Empty :
-                                " DATATYPEINDICATOR=\"" + dataTypeIndicator + "\"",
+                            string.IsNullOrEmpty(dataTypeIndicator) || isAdifDefinedQsoField  // Data Type Indicator is not allowed in ADX ADIF-defined QSO fields.
+                                ? string.Empty
+                                : " DATATYPEINDICATOR=\"" + dataTypeIndicator + "\"",
                             Encode(value)).
                               Append(fieldSeparator);
                     }
@@ -3288,7 +3541,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.Field({0}, {1}, {2}) Exception: {3}",
+                    "AdifXslt.Field({0}, {1}, {2}) Exception: {3}",
                     StringToNullOrString(name),
                     StringToNullOrString(value),
                     StringToNullOrString(dataTypeIndicator),
@@ -3304,7 +3557,7 @@ namespace AdifXsltLib
             int number,
             string enumeration)
         {
-            StringBuilder field = new StringBuilder(2048);
+            StringBuilder field = new(2048);
 
             try
             {
@@ -3341,27 +3594,15 @@ namespace AdifXsltLib
                     {
                         FieldEntry fieldEntry;
 
-                        if (fields.ContainsKey(nameUpper))
+                        if (fields.TryGetValue(nameUpper, out FieldEntry value))
                         {
-                            fieldEntry = fields[nameUpper];
-
-                            string message;
-                            switch (fieldEntry.Variant)
+                            fieldEntry = value;
+                            string message = fieldEntry.Variant switch
                             {
-                                case FieldEntry.FieldVariant.Adif:
-                                    message = "USERDEF field cannot have the same name as an ADIF-defined field";
-                                    break;
-
-                                case FieldEntry.FieldVariant.User:
-                                    message = "USERDEF field has already been declared in a USERDEFn field";
-                                    break;
-
-                                case FieldEntry.FieldVariant.App:
-                                default:
-                                    message = "Internal error: USERDEF field name is already defined as an APP or unexpected field variant";
-                                    break;
-
-                            }
+                                FieldEntry.FieldVariant.Adif => "USERDEF field cannot have the same name as an ADIF-defined field",
+                                FieldEntry.FieldVariant.User => "USERDEF field has already been declared in a USERDEFn field",
+                                _ => "Internal error: USERDEF field name is already defined as an APP or unexpected field variant",
+                            };
                             throw new Exception(message);
                         }
                         if (FieldEntry.ContainsUserDefNumber(fields, number))
@@ -3393,11 +3634,11 @@ namespace AdifXsltLib
                     }
                     else
                     {
-                        string range = enumeration.Contains(":") ?
+                        string range = enumeration.Contains(':') ?
                             string.Format(" RANGE=\"{0}\"", Encode(enumeration)) :
                             string.Empty;
 
-                        string _enum = enumeration.Contains(",") ?
+                        string _enum = enumeration.Contains(',') ?
                             string.Format(" ENUM=\"{0}\"", Encode(enumeration)) :
                             string.Empty;
 
@@ -3415,7 +3656,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.UserDefNField(string, string, int, string) ({0}, {1}, {2}, {3}) Exception: {4}",
+                    "AdifXslt.UserDefNField(string, string, int, string) ({0}, {1}, {2}, {3}) Exception: {4}",
                     StringToNullOrString(name),
                     StringToNullOrString(dataTypeIndicator),
                     number.ToString(),
@@ -3432,7 +3673,7 @@ namespace AdifXsltLib
         {
             // TBS should check value against ADIF spec data types.
 
-            StringBuilder field = new StringBuilder(2048);
+            StringBuilder field = new(2048);
 
             try
             {
@@ -3527,7 +3768,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.UserDefField({0}, {1}) Exception: {2}",
+                    "AdifXslt.UserDefField({0}, {1}) Exception: {2}",
                     StringToNullOrString(name),
                     StringToNullOrString(value),
                     exc.Message));
@@ -3539,10 +3780,7 @@ namespace AdifXsltLib
         public string AppField(
             string name,
             string value,
-            string programId)
-        {
-            return AppField(name, value, programId, string.Empty);
-        }
+            string programId) => AppField(name, value, programId, string.Empty);
 
         public string AppField(
             string name,
@@ -3552,7 +3790,7 @@ namespace AdifXsltLib
         {
             // TBS should check value against ADIF spec data types.
 
-            StringBuilder field = new StringBuilder(2048);
+            StringBuilder field = new(2048);
 
             try
             {
@@ -3685,7 +3923,7 @@ namespace AdifXsltLib
             catch (Exception exc)
             {
                 ReportError(string.Format(
-                    "AdfiXslt.AppField({0}, {1}, {2}, {3}) Exception: {4}",
+                    "AdifXslt.AppField({0}, {1}, {2}, {3}) Exception: {4}",
                     StringToNullOrString(name),
                     StringToNullOrString(value),
                     StringToNullOrString(dataTypeIndicator),
@@ -3700,7 +3938,7 @@ namespace AdifXsltLib
 
         private string Bor()
         {
-            StringBuilder text = new StringBuilder(32);
+            StringBuilder text = new(32);
 
             if (adiStyle)
             {
@@ -3729,7 +3967,7 @@ namespace AdifXsltLib
 
         public string Eoh()
         {
-            StringBuilder text = new StringBuilder(32);
+            StringBuilder text = new(32);
 
             if (adiStyle)
             {
@@ -3753,11 +3991,11 @@ namespace AdifXsltLib
 
         private string Eor()
         {
-            StringBuilder field = new StringBuilder(32);
+            StringBuilder field = new(32);
 
             totalRecords++;
 
-            qso.Next(recordFieldsEmitted.ContainsKey("CALL") ? recordFieldsEmitted["CALL"] : string.Empty);
+            qso.Next(recordFieldsEmitted.TryGetValue("CALL", out string value) ? value : string.Empty);
             if (adiStyle)
             {
                 field.Append("<EOR>").
@@ -3774,7 +4012,7 @@ namespace AdifXsltLib
 
         public string Bof()
         {
-            StringBuilder text = new StringBuilder(32);
+            StringBuilder text = new(32);
 
             if (!adiStyle)
             {
@@ -3790,7 +4028,7 @@ namespace AdifXsltLib
 
         public string Eof()
         {
-            StringBuilder text = new StringBuilder(32);
+            StringBuilder text = new(32);
 
             if (!adiStyle)
             {
@@ -3803,12 +4041,12 @@ namespace AdifXsltLib
 
         public string Record(params string[] args)
         {
-            if (++messages < 6)
-            {
-                ReportError("Record() starting");
-            }
+            //if (++messages < MaxMessages)
+            //{
+            //    ReportError("Record() starting");
+            //}
 
-            StringBuilder record = new StringBuilder(2048);
+            StringBuilder record = new(2048);
 
             try
             {
@@ -3818,19 +4056,45 @@ namespace AdifXsltLib
                 }
                 else
                 {
+                    string emptyField = null;
+
                     for (int i = 0; i < args.Length; i += 2)
                     {
                         string
                             name = args[i],
                             value = args[i + 1];
 
-                        record.Append(Field(name, value));
+                        if (value.Length == 0)
+                        {
+                            if (name == "QSO_DATE" || name == "TIME_ON")
+                            {
+                                // Ignore zero-length QSO_DATE and TIME_ON fields because they are emitted for many QSOs that involve
+                                // (MY_)DXCC fields depending on whether or not the QSO is for a specified historic date and time
+                                // (i.e. usually DXpeditions).
+                            }
+                            else
+                            {
+                                // Defer outputting the error message so that all fields can be seen in the error message.
+                                // If there is more than one empty field, this will just report the last one in the record.
+
+                                emptyField = name;
+                            }
+                        }
+                        else
+                        {
+                            record.Append(Field(name, value));
+                        }
                     }
 
-                    if (++messages <= 6)
+                    if (emptyField != null && ++messages < MaxMessages)
                     {
-                        ReportError("Record() has generated " + record.ToString());
+                        ReportError($"An empty {emptyField} field should never be generated by the XSLT template file\r\n\r\n{record}");
                     }
+
+                    //if (++messages < MaxMessages)
+                    //{
+                    //    ReportError($"Record() has generated {record}");
+                    //}
                 }
                 if (!recordFieldsEmitted.ContainsKey("QSO_DATE"))
                 {
@@ -3864,7 +4128,7 @@ namespace AdifXsltLib
             }
             catch (Exception exc)
             {
-                StringBuilder argList = new StringBuilder(64);
+                StringBuilder argList = new(64);
 
                 foreach (string arg in args)
                 {
@@ -3875,12 +4139,26 @@ namespace AdifXsltLib
                     argList.Append(StringToNullOrString(arg));
                 }
                 ReportError(string.Format(
-                    "AdfiXslt.Record({0}) Exception: {1}",
+                    "AdifXslt.Record({0}) Exception: {1}",
                     argList.ToString(),
                     exc.Message));
                 throw;
             }
             return record.ToString();
+        }
+
+        /**
+         * <summary>
+         *   This logs a message and is for diagnostic purposes; as such, it will not be included in released
+         *   versions of the XSLT templates file.
+         * </summary>
+         * 
+         * <param name="message">The message to be logged.</param>
+         */
+        public static string Log(string message)
+        {
+            Logger.Log(message);
+            return string.Empty;
         }
 
         /*
