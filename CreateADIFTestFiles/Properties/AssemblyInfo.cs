@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ADIFDevelopmentGroup")]
 [assembly: AssemblyProduct("CreateADIFTestFiles")]
-[assembly: AssemblyCopyright("Copyright © 2024")]
+[assembly: AssemblyCopyright("Copyright © 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -43,6 +43,6 @@ using System.Runtime.InteropServices;
 //      Major.Minor.Build are the most recent ADIF Specification supported.
 //      Revision          is used to represent updates to this application.
 //
-[assembly: AssemblyVersion("3.1.5.2")]
-[assembly: AssemblyFileVersion("3.1.5.2")]
-[assembly: AssemblyInformationalVersion("3.1.5.2")]
+[assembly: AssemblyVersion("3.1.6.1")]
+[assembly: AssemblyFileVersion("3.1.6.1")]
+[assembly: AssemblyInformationalVersion("3.1.6.1")]
