@@ -19,17 +19,17 @@ namespace AdifXsltLib
         private class BandEntry
         {
             internal string Name;
-            internal float LowerLimit;
-            internal float UpperLimit;
+            internal double LowerLimit;
+            internal double UpperLimit;
 
-            internal BandEntry(string name, float lowerLimit, float upperLimit)
+            internal BandEntry(string name, double lowerLimit, double upperLimit)
             {
                 Name = name;
                 LowerLimit = lowerLimit;
                 UpperLimit = upperLimit;
             }
 
-            internal bool IsInBand(float freq) => freq >= LowerLimit && freq <= UpperLimit;
+            internal bool IsInBand(double freq) => freq >= LowerLimit && freq <= UpperLimit;
 
             //internal static bool Band(float freq, Dictionary<string, BandEntry> bands, out BandEntry bandEntry)
             //{
@@ -1803,7 +1803,7 @@ namespace AdifXsltLib
         private class Qso
         {
             private const string defaultBand = "20m";
-            private const float defaultFreq = 14.050f;
+            private const double defaultFreq = 14.050f;
             private static readonly char[] plusSplitChar = ['+'];
 
             internal AdifXslt adifXslt;
@@ -1812,9 +1812,9 @@ namespace AdifXsltLib
             internal DateTime End;
             internal string Call = "VE3AAA";
             internal string Band = defaultBand;
-            internal float Freq = defaultFreq;
+            internal double Freq = defaultFreq;
             internal string BandRx = defaultBand;
-            internal float FreqRx = defaultFreq;
+            internal double FreqRx = defaultFreq;
             internal int Dxcc = 1;
             internal string Mode = "SSB";
             internal int Ituz = 2;
@@ -1855,7 +1855,7 @@ namespace AdifXsltLib
                             adifXslt.clubLogBands :
                             adifXslt.bands,
                         random);
-                    this.Freq = float.Parse(adifXslt.Freq(this.Band), adifNumberStyles, adifNumberFormatInfo);
+                    this.Freq = double.Parse(adifXslt.Freq(this.Band), adifNumberStyles, adifNumberFormatInfo);
                 }
                 {
                     this.BandRx = BandEntry.RandomBand(
@@ -1863,7 +1863,7 @@ namespace AdifXsltLib
                             adifXslt.clubLogBands :
                             adifXslt.bands,
                         random);
-                    this.FreqRx = float.Parse(adifXslt.Freq(this.BandRx), adifNumberStyles, adifNumberFormatInfo);
+                    this.FreqRx = double.Parse(adifXslt.Freq(this.BandRx), adifNumberStyles, adifNumberFormatInfo);
 
                     //if (++adifXslt.messages < MaxMessages)
                     //{
@@ -2271,8 +2271,8 @@ namespace AdifXsltLib
                 do
                 {
                     string band = nav.SelectSingleNode("value[@name='Band']").Value;
-                    float lowerLimit = float.Parse(nav.SelectSingleNode("value[@name='Lower Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
-                    float upperLimit = float.Parse(nav.SelectSingleNode("value[@name='Upper Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
+                    double lowerLimit = double.Parse(nav.SelectSingleNode("value[@name='Lower Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
+                    double upperLimit = double.Parse(nav.SelectSingleNode("value[@name='Upper Freq (MHz)']").Value, adifNumberStyles, adifNumberFormatInfo);
 
                     BandEntry bandEntry = new(band, lowerLimit, upperLimit);
 
@@ -2792,13 +2792,13 @@ namespace AdifXsltLib
 
         private string Band() => qso.Band;
 
-        private string Band(float freq)
+        private string Band(double freq)
         {
             string band = string.Empty;
 
             try
             {
-                if (float.IsNaN(freq) || float.IsInfinity(freq))
+                if (double.IsNaN(freq) || double.IsInfinity(freq))
                 {
                     throw new Exception("freq parameter is Nan or Infinity");
                 }
@@ -2807,6 +2807,11 @@ namespace AdifXsltLib
 
                     foreach (BandEntry bandEntry in bands.Values)
                     {
+                        if (freq == 54d && freq < 54.1d)
+                        {
+                            int a = 3;
+                            a++;
+                        }
                         if (freq >= bandEntry.LowerLimit && freq <= bandEntry.UpperLimit)
                         {
                             band = bandEntry.Name;
@@ -2859,7 +2864,7 @@ namespace AdifXsltLib
                     throw new Exception("band parameter is not a band in the ADIF specification");
                 }
 
-                float increment = (float)random.NextDouble() * (bandEntry.UpperLimit - bandEntry.LowerLimit);
+                double increment = random.NextDouble() * (bandEntry.UpperLimit - bandEntry.LowerLimit);
 
                 freq = (bandEntry.LowerLimit + increment).ToString(frequencyFormat, adifNumberFormatInfo);
             }
@@ -3414,14 +3419,14 @@ namespace AdifXsltLib
                                 qso.Band = value;
                                 if (!bandEntry.IsInBand(qso.Freq))
                                 {
-                                    qso.Freq = float.Parse(Freq(value), adifNumberStyles, adifNumberFormatInfo);
+                                    qso.Freq = double.Parse(Freq(value), adifNumberStyles, adifNumberFormatInfo);
                                 }
                             }
                             break;
 
                         case "FREQ":
                             {
-                                qso.Freq = float.Parse(value, adifNumberStyles, adifNumberFormatInfo);
+                                qso.Freq = double.Parse(value, adifNumberStyles, adifNumberFormatInfo);
                                 qso.Band = Band(qso.Freq);
                             }
                             break;
@@ -3435,7 +3440,7 @@ namespace AdifXsltLib
                                 qso.BandRx = value;
                                 if (!bandEntry.IsInBand(qso.FreqRx))
                                 {
-                                    qso.FreqRx = float.Parse(Freq(value), adifNumberStyles, adifNumberFormatInfo);
+                                    qso.FreqRx = double.Parse(Freq(value), adifNumberStyles, adifNumberFormatInfo);
                                 }
                                 //if (++messages < MaxMessages)
                                 //{
@@ -3447,7 +3452,7 @@ namespace AdifXsltLib
 
                         case "FREQ_RX":
                             {
-                                qso.FreqRx = float.Parse(value, adifNumberStyles, adifNumberFormatInfo);
+                                qso.FreqRx = double.Parse(value, adifNumberStyles, adifNumberFormatInfo);
                                 qso.BandRx = Band(qso.FreqRx);
 
                                 //if (++messages < MaxMessages)
