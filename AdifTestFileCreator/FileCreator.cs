@@ -187,6 +187,7 @@ namespace AdifTestFileCreator
             "315",
             "316",
             "317",
+            "318",
         ];
 
         /**
